@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 소속플레이스 정보 출력 (캐리 상세페이지 내) -->
 	<select id="selectCarryPlaceDetail"
-		resultType="com.project.gymcarry.place.PlaceDto">
+		resultType="com.project.gymcarry.place.PlaceDtoMap">
 		select * from place natural join carry where cridx=#{cridx};
 	</select>
 	

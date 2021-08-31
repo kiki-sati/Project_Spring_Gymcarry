@@ -1,5 +1,4 @@
 body {
-  font-family: "AppleSDGothicNeo";
   min-height: 100vh;
   font-size: 1.125em;
   line-height: 1.6;
@@ -13,7 +12,7 @@ body {
   margin-top: 140px;
   padding: 2em;
   box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
-  background: white;
+  background:white;
 }
 
 .title {
@@ -44,12 +43,11 @@ body {
   border-left: none;
 }
 
-.community_nav .menulink {
+.community_nav .menulink1,.menulink2,.menulink3 {
   text-decoration: none;
-  color: rgb(94, 94, 94);
+  color:  rgb(94, 94, 94);
   display: block;
   font-size: 15px;
-  font-family: "AppleSDGothicNeo";
 }
 
 .board_write {
@@ -90,7 +88,7 @@ body {
   width: 25%;
   margin: 0 auto;
   padding-top: 20px;
-  
+
 }
 .profile_image {
   border-radius: 50%;
@@ -127,7 +125,7 @@ body {
   border-radius: 18px;
 
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
   cursor: pointer;
 
@@ -150,10 +148,8 @@ body {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
-  height: 50px;
+  height: 100px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  -w
 }
 
 /* 날짜 아이콘 영역 */
@@ -161,7 +157,7 @@ body {
   position: absolute;
   right: 0;
   width: 100%;
-  
+
 }
 
 .write_date {
@@ -194,4 +190,4 @@ body {
     text-align: left;
     margin-left: 2em;
   }
-} ;
+}

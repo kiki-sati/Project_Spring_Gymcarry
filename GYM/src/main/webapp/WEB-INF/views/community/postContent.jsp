@@ -4,7 +4,6 @@
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/community/postContent.css">
-<script src="/gym/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <body>
 	<!-- header -->

@@ -16,7 +16,7 @@ import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.carry.service.CarryInfoService;
-import com.project.gymcarry.place.PlaceDto;
+import com.project.gymcarry.place.PlaceDtoMap;
 
 @Controller
 @RequestMapping
@@ -36,7 +36,7 @@ public class CarryDetailController {
 		List<CarryReviewDto> carryReviewList = carryInfoService.getCarryReviewList(cridx);
 		CarryPriceDto carryPrice = carryInfoService.getCarryPrice(cridx);
 		CarryCertiDto carryCerti = carryInfoService.getCarryCerti(cridx);
-		PlaceDto carryPlaceInfo = carryInfoService.getCarryPlaceInfo(cridx);
+		PlaceDtoMap carryPlaceInfo = carryInfoService.getCarryPlaceInfo(cridx);
 		
 		System.out.println("캐리IDX:" + cridx + " => 상세페이지로 진입");
 		System.out.println(carryReviewList);

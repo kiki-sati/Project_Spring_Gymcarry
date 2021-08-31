@@ -11,7 +11,7 @@ import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.dao.CarryDao;
-import com.project.gymcarry.place.PlaceDto;
+import com.project.gymcarry.place.PlaceDtoMap;
 
 @Service
 public class CarryInfoService {
@@ -45,7 +45,7 @@ public class CarryInfoService {
 	}
 
 	// 플레이스 정보(캐리 상세페이지 내)
-	public PlaceDto getCarryPlaceInfo(int cridx) {
+	public PlaceDtoMap getCarryPlaceInfo(int cridx) {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryPlaceDetail(cridx);
 	}

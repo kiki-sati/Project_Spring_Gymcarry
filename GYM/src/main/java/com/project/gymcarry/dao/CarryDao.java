@@ -6,7 +6,7 @@ import com.project.gymcarry.carry.CarryCertiDto;
 import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
-import com.project.gymcarry.place.PlaceDto;
+import com.project.gymcarry.place.PlaceDtoMap;
 
 public interface CarryDao {
 	
@@ -19,7 +19,7 @@ public interface CarryDao {
 	// 캐리 리뷰 리스트
 	List<CarryReviewDto> selectCarryReviewList(int cridx);
 	// 캐리 상세페이지 내  플레이스 정보
-	PlaceDto selectCarryPlaceDetail(int cridx);
+	PlaceDtoMap selectCarryPlaceDetail(int cridx);
 	// 캐리 리뷰 작성
 	int addCarryReview(CarryReviewDto reviewDto);
 	

@@ -67,12 +67,12 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		System.out.println("2번 " + session + " : " + message + " : " + message.getPayload());
 
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
-		int contenttype = 0;
+		//int contenttype = 0;
 		String chatNick = ((MemberDto) session.getAttributes().get("member")).getMemnick();
 
 		if (chatNick == null) {
 			chatNick = ((MemberDto) session.getAttributes().get("member")).getCrnick();
-			contenttype = 1;
+			//contenttype = 1;
 		}
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
 

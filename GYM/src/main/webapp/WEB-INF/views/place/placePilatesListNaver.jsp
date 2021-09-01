@@ -79,50 +79,22 @@
 
     <!-- 지도[e] -->
 
-
+    
     <div class="place_list">
+    <c:forEach items="${selectPilatesPlaceList}" var="list">
         <div class="place_content">
             <div class="place_info">
-                <h3>킹짐</h3>
-                <p>안산시 단원구 선부동</p>
+                <h3>${list.placename}</h3>
+                <p>${list.placeaddress}</p>
                 <a href="<c:url value="/place/detail"/>">더 알아보기</a>
             </div>
             <div class="place_img">
-                <img src="<c:url value="/images/review1.jpg"/>">
+                ${list.placeimg}
             </div>
         </div>
-        <div class="place_content">
-            <div class="place_info">
-                <h3>어쩌고짐</h3>
-                <p>안산시 단원구 초지동</p>
-                <a href="#">더 알아보기</a>
-            </div>
-            <div class="place_img">
-                <img src="<c:url value="/images/review2.jpg"/>">
-            </div>
-        </div>
-        <div class="place_content">
-            <div class="place_info">
-                <h3>핏플리짐</h3>
-                <p>안산시 단원구 원곡동</p>
-                <a href="#">더 알아보기</a>
-            </div>
-            <div class="place_img">
-                <img src="<c:url value="/images/review3.jpg"/>">
-            </div>
-        </div>
-        <div class="place_content">
-            <div class="place_info">
-                <h3>베스트휘트니스</h3>
-                <p>안산시 단원구 선부동</p>
-                <a href="#">더 알아보기</a>
-            </div>
-            <div class="place_img">
-                <img src="<c:url value="/images/review4.jpg"/>">
-            </div>
-        </div>
+            </c:forEach>
+       
     </div>
-</div>
 
 <!-- Contents end -->
 

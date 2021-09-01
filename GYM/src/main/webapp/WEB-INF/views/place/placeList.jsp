@@ -23,7 +23,7 @@
                  헬스
              </li>
              <li>
-                 <a href="<c:url value="/place/pilates"/>">필라테스</a>
+                 <a href="<c:url value="/place/pilates?placenum=1"/>">필라테스</a>
              </li>
              <li>
                  요가

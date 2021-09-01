@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp" %>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
@@ -24,23 +25,41 @@
             <a href="<c:url value="/place/list"/>">전체</a>
         </li>
         <li>
-            헬스
+            <a href="<c:url value="/place/list?placenum=1"/>">헬스</a>
         </li>
         <li>
-            <a href="<c:url value="/place/pilates"/>">필라테스</a>
+             <a href="<c:url value="/place/pilates?placenum=2"/>">필라테스</a>
         </li>
         <li>
-            요가
+             <a href="<c:url value="/place/list?placenum=3"/>">요가</a>
         </li>
     </ul>
-    <div class="place_search_bar">
-        <input type="text" name="search" id="search" placeholder="센터명을 검색해보세요.">
-        <button type="submit">
-            <img src="<c:url value="/images/icon/search_icon.png"/>" alt="search">
-        </button>
-    </div>
+         <div class="place_search_bar">
+             <input type="text" name="search" id="search" placeholder="센터명을 검색해보세요.">
+             <button type="submit">
+                 <img src="<c:url value="/images/icon/search_icon.png"/>" alt="search">
+             </button>
+         </div>
+         <div id="map" class="map_section">
+             
+         </div>
+         <div class="place_list">
+             <c:forEach items="${placePilatesList}" var=pilatesList" varStatus="status">
+	             <div class="place_content">
+	                 <div class="place_info">
+	                     <h3>${pilatesList.placename}</h3>
+	                     <p>${pilatesList.placeaddress}</p>
+	                     <a href="#">더 알아보기</a>
+	                 </div>
+	                 <div class="place_img">
+                     ${pilatesList.placeaddress}
+                 </div>
+	             </div>
+             </c:forEach>
+         </div>
+     </div>
 
-
+     <!-- Contents end -->
     <!-- 지도[s] -->
 
     <div id="map" style="width:100%;height:500px; margin-top: 50px"></div>
@@ -78,25 +97,7 @@
 
 
     <!-- 지도[e] -->
-
     
-    <div class="place_list">
-    <c:forEach items="${selectPilatesPlaceList}" var="list">
-        <div class="place_content">
-            <div class="place_info">
-                <h3>${list.placename}</h3>
-                <p>${list.placeaddress}</p>
-                <a href="<c:url value="/place/detail"/>">더 알아보기</a>
-            </div>
-            <div class="place_img">
-                ${list.placeimg}
-            </div>
-        </div>
-            </c:forEach>
-       
-    </div>
-
-<!-- Contents end -->
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/frame/footer.jsp" %>

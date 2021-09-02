@@ -15,16 +15,8 @@
 	<!--필라테스 플레이스 전체 정보 출력-->
 	<select id="selectPilatesPlaceList"
 			resultType="com.project.gymcarry.place.PlaceDto">
-		select placename, placeaddress, placeimg from place where placenum = #{placenum}
+		select * from place where placenum = #{placenum}
 	</select>
-
-	<!--필라테스 위도,경도 출력 -->
-	<select id="selectPilatesMapList"
-			resultType="com.project.gymcarry.place.PlaceDto">
-		select placename, latitude, longitude from place where placenum = #{placenum}
-	</select>
-
-
 
 
 </mapper>

@@ -80,7 +80,7 @@
 
     function initMap() {
 
-        var areaArr = new Array();  // 지역을 담는 배열 ( 지역명/위도경도 )
+        const areaArr = [];  // 지역을 담는 배열 ( 지역명/위도경도 )
         <c:forEach items="${placeList}" var="placeList" varStatus="status">
             areaArr.push(
                 /*지역구 이름*/			               /*위도*/					/*경도*/
@@ -88,12 +88,12 @@
         );
         </c:forEach>
 
-        console.log(positions[0])
+        console.log(areaArr[0])
 
 
 
-        let markers = new Array(); // 마커 정보를 담는 배열
-        let infoWindows = new Array(); // 정보창을 담는 배열
+        let markers = []; // 마커 정보를 담는 배열
+        let infoWindows = []; // 정보창을 담는 배열
 
         var map = new naver.maps.Map('map', {
             center: new naver.maps.LatLng(37.55528086061827, 126.93683578593966), //지도 시작 지점

@@ -88,6 +88,8 @@
         );
         </c:forEach>
 
+        console.log(positions[0])
+
 
 
         let markers = new Array(); // 마커 정보를 담는 배열

@@ -84,7 +84,7 @@
         <c:forEach items="${placeList}" var="placeList" varStatus="status">
             areaArr.push(
                 /*지역구 이름*/			               /*위도*/					/*경도*/
-                {location : ${placeList.placename} , lat : ${placeList.latitude} , lng : ${placeList.longitude}},  // 중심좌표
+                {location : ${placeList.placename} , lat : ${placeList.latitude} , lng : ${placeList.longitude}}  // 중심좌표
         );
         </c:forEach>
 

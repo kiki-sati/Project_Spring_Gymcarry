@@ -6,35 +6,20 @@ public class PlaceDto {
 	private int placeidx;
 	private String placename;
 	private String placeaddress;
-<<<<<<< HEAD
 	private float latitude;
 	private float longitude;
-=======
-	private double latitude;
-	private double longitude;
->>>>>>> a05_test
 	private String placephone;
 	private String placeinfo;
 	private String placeintro;
 	private String openhour;
 	private String placeimg;
-	
-<<<<<<< HEAD
+
 	// 기본 생성자
 	public PlaceDto() {}
 
 	public PlaceDto(int placenum, int placeidx, String placename, String placeaddress, float latitude, float longitude,
-			String placephone, String placeinfo, String placeintro, String openhour, String placeimg) {
+					String placephone, String placeinfo, String placeintro, String openhour, String placeimg) {
 		super();
-=======
-	
-	public PlaceDto () {}
-	
-	public PlaceDto(int placenum, int placeidx, String placename, String placeaddress, double latitude,
-			double longitude, String placephone, String placeinfo, String placeintro, String openhour,
-			String placeimg) {
-		
->>>>>>> a05_test
 		this.placenum = placenum;
 		this.placeidx = placeidx;
 		this.placename = placename;
@@ -46,7 +31,6 @@ public class PlaceDto {
 		this.placeintro = placeintro;
 		this.openhour = openhour;
 		this.placeimg = placeimg;
-<<<<<<< HEAD
 	}
 
 	public int getPlacenum() {
@@ -57,15 +41,6 @@ public class PlaceDto {
 		this.placenum = placenum;
 	}
 
-=======
-	}
-	public int getPlacenum() {
-		return placenum;
-	}
-	public void setPlacenum(int placenum) {
-		this.placenum = placenum;
-	}
->>>>>>> a05_test
 	public int getPlaceidx() {
 		return placeidx;
 	}
@@ -81,10 +56,7 @@ public class PlaceDto {
 	public void setPlacename(String placename) {
 		this.placename = placename;
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> a05_test
 	public String getPlaceaddress() {
 		return placeaddress;
 	}
@@ -92,7 +64,6 @@ public class PlaceDto {
 	public void setPlaceaddress(String placeaddress) {
 		this.placeaddress = placeaddress;
 	}
-<<<<<<< HEAD
 
 	public float getLatitude() {
 		return latitude;
@@ -110,20 +81,6 @@ public class PlaceDto {
 		this.longitude = longitude;
 	}
 
-=======
-	public double getLatitude() {
-		return latitude;
-	}
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
-	}
-	public double getLongitude() {
-		return longitude;
-	}
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
->>>>>>> a05_test
 	public String getPlacephone() {
 		return placephone;
 	}
@@ -131,7 +88,6 @@ public class PlaceDto {
 	public void setPlacephone(String placephone) {
 		this.placephone = placephone;
 	}
-<<<<<<< HEAD
 
 	public String getPlaceinfo() {
 		return placeinfo;
@@ -161,29 +117,6 @@ public class PlaceDto {
 		return placeimg;
 	}
 
-=======
-	public String getPlaceinfo() {
-		return placeinfo;
-	}
-	public void setPlaceinfo(String placeinfo) {
-		this.placeinfo = placeinfo;
-	}
-	public String getPlaceintro() {
-		return placeintro;
-	}
-	public void setPlaceintro(String placeintro) {
-		this.placeintro = placeintro;
-	}
-	public String getOpenhour() {
-		return openhour;
-	}
-	public void setOpenhour(String openhour) {
-		this.openhour = openhour;
-	}
-	public String getPlaceimg() {
-		return placeimg;
-	}
->>>>>>> a05_test
 	public void setPlaceimg(String placeimg) {
 		this.placeimg = placeimg;
 	}
@@ -195,13 +128,7 @@ public class PlaceDto {
 				+ ", placephone=" + placephone + ", placeinfo=" + placeinfo + ", placeintro=" + placeintro
 				+ ", openhour=" + openhour + ", placeimg=" + placeimg + "]";
 	}
-	
-	
-	
-	
-	
+
+
 
 }
-
-
-

@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
 
 <script type="text/javascript"
-        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ql9vcy7uun&submodules=geocoder"></script>
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ql9vcy7uun"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
@@ -81,10 +81,10 @@
     function initMap() {
 
         const areaArr = [];  // 지역을 담는 배열 ( 지역명/위도경도 )
-        <c:forEach items="${placeList}" var="placeList" varStatus="status">
+        <c:forEach items="${placePilatesList}" var="placeList" varStatus="status">
             areaArr.push(
                 /*지역구 이름*/			               /*위도*/					/*경도*/
-                {location : ${placeList.placename} , lat : ${placeList.latitude} , lng : ${placeList.longitude}}  // 중심좌표
+                {location : '${placeList.placename}' , lat : ${placeList.latitude} , lng : ${placeList.longitude}}  // 중심좌표
         );
         </c:forEach>
 
@@ -109,7 +109,16 @@
             var marker = new naver.maps.Marker({
                 map: map,
                 title: areaArr[i].location, // 지역구 이름
-                position: new naver.maps.LatLng(areaArr[i].lat , areaArr[i].lng) // 지역구의 위도 경도 넣기
+                position: new naver.maps.LatLng(areaArr[i].lat , areaArr[i].lng),
+                icon: {
+                    content: [
+                        '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;">' +
+                        '<div> <img src="/gym/images/icon/muscles.png" style="width:60px; height:60px;"></div>' +
+                        '</div>'
+                    ].join(''),
+                    size: new naver.maps.Size(38, 58),
+                    anchor: new naver.maps.Point(19, 58),
+                },// 지역구의 위도 경도 넣기
             });
 
             /* 정보창 */

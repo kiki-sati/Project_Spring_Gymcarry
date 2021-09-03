@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.gymcarry.carry.CarryJoinDto;
+import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.chatting.service.MatchingListService;
 
 @Controller
@@ -17,12 +17,13 @@ public class CarryListController {
 
 	@Autowired
 	private MatchingListService matchingListService;
+	
 
 	@GetMapping
 	public String chatRoomList(Model model) {
-		List<CarryJoinDto> list = matchingListService.getCarryList();
+		List<CarryDto> list = matchingListService.getCarryList();
 		model.addAttribute("carryList", list);
-		return "chatting/carryList";
+		return "carry/carryList";
 	}
 
 }

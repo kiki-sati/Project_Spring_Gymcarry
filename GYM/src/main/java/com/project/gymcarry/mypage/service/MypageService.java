@@ -1,6 +1,8 @@
 package com.project.gymcarry.mypage.service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +44,13 @@ public class MypageService {
 	public List<MypageDto2> loadMemo2(int i, String arg1) {
 		dao = template.getMapper(MypageDao.class);
 		return dao.loadMemo2(i, arg1);
+	}
+	
+	// 캐리마이페이지 달력때문에 은경이 추가 
+	public List<Map<String, Object>> resultList(String title, String allday, Date start, Date end, int cridx){
+		dao = template.getMapper(MypageDao.class);
+		return dao.resultList(title, allday, start, end, cridx);
+		
 	}
 
 }

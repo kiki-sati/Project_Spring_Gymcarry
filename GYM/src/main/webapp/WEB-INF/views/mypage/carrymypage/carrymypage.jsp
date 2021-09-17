@@ -25,9 +25,15 @@
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 
 <style>
- #allsave{
- width:130px;height:40px; background-color: #2C3E50; color:white;cursor:pointer;border-radius:15%; margin: auto 10px;}
-  
+#allsave {
+	width: 130px;
+	height: 40px;
+	background-color: #2C3E50;
+	color: white;
+	cursor: pointer;
+	border-radius: 15%;
+	margin: auto 10px;
+}
 </style>
 </head>
 <body>
@@ -44,12 +50,13 @@
 				<!-- 정렬을 위해 왼쪽에 숨겨둘 것 -->
 				<button class="edit1" type="button" onclick></button>
 				<!-- 여기까지 -->
-				<h3 class="title">이름${crname}</h3>
+				<h3 class="title">${crname}</h3>
 				<a href="modifycarrybasicinfo.html"> <img
 					src="<c:url value="/images/icon/edit.png"/>" class="edit2">
 				</a>
 				<!-- 달력 DB 저장 버튼 -->
-					<button id="allsave" onclick="javascript:allSave();">달력 일정 저장하기</button>
+				<button id="allsave" onclick="javascript:allSave();">달력 일정
+					저장하기</button>
 			</div>
 			<!-- calendar 태그 -->
 			<div id="calendar_container">
@@ -63,13 +70,8 @@
 			<div class="modi-list">
 				<h3>My Page</h3>
 				<ul>
-<<<<<<< HEAD
 					<li><a href="<c:url value="/carry/modify"/>">기본 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
 					</li>
-=======
-					<li><a href="<c:url value="/mypage/carrymypage/modify"/>">기본
-							정보 수정</a> <!-- <a href="<c:url value="/"/>"> --></li>
->>>>>>> E17
 					<br>
 					<li><a href="<c:url value="/mypage/carrymodify"/>">캐리 정보
 							수정</a> <!-- <a href="<c:url value="/"/>"> --></li>
@@ -96,8 +98,13 @@
 crname = $("#crname");
 </script>
 
-	<script>
-	var calendarEl = null;
+
+
+
+<script>
+
+
+var calendarEl = null;
 	var calendar = null;
 	
 	(function() {
@@ -124,6 +131,7 @@ crname = $("#crname");
 				dayMaxEvents : true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
 				locale : 'ko', // 한국어 설정
 				Boolean: true,
+				groupId : $('cridx'),
 			
 				eventAdd : function(obj) { // 이벤트가 추가되면 발생하는 이벤트
 					console.log(obj);
@@ -131,9 +139,17 @@ crname = $("#crname");
 				eventChange : function(obj) { // 이벤트가 수정되면 발생하는 이벤트
 					console.log(obj);
 				},
-				eventRemove : function(obj) { // 이벤트가 삭제되면 발생하는 이벤트
+				//Logic for clicking on an event
+			    eventClick: function(event_click){
+			      alert('['+event_click.title + '] 일정을 삭제합니다.'),
+			      //Remove event from calendar
+				  event_click.remove()
+				}
+				,
+				/* eventRemove : function(obj) { // 이벤트가 삭제되면 발생하는 이벤트
 					console.log(obj);
-				},
+				}, */
+				
 				eventsSet : function(events){
 					console.log(events)
 				},
@@ -158,6 +174,7 @@ crname = $("#crname");
 		
 	})();
 
+	
 	// 1. 전체 이벤트 데이터 추출하기
 	// 2. 추출된 데이터를 ajax로 서버에 전송 -> DB에 저장
 	function allSave(){
@@ -165,6 +182,7 @@ crname = $("#crname");
 		//calendar.getEventSourceById( id )
 		
 		var allEvent = calendar.getEvents();
+		//var allEvent = calendar.getEventSourceById(groupId);
 		console.log(allEvent);
 		
 		var events = new Array();
@@ -172,6 +190,7 @@ crname = $("#crname");
 			
 			var obj = new Object();
 			
+			//obj.groupId = allEvent[i]._def.groupId; // 로그인한 캐리 인덱스 
 			obj.title = allEvent[i]._def.title; // 일정 명칭 
 			obj.allday = allEvent[i]._def.allDay; // 일정 기간이 하루종일 or 시간제인지 boolean 타입(true/false)
 			obj.start = allEvent[i]._instance.range.start; // 일정 시작 날짜 및 시간
@@ -188,22 +207,23 @@ crname = $("#crname");
 	function savedata(jsondata){
 		$.ajax({
 			type : 'POST',
-			url : "savedata.php",
-			data : {"all data" : jsondata},
+			url : '<c:url value="/mypage/carrycalendar"/>',
+			data : { 
+				"all data" : jsondata},
 			dataType :'text',
 			async : false
 		})
 		.done(function(result){
 			
 		}) // 성공했을 때 실행
-		.fail(function(request, states, error{
+		/* .fail(function(request, states, error{
 			alert("에러가 발생했습니다 : " + error);
-		})) // 실패했을 때 실행
+		})) // 실패했을 때 실행 */
 		
 	}
 
 </script>
-
+ 
 	<!-- <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('fullcalendar2_wannausing');
@@ -214,5 +234,3 @@ crname = $("#crname");
 	});
 		/* 	$('#calendar').fullCalendar({ events: "json-events.php",    }); */
 </script> -->
-
-	

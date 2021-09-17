@@ -1,6 +1,8 @@
 package com.project.gymcarry.dao;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.Pagination;
@@ -34,4 +36,8 @@ public interface MypageDao {
 	List<MypageDto> loadMemo(String arg0, String arg1);
 
 	List<MypageDto2> loadMemo2(int i, String arg1);
+	
+	// 캐리마이페이지 달력때문에 은경이 추가 
+	List<Map<String, Object>> resultList(String title, String allday, Date start, Date end, int cridx);
+	
 }

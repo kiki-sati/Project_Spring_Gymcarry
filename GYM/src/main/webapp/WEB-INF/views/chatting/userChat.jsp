@@ -123,9 +123,6 @@
 			});
 		});
 		
-			
-		
-		
 		function chatNav(num){
 			var num = num;
 			var htmlNav = '<ul>';
@@ -146,7 +143,6 @@
 			$("#asd").click(function(){
 				 $(location).attr('href', '<c:url value="/carry/detail?cridx='+num+'"/>');
 			});
-			
 		}
 		
 		var chatIdx, memidx, cridx, memnicks, crnicks, outcount;
@@ -158,6 +154,11 @@
 			crnicks = crnick;
 			outcount = count;
 		}
+		
+		function notification(){
+			new Notification("타이틀", {body:'메세지내용'});
+		}
+		
 		
 		function chattting(num){
 			var num = num;
@@ -220,8 +221,6 @@
 			});	
 		}
 		
-		
-		
 	</script>
 
 	<script>
@@ -232,10 +231,6 @@
 		// 방오픈 됫는지 확인 메세지
 		console.log('connection opend.');
 	};
-	
-	var memsession = '${loginSession.memnick}';
-	var crsession = '${loginSession.crnick}';
-	
 	
 	// onmessage - 커넥션이 메세지 호출
 	socket.onmessage = function(message) {
@@ -260,6 +255,7 @@
 					htmlStr += '	</div>'
 				$('.chat_null').append(htmlStr);
 				$("#output").scrollTop($("#output")[0].scrollHeight);
+				
 			} else {
 				var htmlSt = '<div class="carry_message_warp">'
 					htmlSt += '<div class="carry_chat">'
@@ -280,6 +276,11 @@
 		$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
 		$('.chatlist .active .chat_date').html('<span>'+ jsonData.chatdate+'</span>');
 	};
+	
+	
+	var memsession = '${loginSession.memnick}';
+	var crsession = '${loginSession.crnick}';
+	
 	
 	// close - 커넥션이 종료되었을 때 호출
 	socket.onclose = function(event) {
@@ -324,20 +325,8 @@
 			success : function(data){
 				if(data == 0){
 					$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
-					
-						toastr.options.escapeHtml = true;
-						toastr.options.closeButton = true;
-						toastr.options.newestOnTop = false;
-						toastr.options.progressBar = true;
-						toastr.info('', '찜 취소 하셧네요.', {timeOut: 1000});
 				} else {
 					$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
-					
-						toastr.options.escapeHtml = true;
-						toastr.options.closeButton = true;
-						toastr.options.newestOnTop = false;
-						toastr.options.progressBar = true;
-						toastr.info('', '캐리 찜하셧어요!!', {timeOut: 1000});
 				}
 			}
 		});
@@ -383,8 +372,7 @@
 				success : function(data) {
 					$('.chatlist .active .chat_title_img').removeClass();
 					if (data.memList == 0 || data.crList == 0) {
-						chattting();
-						chatNav();
+						chattting(cridx);
 					} else {
 						var htmlStr = '<div class="carry_message_warp">';
 						$.each(data.memList, function(index, item) {
@@ -453,7 +441,6 @@
 						});
 						$('#output').scrollTop($('#output')[0].scrollHeight);
 					}
-					
 			}
 		})
 	}

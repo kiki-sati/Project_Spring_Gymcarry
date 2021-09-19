@@ -116,7 +116,6 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		roomList.remove(session);
 		logger.info("{}연결 끊김", session.getId() + chatNick);
 		System.out.println("채팅방 퇴장한사람 : " + session.getId() + chatNick);
-		
 	}
 
 }

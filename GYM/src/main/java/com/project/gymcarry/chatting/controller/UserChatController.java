@@ -73,6 +73,7 @@ public class UserChatController {
 	@ResponseBody
 	public Map<String, Object> chatList(@RequestParam("chatidx") int chatidx,HttpSession session) {
 		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
+		
 		Map<String, Object> mapList = new HashMap<String, Object>();
 		List<ChatRoomDto> chatList = null; 
 		if(dto.getMemidx() != 0) {

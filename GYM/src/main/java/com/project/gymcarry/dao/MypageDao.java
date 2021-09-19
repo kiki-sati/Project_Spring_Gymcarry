@@ -38,6 +38,6 @@ public interface MypageDao {
 	List<MypageDto2> loadMemo2(int i, String arg1);
 	
 	// 캐리마이페이지 달력때문에 은경이 추가 
-	List<Map<String, Object>> resultList(String title, String allday, Date start, Date end, int cridx);
+	List<Map<String, String>> resultList(String title, String allday, Date start, Date end);
 	
 }

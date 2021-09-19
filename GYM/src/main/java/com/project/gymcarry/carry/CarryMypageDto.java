@@ -1,23 +1,19 @@
-package com.project.gymcarry.mypage;
+package com.project.gymcarry.carry;
 
 import java.sql.Date;
 
 public class CarryMypageDto {
 
-	private int crscheidx;
 	private String title;
 	private String allday;
 	private Date start;
 	private Date end;
-	private int cridx;
 	
+	// jsondata : [{"title":"jj",
+	//"allday":true,
+	//"start":"2021-09-15T00:00:00.000Z",
+	//"end":"2021-09-17T00:00:00.000Z"},{"title":";';'","allday":false,"start":"2021-09-24T12:00:00.000Z","end":"2021-09-24T13:00:00.000Z/"}]
 	
-	public int getCrscheidx() {
-		return crscheidx;
-	}
-	public void setCrscheidx(int crscheidx) {
-		this.crscheidx = crscheidx;
-	}
 	public String getTitle() {
 		return title;
 	}
@@ -42,27 +38,19 @@ public class CarryMypageDto {
 	public void setEnd(Date end) {
 		this.end = end;
 	}
-	public int getCridx() {
-		return cridx;
-	}
-	public void setCridx(int cridx) {
-		this.cridx = cridx;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "CarryMypageDto [crscheidx=" + crscheidx + ", title=" + title + ", allday=" + allday + ", start=" + start
-				+ ", end=" + end + ", cridx=" + cridx + "]";
+		return "CarryMypageDto [title=" + title + ", allday=" + allday + ", start=" + start
+				+ ", end=" + end + "]";
 	}
 	
-	public CarryMypageDto(int crscheidx, String title, String allday, Date start, Date end, int cridx) {
+	public CarryMypageDto(String title, String allday, Date start, Date end) {
 		super();
-		this.crscheidx = crscheidx;
 		this.title = title;
 		this.allday = allday;
 		this.start = start;
 		this.end = end;
-		this.cridx = cridx;
 	}
 	
 	

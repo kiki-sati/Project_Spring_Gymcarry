@@ -47,9 +47,9 @@ public class MypageService {
 	}
 	
 	// 캐리마이페이지 달력때문에 은경이 추가 
-	public List<Map<String, Object>> resultList(String title, String allday, Date start, Date end, int cridx){
+	public List<Map<String, String>> resultList(String title, String allday, Date start, Date end){
 		dao = template.getMapper(MypageDao.class);
-		return dao.resultList(title, allday, start, end, cridx);
+		return dao.resultList(title, allday, start, end);
 		
 	}
 

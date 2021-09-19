@@ -2,12 +2,16 @@ package com.project.gymcarry.carry;
 
 import java.sql.Date;
 
+import lombok.NoArgsConstructor;
+
 public class CarryMypageDto {
 
 	private String title;
-	private String allday;
-	private Date start;
-	private Date end;
+	private boolean allday;
+	private String start;
+	private String end;
+	
+	public CarryMypageDto() {}
 	
 	// jsondata : [{"title":"jj",
 	//"allday":true,
@@ -20,22 +24,22 @@ public class CarryMypageDto {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAllday() {
+	public boolean getAllday() {
 		return allday;
 	}
-	public void setAllday(String allday) {
+	public void setAllday(boolean allday) {
 		this.allday = allday;
 	}
-	public Date getStart() {
+	public String getStart() {
 		return start;
 	}
-	public void setStart(Date start) {
+	public void setStart(String start) {
 		this.start = start;
 	}
-	public Date getEnd() {
+	public String getEnd() {
 		return end;
 	}
-	public void setEnd(Date end) {
+	public void setEnd(String end) {
 		this.end = end;
 	}
 
@@ -45,8 +49,7 @@ public class CarryMypageDto {
 				+ ", end=" + end + "]";
 	}
 	
-	public CarryMypageDto(String title, String allday, Date start, Date end) {
-		super();
+	public CarryMypageDto(String title, boolean allday, String start, String end) {
 		this.title = title;
 		this.allday = allday;
 		this.start = start;

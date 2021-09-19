@@ -57,8 +57,8 @@
 				<!-- 달력 DB 저장 버튼 -->
 				<button type="button" id="allsave">달력 일정
 					저장하기</button>
-					<!-- <button id="allsave" onclick="javascript:allSave();">달력 일정
-					저장하기</button> -->
+					<!-- <!-- <button id="allsave" onclick="javascript:allSave();">달력 일정
+					저장하기</button> --> -->
 			</div>
 			<!-- calendar 태그 -->
 			<div id="calendar_container">
@@ -219,11 +219,12 @@ var calendarEl = null;
 	
 	 function savedata(jsondata){
 		$.ajax({
-			type : 'POST',
-			url : '<c:url value="/mypage/carrymypage"/>',
-			data : { 
-				"request" : jsondata},
+			type : 'post',
+			url : '<c:url value="/mypage/schedule"/>',				
+			data: jsondata,
 			dataType :'text',
+			accept: "application/json",
+			contentType: "application/json",
 			async : false
 		}).done(function(result){
 			console.log(result)

@@ -130,7 +130,7 @@
 			if(memsession != null && crsession == ''){
 			htmlNav += '<li class="imgButton btn_li"><a href="<c:url value="/carry/detail?cridx='+num+'"/>"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
 			htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart02.png"/>" style="width: 30px;" class="onlike"></button></li>'
-			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
+			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();" id="waste_btn"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
 			} else if(crsession != null && outcount == 1){
 				htmlNav += '<li class="imgButton waste_li2"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>'
 			}
@@ -172,7 +172,7 @@
 				htmlStr += '	</div>'
 				htmlStr += '</div>'
 				htmlStr += '<div class="chatting_write">'
-				htmlStr += '<input type="text" placeholder="메세지 입력.." id="msg"">'
+				htmlStr += '<input type="text" placeholder="메세지 입력.." id="msg">'
 				htmlStr += '<input type="hidden" value="${chatSession}" id="messageId">'
 				htmlStr += '<button type="button" class="btn" id="btnSend">'
 				htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">'
@@ -188,6 +188,7 @@
 			$('#btnSend').click(function(event){
 				if ($('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
+					chatread();
 					var send = '${chatSession}';
 					if(send == memnicks){
 						send = crnicks;
@@ -206,6 +207,7 @@
 			$('#msg').keypress(function(event){
 				if (event.keyCode == 13 && $('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
+					chatread();
 					var send = '${chatSession}';
 					if(send == memnicks){
 						send = crnicks;
@@ -238,7 +240,6 @@
 		var jsonData = JSON.parse(data);
 		console.log(jsonData);
 		var currentuser_session = $('#messageId').val();
-		
 		if(chatIdx == jsonData.chatidx){
 			if (jsonData.chatNick == currentuser_session) {
 				var htmlStr = '	<div class="user_message_warp">'
@@ -275,6 +276,11 @@
 		
 		$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
 		$('.chatlist .active .chat_date').html('<span>'+ jsonData.chatdate+'</span>');
+		
+		
+		if(jsonData.chatcontent == '상대방이 채팅방을 삭제하셨습니다.'){
+			$('.message_warp .back_button').after('<li class="imgButton waste_li2"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>')
+		}
 	};
 	
 	
@@ -305,14 +311,25 @@
 			crnick : crnicks,
 			chatcontent : $('#msg').val()
 		};
-		
 		// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
 		socket.send(JSON.stringify(msg));
 	}; 
+	
+	function deleteMessage(send){
+		var msg = {
+			chatNick : '${chatSession}',
+			to : send,
+			cridx : cridx,
+			memidx : memidx,
+			chatidx : chatIdx,
+			crnick : crnicks,
+			chatcontent : '상대방이 채팅방을 삭제하셨습니다.'
+		}
+		socket.send(JSON.stringify(msg));
+	};
 	</script>
 
 	<script>
-	
 	// 하트~ 조아요
 	function chatLike(){
 		$.ajax({
@@ -332,6 +349,7 @@
 		});
 	};
 	
+	
 	// 채팅방 나가기~
 	function chatdelete(){
 		Swal.fire({
@@ -345,6 +363,13 @@
 		  cancelButtonText: '취소'
 		}).then((result) => {
 		  if (result.value) {
+			  
+		  var send = '${chatSession}';
+			if(send == memnicks){
+			send = crnicks;
+			deleteMessage(send);
+		} 
+			
 		  $.ajax({
 				type : 'GET',
 				url : '<c:url value="/chatting/delete"/>',
@@ -360,6 +385,17 @@
 		})
 	};	
 	
+	// 메세지 보낸사람만 read 처리
+	function chatread(){
+		$.ajax({
+			type : 'POST',
+			url : '<c:url value="/chatting/chatread"/>',
+			dataType : 'json',
+			data : {chatidx : chatIdx},
+			success : function(data){}
+		});
+	}
+	
 	// 채팅방 대화내용 리스트
 	function chatList(num) {
 		$.ajax({
@@ -373,6 +409,14 @@
 					$('.chatlist .active .chat_title_img').removeClass();
 					if (data.memList == 0 || data.crList == 0) {
 						chattting(cridx);
+						$.each(data.memList, function(index, item) {
+							if(item.likecheck == 1){
+								$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
+							} else if(item.likecheck == 0){
+								$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
+							}
+						});
+						
 					} else {
 						var htmlStr = '<div class="carry_message_warp">';
 						$.each(data.memList, function(index, item) {
@@ -406,8 +450,9 @@
 							$('.carry_message_warp').html(htmlStr);
 							if(item.likecheck == 1){
 								$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
-							} else if(item.likecheck == 0)
+							} else if(item.likecheck == 0){
 								$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
+							}
 						});
 						
 						$.each(data.crList, function(index, item) {

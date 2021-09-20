@@ -151,12 +151,12 @@
 
 .chat_content span {
 	display: inline-block;
-	width: 200px;
+	width: 160px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	color: #aaa;
-}
+}	
 
 .chat_date {
 	float: right;

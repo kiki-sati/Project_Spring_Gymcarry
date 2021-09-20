@@ -18,13 +18,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 멤버 대화방 메세지 + like -->
 	<select id="selectMemberMessageList"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
-		<!-- select *
-		from chatlist l
-		left outer join chatroom r on
-		l.chatidx=r.chatidx 
-		left outer join likelist k on k.memidx=l.memidx and
-		k.cridx=l.cridx
-        where l.outdate <![CDATA[ < ]]> r.chatdate and l.chatidx=#{chatidx} -->
         select *
 		from chatlist l
 		left outer join chatroom r on l.chatidx=r.chatidx 

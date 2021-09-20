@@ -32,8 +32,6 @@ public class WebSocketHandler extends TextWebSocketHandler {
 	private Map<String, WebSocketSession> mapList = new HashMap<String, WebSocketSession>();
 	// room session 저장 상대방이 방에 나갓는지 있는지 체크
 	private Map<WebSocketSession, String> roomList = new HashMap<WebSocketSession, String>();
-	// 룸번호 저장
-	private Map<Integer, Object> roomIdx = new HashMap<Integer, Object>();
 
 	// 커넥션이 연결되었을때
 	@Override

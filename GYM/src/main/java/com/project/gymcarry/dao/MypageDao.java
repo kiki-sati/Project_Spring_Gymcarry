@@ -7,6 +7,7 @@ import java.util.Map;
 import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.Pagination;
 import com.project.gymcarry.carry.CarryListDto;
+import com.project.gymcarry.carry.CarryMypageDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.mypage.MypageDto;
 import com.project.gymcarry.mypage.MypageDto2;
@@ -37,7 +38,7 @@ public interface MypageDao {
 
 	List<MypageDto2> loadMemo2(int i, String arg1);
 	
-	// 캐리마이페이지 달력때문에 은경이 추가 
-	List<Map<String, String>> resultList(String title, String allday, Date start, Date end);
+	// 캐리마이페이지 달력때문에 은경이 추가
+	int carrycalendar(List<CarryMypageDto> request);
 	
 }

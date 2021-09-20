@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.Soundbank;
 
 import org.apache.ibatis.annotations.Param;
 import org.json.simple.JSONObject;
@@ -39,7 +40,34 @@ public class CarryCalendarController {
 	@ResponseBody
 	public String addCrschedule(HttpSession session, @RequestBody List<CarryMypageDto> request) {
 		System.out.println("carrymp : "+ request);
+		
+		
+		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
+
+		session.setAttribute("cridx", sdt.getCridx());
+		System.out.println("cridx : " + sdt.getCridx());
 	
+		
+//		for(int i=0; i < request.size(); i++) {
+//			System.out.println(request.get(i).getTitle());
+//		}
+		
+		for (CarryMypageDto carryMypageDto : request) {
+			
+			carryMypageDto.setCridx(sdt.getCridx());
+			
+			System.out.println(carryMypageDto.getTitle());
+			System.out.println(carryMypageDto.getAllday());
+			System.out.println(carryMypageDto.getStart());
+			System.out.println(carryMypageDto.getEnd());
+			System.out.println(carryMypageDto.getCridx());
+			
+		}
+
+		System.out.println("컨트롤러 리퀘스트 : " + request);
+		
+		mypService.carrycalendar(request);
+		
 		return "/mypage/carrymypage";
 		
 		

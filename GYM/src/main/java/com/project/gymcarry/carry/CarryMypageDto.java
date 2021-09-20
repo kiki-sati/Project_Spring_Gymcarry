@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 public class CarryMypageDto {
 
 	private String title;
-	private boolean allday;
-	private String start;
-	private String end;
+	private String allday;
+	private Date start;
+	private Date end;
+	private int cridx;
 	
 	public CarryMypageDto() {}
 	
@@ -24,36 +25,43 @@ public class CarryMypageDto {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public boolean getAllday() {
+	public String getAllday() {
 		return allday;
 	}
-	public void setAllday(boolean allday) {
+	public void setAllday(String allday) {
 		this.allday = allday;
 	}
-	public String getStart() {
+	public Date getStart() {
 		return start;
 	}
-	public void setStart(String start) {
+	public void setStart(Date start) {
 		this.start = start;
 	}
-	public String getEnd() {
+	public Date getEnd() {
 		return end;
 	}
-	public void setEnd(String end) {
+	public void setEnd(Date end) {
 		this.end = end;
+	}
+	public int getCridx() {
+		return cridx;
+	}
+	public void setCridx(int cridx) {
+		this.cridx = cridx;
 	}
 
 	@Override
 	public String toString() {
 		return "CarryMypageDto [title=" + title + ", allday=" + allday + ", start=" + start
-				+ ", end=" + end + "]";
+				+ ", end=" + end +  ", cridx=" + cridx + "]";
 	}
 	
-	public CarryMypageDto(String title, boolean allday, String start, String end) {
+	public CarryMypageDto(String title, String allday, Date start, Date end, int cridx) {
 		this.title = title;
 		this.allday = allday;
 		this.start = start;
 		this.end = end;
+		this.cridx = cridx;
 	}
 	
 	

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.gymcarry.carry.CarryDto;
+import com.project.gymcarry.carry.CarryMypageDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
 
 

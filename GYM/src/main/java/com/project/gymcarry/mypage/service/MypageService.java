@@ -8,6 +8,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.gymcarry.carry.CarryMypageDto;
+import com.project.gymcarry.dao.CarryMyPageDao;
 import com.project.gymcarry.dao.MypageDao;
 import com.project.gymcarry.mypage.MypageDto;
 import com.project.gymcarry.mypage.MypageDto2;
@@ -47,10 +49,11 @@ public class MypageService {
 	}
 	
 	// 캐리마이페이지 달력때문에 은경이 추가 
-	public List<Map<String, String>> resultList(String title, String allday, Date start, Date end){
+	public int carrycalendar(List<CarryMypageDto> request){
 		dao = template.getMapper(MypageDao.class);
-		return dao.resultList(title, allday, start, end);
+		return dao.carrycalendar(request);
 		
 	}
 
+		
 }

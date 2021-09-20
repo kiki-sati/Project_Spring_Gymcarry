@@ -58,7 +58,7 @@
 				<button type="button" id="allsave">달력 일정
 					저장하기</button>
 					<!-- <!-- <button id="allsave" onclick="javascript:allSave();">달력 일정
-					저장하기</button> --> -->
+					저장하기</button> -->
 			</div>
 			<!-- calendar 태그 -->
 			<div id="calendar_container">
@@ -142,7 +142,7 @@ var calendarEl = null;
 				dayMaxEvents : true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
 				locale : 'ko', // 한국어 설정
 				//Boolean: true,
-				/* groupId : $('cridx'), */
+				groupId : $('cridx'),
 			
 				eventAdd : function(obj) { // 이벤트가 추가되면 발생하는 이벤트
 					console.log(obj);

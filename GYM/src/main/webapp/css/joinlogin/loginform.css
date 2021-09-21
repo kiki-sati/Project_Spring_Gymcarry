@@ -15,12 +15,19 @@ body {
 	margin-bottom: 30px;
 }
 
-.kaka_btn{
+.kakao_btn {
 	border: none;
 	background-color: none;
 }
-.kaka_btn:hover{
+
+.kakao_btn:hover,
+.google_btn:hover {
 	cursor: pointer;
+}
+
+.google_btn {
+	width: 300px;
+	border: 0.05mm !important;
 }
 
  p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {

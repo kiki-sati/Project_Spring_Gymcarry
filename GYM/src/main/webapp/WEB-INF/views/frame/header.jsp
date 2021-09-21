@@ -9,11 +9,10 @@
 	</div>
 	<nav class="nav">
 		<ul>
-			<li><a href="#">ABOUT</a></li>
+			<li><a href="<c:url value="/about"/>">ABOUT</a></li>
 			<li><a href="<c:url value="/carry/allList"/>">1:1MATCHING</a></li>
 			<li><a href="<c:url value="/place/all"/>">PLACE</a></li>
 			<li><a href="<c:url value="/community/boardList"/>">COMMUNITY</a></li>
-			<%-- <li><a href="<c:url value="/mypage/mypage"/>">MY BODY</a></li> --%>
 			<c:choose>
 				<c:when test="${loginSession.crnick ne null}">
 					<li><a href="<c:url value="/mypage/carrymypage"/>">MY PAGE</a></li>

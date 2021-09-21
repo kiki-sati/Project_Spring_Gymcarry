@@ -152,9 +152,10 @@
 						<div class="my-info">
 
 							<div class="col-profile">
-
-								<img id="loadingimg" class="display_none"
-									src="<c:url value="/images/icon/user.png"/>">
+								<c:forEach items="${memberList}" var="memberList">
+									<img id="loadingimg" class="display_none"
+										src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>">
+								</c:forEach>
 							</div>
 
 							<div class="col-name">

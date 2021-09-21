@@ -36,30 +36,7 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	<script>
-		function loginLog() {
-			printName()
-			$.ajax({
-				type : "POST",
-				url : '<c:url value="/mypage/mypass"/>',
-				dataType : 'JSON',
 
-				data : {
-					arg0 : $("#memidx").val(),
-					arg1 : $("#infodate").val()
-				},
-
-				success : function(data) {
-					console.log(data);
-				},
-				error : function() {
-
-					alert("error");
-
-				}
-			});
-		}
-	</script>
 
 
 	<div class="contents_main">
@@ -75,7 +52,8 @@
 
 						<div class="my-info">
 							<img id="loadingimg" class="display_none"
-								src="/gym/images/icon/user.png">
+								src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>">
+
 							<h3>사진 수정</h3>
 						</div>
 

@@ -22,7 +22,9 @@ import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.mypage.MypageDto;
 import com.project.gymcarry.mypage.MypageDto2;
+import com.project.gymcarry.mypage.MypageMemberDto;
 import com.project.gymcarry.mypage.service.MypageService;
+import com.project.gymcarry.mypage.service.MypageSubService;
 
 @Controller
 @RequestMapping("/mypage/mypage")
@@ -30,6 +32,8 @@ public class MypageController {
 
 	@Autowired
 	private MypageService mypService;
+	@Autowired
+	private MypageSubService mypService2;
 
 	@GetMapping
 	public String regFor(HttpSession session, Model model, MypageDto2 mypdto) {
@@ -38,6 +42,8 @@ public class MypageController {
 
 		session.setAttribute("memidx", sdt.getMemidx());
 		session.setAttribute("name", sdt.getMemname());
+		List<MypageMemberDto> memberList = mypService2.selectmember(sdt.getMemidx());
+		model.addAttribute("memberList", memberList);
 
 		// 현재 날짜 구하기
 		LocalDate now = LocalDate.now();

@@ -16,7 +16,7 @@
 
     <div class="container">
     <div class="wrapper">
-        <img src="<c:url value="/images/icon/404.svg"/>" alt="">
+        <img class="errorimg" src="<c:url value="/images/icon/404.svg"/>" alt="">
         <h1>Page Not Found</h1>
        <p class="message">
         잘못된 URL 입니다. 

@@ -87,14 +87,14 @@
 
 
 			<!-- 구글  로그인 -->
-			<!-- <ul class = "apiLogin"> -->
-				<div class="g-signin2 google_btn" data-onsuccess="onSignIn" data-width="300" data-height="45"></div>
-				<%-- <li id="GgCustomLogin"><a href="javascript:void(0)"> <span>
+			<ul class = "apiLogin">
+				<li id="GgCustomLogin"><a href="javascript:void(0)"> <span>
 				<img src="<c:url value="/images/icon/google_login_medium_btn.png"/>" class="google_btn"></span>
-				</a></li> --%>
-			<!-- </ul> -->
-			
-			
+				</a></li>
+			</ul>
+
+
+
 		</div>
 	</div>
 	<!-- content E-->
@@ -102,54 +102,6 @@
 
 <%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </body>
-
-
-
-<!-- 구글 로그인 API -->
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-<script>
-
-function onSignIn(googleUser) {
-		var profile = googleUser.getBasicProfile();
-		var nick = profile.name;
-		var email = profile.email;
-		var id = profile.id;
-		
-	console.log();
-		console.log(profile);
-	  alert('ID: ' + us); // Do not send to your backend! Use an ID token instead.
-	  alert('Name: ' + profile.name);
-	  alert('Email: ' + profile.email); // This is null if the 'email' scope is not present.
-	  
-      // The ID token you need to pass to your backend:
-      var id_token = googleUser.getAuthResponse().id_token;
-      console.log("ID Token: " + id_token);
-      
-	  $.ajax({
-			type : 'POST',
-			url : '<c:url value="/member/kakaologin"/>',
-			data : { 
-					snsjoinid : id,
-					mememail : email,
-					memnick : name
-				},
-			dataType : 'json',
-			success : function(data){
-				console.log(data);
-			/* 	if(data == 0){
-					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+profile.id+"'/>";
-				} else if(data == 1){
-					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+profile.id+"'/>";
-				} else if(data == 2){
-					window.location.href = "<c:url value='/index'/>";
-				} */
-			}
-		});
-	
-	
-	}
-	
-</script>
 
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -264,7 +216,88 @@ function getCookie(cookieName) {
 </script>
 
 
+<!-- 구글 로그인 API -->
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<script>
+//처음 실행하는 함수
+function init() {
+	gapi.load('auth2', function() {
+		gapi.auth2.init();
+		options = new gapi.auth2.SigninOptionsBuilder();
+		options.setPrompt('select_account');
+        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+		options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
+        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+		gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+	})
+}
 
+function onSignIn(googleUser) {
+	var access_token = googleUser.getAuthResponse().access_token
+	var profile = googleUser.getBasicProfile();
+	console.log('ID: ' + profile.getId());
+	console.log('Name: ' + profile.getName());
+	console.log('Email: ' + profile.getEmail());
+	
+	$.ajax({
+    	// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
+		url: 'https://people.googleapis.com/v1/people/me',
+		data: {
+			key:'AIzaSyAll5bRKLODhoRHI0iRJK5o9k4CIjcX4Xk',
+			'access_token': access_token
+			},
+		method:'GET',
+		success : function(response) {
+			var nick = profile.name;
+			var email = profile.email;
+			var id = profile.id;
+			
+			$.ajax({
+				type : 'POST',
+				url : '<c:url value="/member/kakaologin"/>',
+				data : { 
+						snsjoinid : id,
+						mememail : email,
+						memnick : nick
+					},
+				dataType : 'json',
+				success : function(data){
+					console.log(data);
+					if(data == 0){
+						window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
+					} else if(data == 1){
+						window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
+					} else if(data == 2){
+						window.location.href = "<c:url value='/index'/>";
+					}
+				}
+			});
+			
+			
+		}
+	})
+	.done(function(e){
+        //프로필을 가져온다.
+		var profile = googleUser.getBasicProfile();
+		console.log(profile);
+	
+	
+	
+	
+	
+	
+	
+	})
+	.fail(function(e){
+		console.log(e);
+	})
+}
+function onSignInFailure(t){		
+	console.log(t);
+}
+
+</script>
 
 
 

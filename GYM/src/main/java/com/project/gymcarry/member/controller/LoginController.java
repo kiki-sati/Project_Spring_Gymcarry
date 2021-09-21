@@ -113,6 +113,7 @@ public class LoginController {
 		int result = 0;
 		if (sessionDto == null) {
 			loginService.insertKaKaoJoinOne(memberDto);
+			System.out.println(memberDto);
 		} else if (sessionDto.getMemnick() == null) {
 			result = 1;
 		} else if (sessionDto != null && sessionDto.getMemnick() != null) {

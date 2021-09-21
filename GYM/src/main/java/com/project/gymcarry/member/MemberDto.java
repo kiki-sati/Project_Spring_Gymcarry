@@ -103,4 +103,15 @@ public class MemberDto {
 		this.snsjoinid = snsjoinid;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "MemberDto [memidx=" + memidx + ", mememail=" + mememail + ", mempw=" + mempw + ", memname=" + memname
+				+ ", memnick=" + memnick + ", memphone=" + memphone + ", membirth=" + membirth + ", memgender="
+				+ memgender + ", memphoto=" + memphoto + ", joinkey=" + joinkey + ", joinkey_status=" + joinkey_status
+				+ ", snsjoinid=" + snsjoinid + "]";
+	}
+	
+	
+	
 }

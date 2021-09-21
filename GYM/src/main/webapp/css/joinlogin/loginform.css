@@ -26,8 +26,8 @@ body {
 }
 
 .google_btn {
-	width: 300px;
-	border: 0.05mm !important;
+	
+	margin:0 auto 30px; 
 }
 
  p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
@@ -36,11 +36,12 @@ body {
 }
 
 .apiLogin {
-	margin: 40px 0;
+	margin: 10px 0;
 }
 
 .apiLogin .kakao {
 	cursor : pointer;
+	margin-top : 40px;
 }
 
 

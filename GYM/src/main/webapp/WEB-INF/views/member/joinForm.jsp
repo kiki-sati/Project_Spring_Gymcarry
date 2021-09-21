@@ -382,7 +382,7 @@ browseBtn.addEventListener('click',{
 							$('#msg_nick').html('사용 불가능');
 							$('#msg_nick').addClass('color_red');
 							$('#msg_nick').removeClass('display_none');
-							$('#memnick').val('');
+							$('#meX1mnick').val('');
 						}
 						
 					}

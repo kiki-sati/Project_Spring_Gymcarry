@@ -61,6 +61,7 @@ public class MypageSubController {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 		System.out.println("세션 변수" + sdt.getMemidx());
+		System.out.println(MDTO);
 
 		mypService.memberUpdate(MDTO);
 

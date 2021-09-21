@@ -17,7 +17,6 @@ body {
 	border: hidden;
 }
 
-
 .row:after {
 	content: "";
 	clear: both;
@@ -217,6 +216,7 @@ body {
 	width: 70%;
 	display: block;
 	margin: auto;
+	BORDER-RADIUS: 100px;
 }
 
 .info_title {

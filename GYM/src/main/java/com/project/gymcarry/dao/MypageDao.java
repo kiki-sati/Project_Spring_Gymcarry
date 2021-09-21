@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.Pagination;
 import com.project.gymcarry.carry.CarryListDto;
@@ -41,4 +43,5 @@ public interface MypageDao {
 	// 캐리마이페이지 달력때문에 은경이 추가
 	int carrycalendar(List<CarryMypageDto> request);
 	
+	List<CarryMypageDto> scheduleview(@Param("cridx") int cridx);
 }

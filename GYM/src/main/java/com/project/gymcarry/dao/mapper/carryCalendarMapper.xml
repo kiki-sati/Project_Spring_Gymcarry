@@ -12,5 +12,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             (#{item.title}, #{item.allday}, #{item.start}, #{item.end}, #{item.cridx})
         </foreach>
    </insert>
+   
+   <select id="scheduleview" resultType="com.project.gymcarry.carry.CarryMypageDto">
+   		select title, allday, start, end, cridx 
+   		from carrycalendar 
+   		where cridx = #{cridx} 
+   </select>
 
 </mapper>

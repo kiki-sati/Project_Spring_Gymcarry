@@ -1,25 +1,13 @@
 package com.project.gymcarry.mypage.controller;
 
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
-import javax.sound.midi.Soundbank;
-
-import org.apache.ibatis.annotations.Param;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.gymcarry.carry.CarryMypageDto;
@@ -32,8 +20,8 @@ public class CarryCalendarController {
 
 	@Autowired
 	private MypageService mypService;
-
-
+	
+	
 	@PostMapping("mypage/schedule")
 	// /gym/mypage/schedule
 //	@RequestMapping(value = "/mypage/schedule", method = RequestMethod.POST, headers = {"Accept=application/json"})
@@ -46,11 +34,6 @@ public class CarryCalendarController {
 
 		session.setAttribute("cridx", sdt.getCridx());
 		System.out.println("cridx : " + sdt.getCridx());
-	
-		
-//		for(int i=0; i < request.size(); i++) {
-//			System.out.println(request.get(i).getTitle());
-//		}
 		
 		for (CarryMypageDto carryMypageDto : request) {
 			
@@ -70,9 +53,21 @@ public class CarryCalendarController {
 		
 		return "/mypage/carrymypage";
 		
-		
-		
 	}
-
-
+	
+	
+	@GetMapping("mypage/scheduleview")
+	@ResponseBody
+	public List<CarryMypageDto> scheduleview(Model model, HttpSession session) {
+		
+		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
+		
+		List<CarryMypageDto> schelist = mypService.scheduleview(sdt.getCridx());
+		model.addAttribute("schedulelist", schelist);
+		
+		System.out.println("대체 왜 뜨는건데 : " + schelist);
+		
+		
+		return schelist;
+	}
 }

@@ -52,8 +52,11 @@ public class MypageService {
 	public int carrycalendar(List<CarryMypageDto> request){
 		dao = template.getMapper(MypageDao.class);
 		return dao.carrycalendar(request);
-		
 	}
-
 		
+	public List<CarryMypageDto> scheduleview(int cridx){
+		dao = template.getMapper(MypageDao.class);
+		return dao.scheduleview(cridx);
+	}
+	
 }

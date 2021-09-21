@@ -116,8 +116,9 @@ $("#allsave").click(function(){
 
 
 var calendarEl = null;
-	var calendar = null;
-	
+var calendar = null;
+
+
 	(function() {
 		$(function() {
 			// calendar element 취득
@@ -143,7 +144,7 @@ var calendarEl = null;
 				locale : 'ko', // 한국어 설정
 				//Boolean: true,
 				groupId : $('cridx'),
-			
+				
 				eventAdd : function(obj) { // 이벤트가 추가되면 발생하는 이벤트
 					console.log(obj);
 				},
@@ -152,7 +153,7 @@ var calendarEl = null;
 				},
 				//Logic for clicking on an event
 			    eventClick: function(event_click){
-			    	console.log("이벤트 클릭 : " + event_click._def.title);
+			    	console.log("이벤트 클릭 : " + event_click.title);
 			      alert('['+event_click.title + '] 일정을 삭제합니다.'),
 			      //Remove event from calendar
 				  event_click.remove()
@@ -162,9 +163,9 @@ var calendarEl = null;
 					console.log(obj);
 				}, */
 				
-				eventsSet : function(events){
+				/* eventsSet : function(events){
 					console.log(events)
-				},
+				}, */
 				select : function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
 					var title = prompt('일정을 입력해주세요:');
 					if (title) {
@@ -178,13 +179,32 @@ var calendarEl = null;
 					calendar.unselect()
 				},
 			// 이벤트 
-			
+			events : [
+
+				$.ajax({
+					type : 'get',
+					url : '<c:url value="/mypage/scheduleview"/>',
+					data: {},
+					success : function(schelist){
+						console.log(schelist);
+						 for(i=0; i<schelist.length; i++){
+							calendar.addEvent({
+								title : schelist[i]['title'],
+								allday : schelist[i]['allday'],
+								start : schelist[i]['start'],
+								end : schelist[i]['end']
+							})
+						}
+					}
+				})
+			]
 			});
 			// 캘린더 랜더링
 			calendar.render();
 		});
 		
 	})();
+	
 
 	
 	// 1. 전체 이벤트 데이터 추출하기
@@ -232,30 +252,30 @@ var calendarEl = null;
 		.fail(function(error){
             console.log(error);
         });// 실패했을 때 실행 *
-		console.log(	"data : " + jsondata);
-		
+		console.log("data : " + jsondata);
 	} 
 	
-	/* function getCalendarDataInDB(){
-	    var arr = [{title: 'evt1', start:'ssssss'}, {title: 'evt2', start:'123123123'}];
-	    
-	    $.ajax({
-	        contentType:'application/json',
-	        dataType:'json',
-	        url:'<c:url value="/mypage/carrycalendar"/>',
-	        type:'post',
-	        async: false,
-	        success:function(resp){
-	            arr = resp;
-	        },
-	        error:function(){
-	            alert('저장 중 에러가 발생했습니다. 다시 시도해 주세요.');
-	        }
-	    });
-	    return arr;
-	} */
-
-
+	 //all_events = loadingEvents();
+	 /* function loadingEvents(){
+		 
+			$.ajax({
+				type : 'get',
+				url : '<c:url value="/mypage/scheduleview"/>',
+				data: {},
+				dataType :'json',
+				accept: "application/json",
+				contentType: "application/json",
+				async : false
+			}).done(function(all_events){
+				console.log("all_events : "+ all_events);
+			})
+			.fail(function(error){
+	            console.log(error);
+	        });// 실패했을 때 실행 *
+			console.log("data : " );
+		} 
+	 */
+	
 </script>
  
 	<!-- <script>

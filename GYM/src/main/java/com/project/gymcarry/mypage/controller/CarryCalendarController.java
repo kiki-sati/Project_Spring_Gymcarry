@@ -49,6 +49,9 @@ public class CarryCalendarController {
 
 		System.out.println("컨트롤러 리퀘스트 : " + request);
 		
+		mypService.deleteschedule(sdt.getCridx());
+		
+		System.out.println();
 		mypService.carrycalendar(request);
 		
 //		if(request != null) {
@@ -73,7 +76,7 @@ public class CarryCalendarController {
 		List<CarryMypageDto> schelist = mypService.scheduleview(sdt.getCridx());
 		model.addAttribute("schedulelist", schelist);
 		
-		System.out.println("대체 왜 뜨는건데 : " + schelist);
+		System.out.println("캐리 스케줄 출력합니다 : " + schelist);
 		
 		
 		return schelist;

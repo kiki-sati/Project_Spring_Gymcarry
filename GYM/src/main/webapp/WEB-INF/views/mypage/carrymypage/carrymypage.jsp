@@ -102,7 +102,10 @@ crname = $("#crname");
 
 <script>
 $("#allsave").click(function(){
+	
 	 var arr = allSave();
+	 
+	 var arr = [];
 	 $.each(arr, function(index, events){
 	  calendar.addEvent( events );
 	 });
@@ -153,10 +156,10 @@ var calendar = null;
 				},
 				//Logic for clicking on an event
 			     eventClick: function(event_click){
-			    	console.log("이벤트 클릭 : " + event_click.title);
-			      alert('['+event_click.title + '] 일정을 삭제합니다.'),
+			    	console.log("이벤트 클릭 : " + event_click.event);
+			      alert('선택하신 일정을 삭제합니다.'),
 			      //Remove event from calendar
-				  event_click.remove
+				  event_click.event.remove()
 				} 
 				,
 				/*  eventRemove : function(eventClick) { // 이벤트가 삭제되면 발생하는 이벤트
@@ -214,7 +217,7 @@ var calendar = null;
 	function allSave(){
 		
 		//calendar.getEventSourceById( id )
-		
+	
 		var allEvent = calendar.getEvents();
 		//var allEvent = calendar.getEventSourceById(groupId);
 		console.log("allEvent1 : " + allEvent);
@@ -240,6 +243,7 @@ var calendar = null;
 	}
 	
 	 function savedata(jsondata){
+		 
 		$.ajax({
 			type : 'post',
 			url : '<c:url value="/mypage/schedule"/>',				
@@ -257,36 +261,6 @@ var calendar = null;
 		console.log("data : " + jsondata);
 	} 
 	
-	 //all_events = loadingEvents();
-	 /* function loadingEvents(){
-		 
-			$.ajax({
-				type : 'get',
-				url : '<c:url value="/mypage/scheduleview"/>',
-				data: {},
-				dataType :'json',
-				accept: "application/json",
-				contentType: "application/json",
-				async : false
-			}).done(function(all_events){
-				console.log("all_events : "+ all_events);
-			})
-			.fail(function(error){
-	            console.log(error);
-	        });// 실패했을 때 실행 *
-			console.log("data : " );
-		} 
-	 */
 	
 </script>
  
-	<!-- <script>
-	document.addEventListener('DOMContentLoaded', function() {
-		var calendarEl = document.getElementById('fullcalendar2_wannausing');
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			initialView : 'dayGridMonth'
-		});
-		calendar.render();
-	});
-		/* 	$('#calendar').fullCalendar({ events: "json-events.php",    }); */
-</script> -->

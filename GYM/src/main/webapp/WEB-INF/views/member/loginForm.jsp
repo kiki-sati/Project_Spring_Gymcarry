@@ -111,15 +111,13 @@
 
 function onSignIn(googleUser) {
 		var profile = googleUser.getBasicProfile();
-		var nick = profile.name;
-		var email = profile.email;
-		var id = profile.id;
+		var nick = profile.Pe;
+		var email = profile.Ht;
+		var id = profile.US;
 		
-	console.log();
-		console.log(profile);
-	  alert('ID: ' + us); // Do not send to your backend! Use an ID token instead.
-	  alert('Name: ' + profile.name);
-	  alert('Email: ' + profile.email); // This is null if the 'email' scope is not present.
+	  alert('ID: ' + id); // Do not send to your backend! Use an ID token instead.
+	  alert('Name: ' + nick);
+	  alert('Email: ' + email); // This is null if the 'email' scope is not present.
 	  
       // The ID token you need to pass to your backend:
       var id_token = googleUser.getAuthResponse().id_token;
@@ -136,13 +134,13 @@ function onSignIn(googleUser) {
 			dataType : 'json',
 			success : function(data){
 				console.log(data);
-			/* 	if(data == 0){
+				if(data == 0){
 					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+profile.id+"'/>";
 				} else if(data == 1){
 					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+profile.id+"'/>";
 				} else if(data == 2){
 					window.location.href = "<c:url value='/index'/>";
-				} */
+				} 
 			}
 		});
 	

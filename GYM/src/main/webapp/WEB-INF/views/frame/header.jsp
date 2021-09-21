@@ -36,7 +36,7 @@
 		<a href="<c:url value="/member/login"/>" class="login"> LOGIN </a>
 		</c:if>
 		<c:if test="${loginSession ne null}">
-		<a href="<c:url value="/member/logOut"/>" class="login" onclick="kakaoLogout()"> LOGOUT </a>
+		<a href="<c:url value="/member/logOut"/>" class="login" onclick="SNSLogout()"> LOGOUT </a>
 		</c:if>
 	</div>
 </header>
@@ -49,7 +49,14 @@
 <script>
 	Kakao.init('0ecec0f1529ce019d44a9de3e0b3bb22');
 	//카카오 로그아웃  
-	function kakaoLogout() {
+	function SNSLogout() {
+		
+		 var auth2 = gapi.auth2.getAuthInstance();
+		    auth2.signOut().then(function () {
+		      console.log('User signed out.');
+		    });
+		    
+		    
 		if (Kakao.Auth.getAccessToken()) {
 			Kakao.API.request({
 				url : '/v1/user/unlink',
@@ -63,7 +70,11 @@
 			})
 			Kakao.Auth.setAccessToken(undefined)
 		}
+		
 	}
+	
+	
+	
 	var session_memnick = '${loginSession.memnick}'
 	var session_crnick = '${loginSession.crnick}'
 	
@@ -80,7 +91,7 @@
 			toastr.options.onclick = function() { 
 				location.href = '<c:url value="/chatting/chatList"/>'; 
 			}
-			toastr.info('메세지보냈습니다.', jsonData.chatNick+'님이', {timeOut: 5000});
+			toastr.info('메시지를 보냈습니다.', jsonData.chatNick+'님이', {timeOut: 5000});
 
 		} else if(jsonData.to == session_crnick){
 			
@@ -91,7 +102,7 @@
 			toastr.options.onclick = function() { 
 				location.href = '<c:url value="/chatting/chatList"/>'; 
 			}
-			toastr.info('메세지보냇습니다.', jsonData.chatNick+'님이' , {timeOut: 5000});
+			toastr.info('메시지를 보냈습니다.', jsonData.chatNick+'님이' , {timeOut: 5000});
 		}
 	};
 	</c:if>

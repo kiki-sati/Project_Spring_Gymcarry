@@ -114,14 +114,10 @@ function onSignIn(googleUser) {
 		var nick = profile.Pe;
 		var email = profile.Ht;
 		var id = profile.US;
-		
-	  alert('ID: ' + id); // Do not send to your backend! Use an ID token instead.
-	  alert('Name: ' + nick);
-	  alert('Email: ' + email); // This is null if the 'email' scope is not present.
 	  
       // The ID token you need to pass to your backend:
-      var id_token = googleUser.getAuthResponse().id_token;
-      console.log("ID Token: " + id_token);
+   /*    var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token); */
       
 	  $.ajax({
 			type : 'POST',
@@ -135,9 +131,9 @@ function onSignIn(googleUser) {
 			success : function(data){
 				console.log(data);
 				if(data == 0){
-					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+profile.id+"'/>";
+					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
 				} else if(data == 1){
-					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+profile.id+"'/>";
+					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
 				} else if(data == 2){
 					window.location.href = "<c:url value='/index'/>";
 				} 

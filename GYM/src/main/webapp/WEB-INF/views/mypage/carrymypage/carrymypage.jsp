@@ -45,11 +45,7 @@
          }
          reader.readAsDataURL(input.files[0]);
       }
-   }
-
-   $(".profilebtn").on('change', function() {
-      readInputFile(this);
-   });
+   };
 </script>
 <body>
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
@@ -65,7 +61,7 @@
 				<button class="edit1" type="button" onclick></button>
 				<!-- 여기까지 -->
 				<h3 class="title">${crname}</h3>
-				<a href="modifycarrybasicinfo.html"> <img
+				<a href="/gym/carry/modify"> <img
 					src="<c:url value="/images/icon/edit.png"/>" class="edit2">
 				</a>
 				<!-- 달력 DB 저장 버튼 -->
@@ -86,13 +82,13 @@
 			<div class="modi-list">
 				<h3>My Page</h3>
 				<ul>
-					<li><a href="<c:url value="/carry/modify"/>">기본 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
+					<li><a href="/gym/carry/modify">기본 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
 					</li>
 					<br>
-					<li><a href="<c:url value="/mypage/carrymodify"/>">캐리 정보
+					<li><a href="/gym/mypage/carrymodify">캐리 정보
 							수정</a> <!-- <a href="<c:url value="/"/>"> --></li>
 					<br>
-					<li><a href="<c:url value="/mypage/carrymypage/mymember"/>">내
+					<li><a href="/gym/mypage/carrymypage/mymember">내
 							회원 리스트</a> <!-- <a href="<c:url value="/"/>"> --></li>
 					<br>
 				</ul>
@@ -174,17 +170,13 @@ var calendar = null;
 			      alert('선택하신 일정을 삭제합니다.'),
 			      //Remove event from calendar
 				  event_click.event.remove()
-				} 
-				,
+				},
 				/*  eventRemove : function(eventClick) { // 이벤트가 삭제되면 발생하는 이벤트
 					 console.log("이벤트 클릭 : " + event_click.title);
 					 alert('['+eventClick.title + '] 일정을 삭제합니다.'),
 					 eventClick.remove()
 				}, */
-				
-				/* eventsSet : function(events){
-					console.log(events)
-				}, */
+			
 				select : function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
 					var title = prompt('일정을 입력해주세요:');
 					if (title) {

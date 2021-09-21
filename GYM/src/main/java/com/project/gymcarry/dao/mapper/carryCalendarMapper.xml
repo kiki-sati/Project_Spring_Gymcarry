@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.gymcarry.dao.MypageDao">
    
    <insert id="carrycalendar" parameterType="java.util.List">
-   		insert into carrycalendar(title, allday, start, end, cridx) 
+   		insert ignore into carrycalendar(title, allday, start, end, cridx) 
    		values
    		 <foreach collection="list" item="item" separator=",">
             (#{item.title}, #{item.allday}, #{item.start}, #{item.end}, #{item.cridx})

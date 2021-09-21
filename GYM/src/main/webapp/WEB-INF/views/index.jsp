@@ -20,7 +20,7 @@
 	<div class="container">
 		<section class="video_section">
 			<div class="video">
-				<video src="<c:url value="/video/index.mov"/>" autoplay muted loop></video>
+				<video src="<c:url value="/video/index.mp4"/>" autoplay muted loop></video>
 			</div>
 			<div class="survey">
 				<div class="typing-txt"> 

@@ -212,11 +212,44 @@ body {
 	text-align: center;
 }
 
+.modal-photo {
+	height: 850px !important;
+}
+
+.photo-margin img {
+	height: 100%;
+	width: 100%;
+}
+
 .display_none {
 	width: 70%;
 	display: block;
 	margin: auto;
 	BORDER-RADIUS: 100px;
+}
+
+.photo-margin {
+	margin: 0;
+	width: 100%;
+	height: 85%;
+}
+
+.memo-input-div-photo img {
+	height: 100%;
+	width: 100%;
+}
+
+.memo-input-div-photo {
+	padding: 1%;
+	width: 100%;
+	height: 85%;
+}
+
+.check {
+	position: absolute !important;
+	right: 5px !important;
+	margin-top: 4px;
+	bottom: 33px !important;
 }
 
 .info_title {

@@ -105,10 +105,10 @@
 					var moop = map.list4
 					moop = " "
 					var list4 = map.list4;
-					$('#memo-input-photo').val(list4);
+					$('#memo-input-photo').attr("src", list4);
 				} else {
 					var list4 = map.list4;
-					$('#memo-input-photo').val(list4);
+					$('#memo-input-photo').attr("src", "/gym/uploadfile/"+ list4);
 				}
 
 			},

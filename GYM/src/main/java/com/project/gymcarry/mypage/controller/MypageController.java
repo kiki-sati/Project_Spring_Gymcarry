@@ -39,7 +39,6 @@ public class MypageController {
 	public String regFor(HttpSession session, Model model, MypageDto2 mypdto) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
-
 		session.setAttribute("memidx", sdt.getMemidx());
 		session.setAttribute("name", sdt.getMemname());
 		List<MypageMemberDto> memberList = mypService2.selectmember(sdt.getMemidx());
@@ -61,27 +60,32 @@ public class MypageController {
 
 	// 메모 등록
 	@PostMapping
-	public String addMembermemo(MypageDto mypdto, Model model) {
+	public String addMembermemo(MypageDto mypdto, Model model, HttpSession session) {
 
+		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 		String arg0 = mypdto.getMemidx();
 		String arg1 = mypdto.getInfodate();
 		String arg2 = mypdto.getInfotype();
 
+		List<MypageMemberDto> memberList = mypService2.selectmember(sdt.getMemidx());
 		List<MypageDto> list1 = mypService.selectMemo(arg0, arg1, arg2);
 
 		if (list1.isEmpty()) {
 			mypService.memberMemo(mypdto);
 			System.out.println("인설트로 가쟈");
-			List<MypageDto> list2 = mypService.loadMemo(arg0, arg1);
-			model.addAttribute("list2", list2);
+//			List<MypageDto> list2 = mypService.loadMemo(arg0, arg1);
+//			model.addAttribute("list2", list2);
+			model.addAttribute("memberList", memberList);
 			return "mypage/mypage";
 
 		} else {
 			mypService.updateMemo(mypdto);
 			System.out.println("업데이트 가쟈");
-			List<MypageDto> list2 = mypService.loadMemo(arg0, arg1);
-			System.out.println(list2);
+			model.addAttribute("memberList", memberList);
+//			List<MypageDto> list2 = mypService.loadMemo(arg0, arg1);
+//			System.out.println(list2);
 			return "mypage/mypage";
+
 		}
 
 	}

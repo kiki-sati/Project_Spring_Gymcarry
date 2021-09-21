@@ -150,30 +150,32 @@
 					<div class="col-left">
 
 						<div class="my-info">
+							<c:forEach items="${memberList}" var="memberList">
+								<div class="col-profile">
 
-							<div class="col-profile">
-								<c:forEach items="${memberList}" var="memberList">
 									<img id="loadingimg" class="display_none"
 										src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>">
-								</c:forEach>
-							</div>
-
-							<div class="col-name">
-								<div style="text-align: right; width: 55%; float: left;">
-									<h3>${name}</h3>
-									<!-- 세션 네임 -->
-
 
 								</div>
-								<div style="text-align: left; width: 35%; padding-left: 2%">
-									<a href="<c:url value="/mypage/myinfo"/>"> <img
-										class="edit_text2"
-										src="<c:url value="/images/icon/edit.png"/>"></a>
-								</div>
-							</div>
 
-							<div id="datepicker" onclick="loginLog()"></div>
-							<input type="hidden">
+								<div class="col-name">
+									<div style="text-align: right; width: 55%; float: left;">
+										<h3>${memberList.MEMNICK}</h3>
+										<!-- 세션 네임 -->
+
+
+									</div>
+									<div style="text-align: left; width: 35%; padding-left: 2%">
+										<a href="<c:url value="/mypage/myinfo"/>"> <img
+											class="edit_text2"
+											src="<c:url value="/images/icon/edit.png"/>"></a>
+									</div>
+								</div>
+
+								<div id="datepicker" onclick="loginLog()"></div>
+								<input type="hidden">
+							</c:forEach>
+
 						</div>
 
 						<div class="my-info-develope">

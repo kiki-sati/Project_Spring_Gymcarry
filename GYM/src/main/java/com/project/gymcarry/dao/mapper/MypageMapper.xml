@@ -60,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		memidx = ${memidx} and LIKECHECK = '1');
 	</select>
 
-	<!-- 페이징 : 전체 글의 개수 읽어오기 -->
+
 	<select id="getBoardListCnt" resultType="int">
 		select count(*) as
 		listCnt
@@ -89,8 +89,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="memberupdate">
 		update member set
 		MEMNICK = #{MEMNICK},
-		MEMPHONE =
-		#{MEMPHONE}
+		MEMPHONE = #{MEMPHONE},
+		MEMPHOTO = #{MEMPHOTO}
 		where memidx = #{MEMIDX};
 	</update>
 

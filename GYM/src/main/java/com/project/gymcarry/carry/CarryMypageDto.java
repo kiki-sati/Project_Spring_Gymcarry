@@ -14,11 +14,6 @@ public class CarryMypageDto {
 	
 	public CarryMypageDto() {}
 	
-	// jsondata : [{"title":"jj",
-	//"allday":true,
-	//"start":"2021-09-15T00:00:00.000Z",
-	//"end":"2021-09-17T00:00:00.000Z"},{"title":";';'","allday":false,"start":"2021-09-24T12:00:00.000Z","end":"2021-09-24T13:00:00.000Z/"}]
-	
 	public String getTitle() {
 		return title;
 	}

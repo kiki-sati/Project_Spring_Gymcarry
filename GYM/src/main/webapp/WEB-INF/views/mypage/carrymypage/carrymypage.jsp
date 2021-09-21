@@ -36,6 +36,21 @@
 }
 </style>
 </head>
+<script>
+   function readInputFile(input) {
+      if (input.files && input.files[0]) {
+         var reader = new FileReader();
+         reader.onload = function(e) {
+            $('#main').html("<img src="+ e.target.result +">");
+         }
+         reader.readAsDataURL(input.files[0]);
+      }
+   }
+
+   $(".profilebtn").on('change', function() {
+      readInputFile(this);
+   });
+</script>
 <body>
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
@@ -44,8 +59,7 @@
 		<div class="main">
 			<!-- <p>바탕색은 구분을 위한 임시배경색입니다</p> -->
 			<!-- <img src="/images/icon/profile.png"><br> -->
-			<img src="<c:url value="/images/icon/profile.png"/>" class="profile"
-				onclick="#">
+			<img src="<c:url value="/uploadfile/${CRPHOTO}"/>" class="profile">
 			<div class="nameline">
 				<!-- 정렬을 위해 왼쪽에 숨겨둘 것 -->
 				<button class="edit1" type="button" onclick></button>

@@ -14,6 +14,20 @@
 	height: 100%
 }
 
+.profile_form>.profileimg {
+	margin: auto;
+	border-radius: 50%;
+	overflow: hidden;
+	width: 150px;
+	height: 150px;
+}
+
+
+.imgc {
+	height: 100%;
+	width: 100%;
+}
+
 .contents {
 	margin: 10% 15%;
 	height: 100%

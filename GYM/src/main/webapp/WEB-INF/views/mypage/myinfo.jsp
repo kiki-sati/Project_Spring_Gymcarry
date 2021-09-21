@@ -38,6 +38,7 @@
 
 
 
+
 	<div class="contents_main">
 		<div class="contents">
 
@@ -49,11 +50,28 @@
 						<input type="hidden" name="MEMIDX" id="MEMIDX"
 							value="${memberList.MEMIDX}">
 
-						<div class="my-info">
+				<%-- 		<div class="my-info">
 							<img id="loadingimg" class="display_none"
-								src="/gym/images/icon/user.png">
+								src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>">
 							<h3>사진 수정</h3>
+						</div> --%>
+
+						<div class="my-info profile_form">
+							<div class="display_none profileimg" id="image_container">
+								<img src="/gym/images/icon/profile2.png"><br>
+							</div>
+							
+							<input type="button" value="사진업로드" class="profilebtn"
+								name="memphoto" onclick=document.all.file.click();> <input
+								type="file" name="memphoto" id="file" class="profilebtn"
+								style="display: none;" />
 						</div>
+
+
+
+
+
+
 
 						<div class="col-2">
 							<div class="col-3">
@@ -143,6 +161,22 @@
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </footer>
+
+<script>
+	function readInputFile(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#image_container').html("<img src="+ e.target.result +">");
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$(".profilebtn").on('change', function() {
+		readInputFile(this);
+	});
+</script>
 
 </html>
 

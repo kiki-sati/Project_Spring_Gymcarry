@@ -46,15 +46,19 @@
 }
 
 
-.video_section .survey .btn {
+.video_section .btn {
 	display: block;
 	width: 200px;
 	height: 50px;
 	line-height: 50px;
 	background: #000;
 	color: #fff;
-	margin: 80px auto 0;
 	border-radius: 5px;
+	position:absolute;
+	bottom:25%;
+	left:50%;
+	transform:translateX(-50%);
+	text-align:center;
 }
 /* video section end */
 

@@ -36,8 +36,8 @@
 				     <li></li>
 				  </ul>
 				</div> 
-				<a href="<c:url value='/survey/survey'/>" class="btn">시작</a>
 			</div>
+			<a href="<c:url value='/survey/survey'/>" class="btn">시작</a>
 		</section>
 		<section class="review_section container_fix swiper-container">
 			<h1 class="title">Carry Review</h1>

@@ -60,7 +60,7 @@
 				<!-- 정렬을 위해 왼쪽에 숨겨둘 것 -->
 				<button class="edit1" type="button" onclick></button>
 				<!-- 여기까지 -->
-				<h3 class="title">${crname}</h3>
+				<h3 class="title">이름${crname}</h3>
 				<a href="/gym/carry/modify"> <img
 					src="<c:url value="/images/icon/edit.png"/>" class="edit2">
 				</a>
@@ -88,16 +88,15 @@
 					<li><a href="/gym/mypage/carrymodify">캐리 정보
 							수정</a> <!-- <a href="<c:url value="/"/>"> --></li>
 					<br>
-					<li><a href="/gym/mypage/carrymypage/mymember">내
+					<li><a href="/gym/mypage/carrymypage/carry_mymemberlist">내
 							회원 리스트</a> <!-- <a href="<c:url value="/"/>"> --></li>
 					<br>
 				</ul>
 			</div>
 
-			<div class="today-schedule">
+			<div class="mymemberlist">
 				<li>
-					<h3>오늘의 일정</h3> <a class="insert" href="#"><img
-						src="<c:url value="/images/icon/edit.png"/>"></a>
+					<h3>내 회원 리스트</h3> 
 				</li>
 			</div>
 		</div>

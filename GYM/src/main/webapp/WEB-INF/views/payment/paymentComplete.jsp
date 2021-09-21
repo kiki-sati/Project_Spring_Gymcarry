@@ -23,7 +23,8 @@
 		<h2>감사합니다!</h2>
 
 		<div class="btn">
-			<input type="submit" value="결제 내역">
+			<!-- <input type="submit" value="결제 내역" onclick="moveMyPageCash()"> -->
+			<input type="submit" value="결제 내역" onclick="location.href='<c:url value = "/mypage/mypage"/>'">
 			<input type="button" value="홈으로" onclick="location.href='<c:url value = "/index"/>'">
 		</div>  
 
@@ -37,3 +38,37 @@
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 
+
+<script>
+	
+	function moveMyPageCash() {
+		location.href= '<c:url value="/mypage/mypage" />';
+		
+		$(document).ready(function(){
+			$('#cash').trigger("click");
+		});
+			
+			/* $('.list_tab').click(function() {
+
+				var activeTab = $(this).attr('data-tab');
+				$.ajax({
+					type : 'POST',
+					url : activeTab,
+					dataType : "html",
+
+					success : function(data) {
+						$('.col-right').html(data);
+
+					},
+
+					error : function() {
+
+						alert('나가 임마');
+					},
+
+				});
+			}); */
+			
+		
+	}
+</script>

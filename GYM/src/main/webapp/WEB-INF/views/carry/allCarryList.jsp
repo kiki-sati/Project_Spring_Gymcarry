@@ -61,10 +61,12 @@
               </div>
               <div class="bottom_btn">
                 <ul class="board_btn">
+                <c:if test="${loginSession.memidx ne 0}">
                   <li>
                   	<input type="button" value="1:1 문의" class="inquiry_btn"
                   	onclick="location.href='<c:url value="/chatting/chatInquire?cridx=${alist.cridx}&memidx=${loginSession.memidx}"/>'">
                   </li>
+                  </c:if>
                   <li>
                     <input type="button" value="더 알아보기" class="detail_btn"
                     onclick="location.href='<c:url value = "/carry/detail?cridx=${alist.cridx}"/>'">
@@ -81,8 +83,6 @@
     </div>
   </div>
   <!-- Contents end -->
-
-	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	

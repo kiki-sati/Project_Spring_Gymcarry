@@ -73,6 +73,7 @@ public class UserChatController {
 	@ResponseBody
 	public Map<String, Object> chatList(@RequestParam("chatidx") int chatidx,HttpSession session) {
 		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
+		
 		Map<String, Object> mapList = new HashMap<String, Object>();
 		List<ChatRoomDto> chatList = null; 
 		if(dto.getMemidx() != 0) {
@@ -120,4 +121,16 @@ public class UserChatController {
 		result = matchingChatRoomService.deleteChatRoom(chatidx);
 		return result;
 	}
+	
+	@PostMapping("chatting/chatread")
+	@ResponseBody
+	public int chatRead(@RequestParam("chatidx")int chatidx) {
+		// 메세지 보낸사람 read
+		int result = matchingChatRoomService.getChatRead(chatidx);
+		return result;
+	}
+	
+	
+	
+	
 }

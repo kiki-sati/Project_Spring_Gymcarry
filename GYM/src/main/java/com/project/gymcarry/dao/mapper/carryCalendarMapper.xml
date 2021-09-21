@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </insert>
    
    <select id="scheduleview" resultType="com.project.gymcarry.carry.CarryMypageDto">
-   		select title, allday, start, end, cridx 
+   		select distinct title, start, end
    		from carrycalendar 
    		where cridx = #{cridx} 
    </select>

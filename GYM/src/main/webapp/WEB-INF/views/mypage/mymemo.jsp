@@ -53,10 +53,14 @@
 		<a class="" data-toggle="modal" href="#registerModal2"
 			data-backdrop="static"><img onclick="printName()"
 			class="edit_text" src="<c:url value="/images/icon/upload.png"/>"></a>
-		<div class="memo-input-div">
+		<div class="memo-input-div-photo">
 
-
-			<input class="memo-input" id="memo-input-photo" type="text"
+			
+				<img class="imgc" id="memo-input-photo"
+					src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>"><br>
+			
+			
+			<input class="memo-input"  type="text"
 				readonly="readonly">
 		</div>
 
@@ -112,8 +116,8 @@
 										id="infocontent" style="resize: none;"></textarea>
 								</span>
 							</div>
-							<div class="btn modal-submit-btn">
 
+							<div class="btn modal-submit-btn">
 								<button onClick="fn_review()" type="submit" class="btn"
 									type="button">확인</button>
 							</div>
@@ -129,8 +133,8 @@
 
 		<div class="modal fade" id="registerModal2" tabindex="-1"
 			role="dialog" aria-labelledby="modal4" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
+			<div class="modal-dialog modal-photo">
+				<div class="modal-content modal-photo">
 					<div class="modal-header">
 
 						<h3>눈바디</h3>
@@ -140,15 +144,22 @@
 						</button>
 
 					</div>
-					<form method="post">
-						<div class="modal-body modal-mypage">
+					<form method="post" class="modal-photo">
+						<div class="modal-body modal-mypage modal-photo">
 
-							<div class="content">
-								<span class="left"></span> <span class="editor"> <textarea
-										class="form-control memo_input" name="infocontent"
-										id="infocontent" style="resize: none;"></textarea>
-								</span>
+							<!-- 	<div class="my-info profile_form"> -->
+							<input type="button" value="사진업로드" class="profilebtn"
+								name="infocontent" onclick=document.all.file.click();> <input
+								type="file" name="infocontent" id="file" class="profilebtn"
+								style="display: none;" />
+							<div class="photo-margin display_none profileimg "
+								id="image_container">
+								<img class="imgc"
+									src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>"><br>
 							</div>
+
+
+							<!-- 	</div> -->
 							<div class="btn modal-submit-btn">
 								<button onClick="fn_review()" type="submit" class="btn"
 									type="button">확인</button>
@@ -156,6 +167,7 @@
 							<input type="hidden" name="infodate" /> <input type="hidden"
 								id="memidx" name="memidx" value="${memidx}" /> <input
 								type="hidden" name="infotype" id="infotype" value="photo" />
+
 
 						</div>
 					</form>
@@ -247,5 +259,20 @@
 </body>
 
 
+<script>
+	function readInputFile(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$('#image_container').html("<img src="+ e.target.result +">");
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	$(".profilebtn").on('change', function() {
+		readInputFile(this);
+	});
+</script>
 </html>
 

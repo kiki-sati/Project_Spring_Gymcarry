@@ -20,11 +20,22 @@
 	<div class="container">
 		<section class="video_section">
 			<div class="video">
-				<video src="<c:url value="/video/video3.mp4"/>" autoplay muted loop></video>
+				<video src="<c:url value="/video/index.mp4"/>" autoplay muted loop></video>
 			</div>
 			<div class="survey">
-				<h3>혼자 하는 운동이 막막하고 어려우신가요?</h3>
-				<h2>당신의 맞춤 전문 코치를 찾아드릴게요 !</h2>
+				<div class="typing-txt"> 
+				  <ul>
+				    <li>혼자 하는 운동이 막막하고 어려우신가요?</li>
+				    <li>당신의 맞춤 전문 코치를 찾아드릴게요 !</l>
+				</ul>
+				
+				</div> 
+				<div class="typing">
+				   <ul>
+				     <li></li>
+				     <li></li>
+				  </ul>
+				</div> 
 				<a href="<c:url value='/survey/survey'/>" class="btn">시작</a>
 			</div>
 		</section>

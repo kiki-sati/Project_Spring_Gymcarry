@@ -45,7 +45,10 @@
          }
          reader.readAsDataURL(input.files[0]);
       }
-   };
+   }
+   $(".profilebtn").on('change', function(){
+		readInputFile(this);
+	});
 </script>
 <body>
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
@@ -55,12 +58,15 @@
 		<div class="main">
 			<!-- <p>바탕색은 구분을 위한 임시배경색입니다</p> -->
 			<!-- <img src="/images/icon/profile.png"><br> -->
-			<img src="<c:url value="/uploadfile/${CRPHOTO}"/>" class="profile">
+			<%-- <img src="<c:url value="/uploadfile/${carry.crphoto}"/>" class="profile"> --%>
+			<div class="profile_photo">
+							<img src="<c:url value="/uploadfile/${carry.crphoto}"/>" class="profile">
+						</div>
 			<div class="nameline">
 				<!-- 정렬을 위해 왼쪽에 숨겨둘 것 -->
-				<button class="edit1" type="button" onclick></button>
+				<button class="edit1" type="button"></button>
 				<!-- 여기까지 -->
-				<h3 class="title">이름${crname}</h3>
+				<h3 class="title">${carry.crname}</h3>
 				<a href="/gym/carry/modify"> <img
 					src="<c:url value="/images/icon/edit.png"/>" class="edit2">
 				</a>

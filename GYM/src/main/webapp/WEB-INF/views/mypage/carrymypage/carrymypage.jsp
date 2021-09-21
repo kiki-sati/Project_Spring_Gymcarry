@@ -152,15 +152,17 @@ var calendar = null;
 					console.log(obj);
 				},
 				//Logic for clicking on an event
-			    eventClick: function(event_click){
+			     eventClick: function(event_click){
 			    	console.log("이벤트 클릭 : " + event_click.title);
 			      alert('['+event_click.title + '] 일정을 삭제합니다.'),
 			      //Remove event from calendar
-				  event_click.remove()
-				}
+				  event_click.remove
+				} 
 				,
-				/* eventRemove : function(obj) { // 이벤트가 삭제되면 발생하는 이벤트
-					console.log(obj);
+				/*  eventRemove : function(eventClick) { // 이벤트가 삭제되면 발생하는 이벤트
+					 console.log("이벤트 클릭 : " + event_click.title);
+					 alert('['+eventClick.title + '] 일정을 삭제합니다.'),
+					 eventClick.remove()
 				}, */
 				
 				/* eventsSet : function(events){

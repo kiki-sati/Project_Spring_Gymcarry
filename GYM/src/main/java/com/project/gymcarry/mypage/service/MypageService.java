@@ -59,4 +59,8 @@ public class MypageService {
 		return dao.scheduleview(cridx);
 	}
 	
+	public void deleteschedule(int cridx) {
+		dao = template.getMapper(MypageDao.class);
+	}
+	
 }

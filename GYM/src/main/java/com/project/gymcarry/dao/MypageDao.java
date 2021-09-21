@@ -44,4 +44,6 @@ public interface MypageDao {
 	int carrycalendar(List<CarryMypageDto> request);
 	
 	List<CarryMypageDto> scheduleview(@Param("cridx") int cridx);
+	
+	void deleteschedule(int cridx);
 }

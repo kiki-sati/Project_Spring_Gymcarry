@@ -51,6 +51,14 @@ public class CarryCalendarController {
 		
 		mypService.carrycalendar(request);
 		
+//		if(request != null) {
+//			mypService.deleteschedule(sdt.getCridx());
+//			mypService.carrycalendar(request);
+//		}  else {
+//			mypService.carrycalendar(request);
+//		}
+		
+		
 		return "/mypage/carrymypage";
 		
 	}

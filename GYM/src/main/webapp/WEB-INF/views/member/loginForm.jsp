@@ -88,7 +88,7 @@
 
 			<!-- 구글  로그인 -->
 			<!-- <ul class = "apiLogin"> -->
-				<div class="g-signin2 google_btn" data-onsuccess="onSignIn" data-width="300" data-height="45"></div>
+				<div class="g-signin2 google_btn" onclick="googleLogin()" data-width="300" data-height="45"></div>
 				<%-- <li id="GgCustomLogin"><a href="javascript:void(0)"> <span>
 				<img src="<c:url value="/images/icon/google_login_medium_btn.png"/>" class="google_btn"></span>
 				</a></li> --%>
@@ -109,12 +109,15 @@
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script>
 
-function onSignIn(googleUser) {
-		var profile = googleUser.getBasicProfile();
+function googleLogin() {
+	var auth2 = gapi.auth2.getAuthInstance();
+
+	if(auth2.isSignedIn.get()) {
+		var profile = auth2.currentUser.get().getBasicProfile();
 		var nick = profile.Pe;
 		var email = profile.Ht;
 		var id = profile.US;
-	  
+		
       // The ID token you need to pass to your backend:
    /*    var id_token = googleUser.getAuthResponse().id_token;
       console.log("ID Token: " + id_token); */
@@ -140,8 +143,8 @@ function onSignIn(googleUser) {
 			}
 		});
 	
-	
 	}
+}
 	
 </script>
 

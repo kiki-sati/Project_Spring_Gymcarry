@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<meta name ="google-signin-client_id" content="884370396168-lvivvhk8sibtnjq5ns48nug9qrgcuj6h.apps.googleusercontent.com">
 <header class="header">
 	<div class="logo">
 		<a href="<c:url value="/index"/>">GymCarry</a>
@@ -36,7 +36,7 @@
 		<a href="<c:url value="/member/login"/>" class="login"> LOGIN </a>
 		</c:if>
 		<c:if test="${loginSession ne null}">
-		<a href="<c:url value="/member/logOut"/>" class="login" onclick="SNSLogout()"> LOGOUT </a>
+		<a href="<c:url value="/member/logOut"/>" class="login" onclick="kakaoLogout(); signOut();"> LOGOUT </a>
 		</c:if>
 	</div>
 </header>
@@ -44,19 +44,13 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script> 
+<script src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script> 
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
 <script>
 	Kakao.init('0ecec0f1529ce019d44a9de3e0b3bb22');
 	//카카오 로그아웃  
-	function SNSLogout() {
-		
-		 var auth2 = gapi.auth2.getAuthInstance();
-		    auth2.signOut().then(function () {
-		      console.log('User signed out.');
-		    });
-		    
-		    
+	function kakaoLogout() {
 		if (Kakao.Auth.getAccessToken()) {
 			Kakao.API.request({
 				url : '/v1/user/unlink',
@@ -70,11 +64,23 @@
 			})
 			Kakao.Auth.setAccessToken(undefined)
 		}
-		
 	}
+
+</script>
+	
+	<script>
+
+	function signOut() {
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function () {
+			console.log('Google Logout');
+		});	
+		auth2.disconnect();
+	}
+	</script>
 	
 	
-	
+<script>
 	var session_memnick = '${loginSession.memnick}'
 	var session_crnick = '${loginSession.crnick}'
 	

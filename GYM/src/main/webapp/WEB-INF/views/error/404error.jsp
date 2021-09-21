@@ -13,19 +13,21 @@
 	
 	
 	<!-- ------------------------------------ -->
-	
-    <img src="<c:url value="/images/icon/404.svg"/>" alt="">
+
+    <div class="container">
     <div class="wrapper">
+        <img src="<c:url value="/images/icon/404.svg"/>" alt="">
         <h1>Page Not Found</h1>
        <p class="message">
         잘못된 URL 입니다. 
         
        </p>
-       <a href="#" class="btn">Learn More About Us</a>
-       <p class="copyRights">gymcarry</p>
+       <a href="<c:url value="/index"/>" class="btn">Home</a>
     </div>
-    
- <!-- ------------------------------------- -->
+    </div>
+    <!-- Contents end -->
+
+    <!-- ------------------------------------- -->
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>	
 	

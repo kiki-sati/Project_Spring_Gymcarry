@@ -48,7 +48,7 @@
 									<button type="submit" value="찾기" id="findBtn">찾기</button>
 							</div>
 							<div class="btn_wrap2">
-								<a onclick="history.go(-1)">취소</a>
+								<a href="/gym/member/login">취소</a>
 							</div>
 						</div>
 					</div>

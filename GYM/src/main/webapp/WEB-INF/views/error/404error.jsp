@@ -4,7 +4,7 @@
 
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <title>PageNotFound</title>
-<link rel="stylesheet" href="/gym/css/index.css">
+<link rel="stylesheet" href="/gym/css/404error.css">
 </head>
 <body>
 	
@@ -14,7 +14,7 @@
 	
 	<!-- ------------------------------------ -->
 	
-    <img src="<c:url value="/images/icon/404.svc"/>" alt="">
+    <img src="<c:url value="/images/icon/404.svg"/>" alt="">
     <div class="wrapper">
         <h1>Page Not Found</h1>
        <p class="message">
@@ -22,7 +22,7 @@
         
        </p>
        <a href="#" class="btn">Learn More About Us</a>
-       <p class="copyRights">&copy; 2020 DeltatyCode</p>
+       <p class="copyRights">gymcarry</p>
     </div>
     
  <!-- ------------------------------------- -->

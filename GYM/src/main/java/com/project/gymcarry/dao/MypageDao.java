@@ -1,10 +1,15 @@
 package com.project.gymcarry.dao;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
 
 import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.Pagination;
 import com.project.gymcarry.carry.CarryListDto;
+import com.project.gymcarry.carry.CarryMypageDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.mypage.MypageDto;
 import com.project.gymcarry.mypage.MypageDto2;
@@ -34,4 +39,11 @@ public interface MypageDao {
 	List<MypageDto> loadMemo(String arg0, String arg1);
 
 	List<MypageDto2> loadMemo2(int i, String arg1);
+	
+	// 캐리마이페이지 달력때문에 은경이 추가
+	int carrycalendar(List<CarryMypageDto> request);
+	
+	List<CarryMypageDto> scheduleview(@Param("cridx") int cridx);
+	
+	void deleteschedule(@Param("cridx") int cridx);
 }

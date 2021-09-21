@@ -32,7 +32,7 @@
 								<img src="/gym/images/icon/profile2.png"><br>
 							</div>
 							<input type="button" value="사진업로드" class="profilebtn"
-								name="memphoto" onclick=document.all.file.click();> <input
+								name="memphoto" onclick =document.all.file.click();> <input
 								type="file" name="memphoto" id="file" class="profilebtn"
 								style="display: none;" />
 						</div>

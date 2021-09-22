@@ -27,12 +27,16 @@ public class CarryMyPageController {
 	private CarryMyPageService service;
 
 	@GetMapping("/mypage/carrymypage")
-	public String carryMyPage(HttpSession session,Model model) {
+	public String carryMyPage(HttpSession session,Model model) throws Exception {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
-
+		CarryJoinDto carry = service.selectCarryBasicInfo(sdt.getCridx());
+		
 		session.setAttribute("cridx", sdt.getCridx());
-		session.setAttribute("name", sdt.getCrname());
+		session.setAttribute("crname", sdt.getCrname());
+		session.setAttribute("crnick", carry.getCrnick());
+		session.setAttribute("crphoto", carry.getCrphoto());
+		
 		System.out.println("세션 -> " + sdt + "-> 마이페이지 진입");
 		
 		

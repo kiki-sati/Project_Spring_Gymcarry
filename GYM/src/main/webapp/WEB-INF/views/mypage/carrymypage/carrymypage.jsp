@@ -60,13 +60,13 @@
 			<!-- <img src="/images/icon/profile.png"><br> -->
 			<%-- <img src="<c:url value="/uploadfile/${carry.crphoto}"/>" class="profile"> --%>
 			<div class="profile_photo">
-							<img src="<c:url value="/uploadfile/${carry.crphoto}"/>" class="profile">
+							<img src="<c:url value="/uploadfile/${crphoto}"/>" class="profile">
 						</div>
 			<div class="nameline">
 				<!-- 정렬을 위해 왼쪽에 숨겨둘 것 -->
 				<button class="edit1" type="button"></button>
 				<!-- 여기까지 -->
-				<h3 class="title">${carry.crname}</h3>
+				<h3 class="title">${crname}</h3>
 				<a href="/gym/carry/modify"> <img
 					src="<c:url value="/images/icon/edit.png"/>" class="edit2">
 				</a>

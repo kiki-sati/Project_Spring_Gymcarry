@@ -34,7 +34,9 @@
                             <th><span>캐리 소개</span></th>
                             <td>
                                 <form>
-                                    <textarea id="introduce" type="text" name="crintro" required></textarea>
+                                    <textarea class="crintro" id="introduce" type="text" name="crintro" required>
+                                        <c:out value="${carry.crintro}" />
+                                    </textarea>
                                 </form>
                             </td>
                         </tr>
@@ -42,7 +44,7 @@
                             <th><span>소속플레이스</span></th>
                             <td>
                                 <div class="place">
-                                    <input type="text" placeholder="" name="crplace" required>
+                                    <input type="text" placeholder="" name="crplace" value="${carry.crplace}" required>
                                 </div>
                             </td>
                         </tr>
@@ -112,11 +114,11 @@
                             <th><span>자격 및 경력<br>
                                 <p>(최대 5개까지 입력 가능합니다)</p></span>
                             </th>
-                            <td><input type="text" placeholder="자격 및 경력1" name="crcerti1">
-                                <input type="text" placeholder="자격 및 경력2" name="crcerti2">
-                                <input type="text" placeholder="자격 및 경력3" name="crcerti3">
-                                <input type="text" placeholder="자격 및 경력4" name="crcerti4">
-                                <input type="text" placeholder="자격 및 경력5" name="crcerti5">
+                            <td><input type="text" placeholder="자격 및 경력1" name="crcerti1" value="${carryCerti.crcerti1}">
+                                <input type="text" placeholder="자격 및 경력2" name="crcerti2" value="${carryCerti.crcerti2}">
+                                <input type="text" placeholder="자격 및 경력3" name="crcerti3" value="${carryCerti.crcerti3}">
+                                <input type="text" placeholder="자격 및 경력4" name="crcerti4" value="${carryCerti.crcerti4}">
+                                <input type="text" placeholder="자격 및 경력5" name="crcerti5" value="${carryCerti.crcerti5}">
                             </td>
                         </tr>
                         <tr>
@@ -124,7 +126,7 @@
                                 <label for="crbfphoto">바디프로필 업로드</label>
                             </th>
                             <td>
-                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto" >
+                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto" onclick=document.all.file.click(); >
                             </td>
                         </tr>
                         </tbody>
@@ -132,17 +134,25 @@
                         <input type="hidden" name="oldcrbfphoto" value="${crbfphoto}">
 
                     </table>
+
+                    <div class="bodyprofile_photo">
+                        <img src="<c:url value="/uploadfile/${carry.crbfphoto}"/>">
+                    </div>
                     <div class="select_img"><img src="" /></div>
 
                         <script>
-                            $("#crbfphoto").change(function(){
-                                if(this.files && this.files[0]) {
+                            function readInputFile(input) {
+                                if (input.files && input.files[0]) {
                                     var reader = new FileReader;
-                                    reader.onload = function(data) {
-                                        $(".select_img img").attr("src", data.target.result).width(500);
+                                    reader.onload = function (data) {
+                                        $(".profilebtn").html("<img src=" + data.target.result + ">");
                                     }
                                     reader.readAsDataURL(this.files[0]);
                                 }
+                            }
+
+                            $(".profilebtn").on('change', function(){
+                                readInputFile(this);
                             });
                         </script>
 

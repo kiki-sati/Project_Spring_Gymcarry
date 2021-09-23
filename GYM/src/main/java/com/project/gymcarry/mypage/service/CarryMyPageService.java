@@ -3,9 +3,11 @@ package com.project.gymcarry.mypage.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.project.gymcarry.carry.CarryCertiDto;
 import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.carry.CarryToInfoDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
+import com.project.gymcarry.dao.CarryDao;
 
 
 public interface CarryMyPageService {
@@ -20,5 +22,8 @@ public interface CarryMyPageService {
 
     // 캐리 기본 정보 수정 완료
     public int updateCarryBasicInfo(CarryToJoinDto carryToJoinDto, HttpServletResponse response, HttpServletRequest request) throws Exception;
+
+    // 캐리 자격 및 경력 정보
+    public CarryCertiDto getCarryCerti(int cridx) throws Exception;
 
 }

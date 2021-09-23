@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.project.gymcarry.carry.*;
+import com.project.gymcarry.dao.CarryDao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,11 @@ import com.project.gymcarry.dao.CarryMyPageDao;
 public class CarryMyPageServiceImpl implements CarryMyPageService {
 
     private CarryMyPageDao dao;
+    private CarryDao carryDao;
 
     @Autowired
     private SqlSessionTemplate template;
+
 
 
     // 캐리 정보 수정
@@ -98,6 +101,13 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
         System.out.println("서비스에서 출력하는 tostring = " + carryJoinDto.toString());
 
         return dao.updateCarryBasicInfo(carryJoinDto);
+    }
+
+    // 캐리 자격 및 경력 정보 리스트 출력
+    @Override
+    public CarryCertiDto getCarryCerti(int cridx) throws Exception {
+        carryDao = template.getMapper(CarryDao.class);
+            return carryDao.selectCarryCerti(cridx);
     }
 
     private String chkFileType(MultipartFile file) throws Exception {

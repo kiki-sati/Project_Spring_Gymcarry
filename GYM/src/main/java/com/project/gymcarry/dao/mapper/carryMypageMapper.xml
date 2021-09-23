@@ -16,6 +16,8 @@
             a.cridx=c.cridx and a.cridx = #{cridx}
     </update>
 
+
+
     <!-- 캐리 가격 수정 -->
     <update id="updateCarryPrice"
             parameterType="com.project.gymcarry.carry.CarryPriceDto">
@@ -29,6 +31,8 @@
                     end
         where cridx = #{param5};
     </update>
+
+
     
     
     <!-- 캐리 기본 정보 수정에 필요한 데이터 값 출력 -->

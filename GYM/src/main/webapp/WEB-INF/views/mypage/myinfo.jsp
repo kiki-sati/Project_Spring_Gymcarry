@@ -65,6 +65,7 @@
 							<input type="button" value="사진업로드" class="profilebtn"
 								name="MEMPHOTO" onclick=document.all.file.click();> <input
 								type="file" name="MEMPHOTO" id="file" class="profilebtn"
+								value="${memberList.MEMPHOTO}"
 								style="display: none;" />
 						</div>
 
@@ -92,7 +93,7 @@
 								<h3>비밀번호 수정</h3>
 							</div>
 							<div class="col-9" style="float: right;">
-								<input type="text">
+								<input name="mempw" type="text">
 							</div>
 						</div>
 						<div class="col-2">
@@ -100,7 +101,7 @@
 								<h3>비밀번호 수정 확인</h3>
 							</div>
 							<div class="col-9" style="float: right;">
-								<input type="text">
+								<input name="mempw2" type="text">
 							</div>
 						</div>
 						<div class="col-2">
@@ -174,5 +175,35 @@
 	});
 </script>
 
+
+<script>
+
+//비밀번호 
+console.log('비번 도달');
+// 비밀번호 정규식 : 영어 대소문자, 숫자로 4~15글자 이내 
+var pwJ = /^[A-Za-z0-9]{4,15}$/;
+$("#mempw").focusout(function() {
+	if (pwJ.test($('#mempw').val())) {
+			console.log(pwJ.test($('#mempw').val()));
+			$("#pwcheck").text('');
+	} else {
+		$('#pwcheck').text('영어 대, 소문자, 숫자로  4~15글자로 작성해주세요 .');
+		$('#pwcheck').css('color', 'red');
+	}
+	error : console.log('비밀번호 실패');
+});
+
+// 비밀번호 확인 
+$("#mempw2").focusout(function() {
+	if ($('#mempw2').val() != $('#mempw').val()) {
+			console.log($('#mempw2').val(),$('#mempw').val());
+			/* $("#pwcheck").text('비밀번호가 다릅니다. 다시 입력해주세요.');
+			$('#pwcheck').css('color', 'red'); */
+	} else {
+		$('#pwcheck').text('');
+	} 
+	error : console.log('비밀번호 확인 실패');
+});
+</script>
 </html>
 

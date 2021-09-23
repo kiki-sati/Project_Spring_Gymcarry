@@ -44,10 +44,20 @@
 		infodate[3].value = name;
 
 	}
+	
 	window.onload = function() {
 		loginLog()
+		
+	if (  ${a} ==  1 ) {
+		handleInputOnkeyup();
+	}
 	}
 
+	function 	handleInputOnkeyup() {
+		document.getElementById('mycash').click();
+		}
+	
+	
 	function StartPrintName() {
 		const name = document.getElementById('alternate').value;
 		var infodate = document.getElementsByName("infodate")
@@ -108,7 +118,8 @@
 					$('#memo-input-photo').attr("src", list4);
 				} else {
 					var list4 = map.list4;
-					$('#memo-input-photo').attr("src", "/gym/uploadfile/"+ list4);
+					$('#memo-input-photo').attr("src",
+							"/gym/uploadfile/" + list4);
 				}
 
 			},
@@ -124,7 +135,9 @@
 	}
 </script>
 
-
+<script">
+	
+</script>
 
 
 </head>
@@ -190,7 +203,7 @@
 								<li class="info_list"><a
 									href="<c:url value="/mypage/mycommunity"/>">내가 작성한 글</a></li>
 
-								<li data-tab="mycash" class="list_tab info_list"><a>내
+								<li data-tab="mycash" class="list_tab info_list" id="mycash"><a>내
 										결제 내역</a></li>
 
 								<li class="info_list"><a

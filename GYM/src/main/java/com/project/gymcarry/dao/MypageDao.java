@@ -36,6 +36,8 @@ public interface MypageDao {
 
 	int memberupdate(MypageMemberDto mMdto);
 
+	int memberupdate2(MypageMemberDto mMdto);
+
 	List<MypageDto> loadMemo(String arg0, String arg1);
 
 	List<MypageDto2> loadMemo2(int i, String arg1);

@@ -18,18 +18,32 @@ body {
 .kakao_btn {
 	border: none;
 	background-color: none;
+	cursor:pointer;
 }
 
-.kakao_btn:hover,
-.google_btn:hover {
+.kakao_btn:hover {
 	cursor: pointer;
 }
 
 .google_btn {
-	
 	margin:0 auto 30px; 
 }
+.google_btn .abcRioButton {
+	margin:0 auto;	
+}
+.google_btn span {
+	font-size:14px !important;
+}
 
+.abcRioButtonContentWrapper {
+	position:relative;
+	box-shadow:none;
+}
+.abcRioButtonContents {
+	position:absolute;
+	left:50%;
+	transform:translateX(-50%);
+}
  p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
     font-size:11pt; 
     text-decoration: none;
@@ -40,7 +54,6 @@ body {
 }
 
 .apiLogin .kakao {
-	cursor : pointer;
 	margin-top : 40px;
 }
 

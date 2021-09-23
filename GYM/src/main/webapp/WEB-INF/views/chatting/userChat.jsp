@@ -447,7 +447,7 @@
 								htmlStr += '	</div>'
 							}
 							chattting(item.cridx); 
-							$('.carry_message_warp').html(htmlStr);
+							$('.chat_null').html(htmlStr);
 							if(item.likecheck == 1){
 								$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
 							} else if(item.likecheck == 0){
@@ -482,7 +482,7 @@
 								htmlStr += '</div>'
 							} 
 							chattting();
-							$('.carry_message_warp').html(htmlStr);
+							$('.chat_null').html(htmlStr);
 						});
 						$('#output').scrollTop($('#output')[0].scrollHeight);
 					}

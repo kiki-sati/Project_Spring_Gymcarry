@@ -106,7 +106,7 @@
 	margin-bottom: 60px;
 }
 
-.write_review_btn.off {
+.write_review_btn .off {
     display: none;
 }
 

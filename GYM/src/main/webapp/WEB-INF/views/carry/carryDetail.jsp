@@ -237,7 +237,7 @@
 								</div>
 
 								<div id="purchase_btn">
-									<input type="submit" value="구매하기" class="button">
+									<input type="submit" value="구매하기" class="button" class="purchaseBtn">
 								</div>
 							</div>
 
@@ -282,6 +282,16 @@
 	            }   	
 	         }
 	 });
+	
+	
+	// 결제하기 로그인 검사
+	 $('.purchaseBtn').click(function(){
+            if(${loginSession == null && loginSession.memidx != 0}) {
+                alert("로그인 후 이용해 주세요.");
+                $(location).attr('href', '<c:url value="/member/login"/>');
+            } 
+	 });
+	
 	
 	
 	// 리뷰 리스트 출력 ajax

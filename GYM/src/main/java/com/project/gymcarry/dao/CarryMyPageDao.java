@@ -9,6 +9,9 @@ public interface CarryMyPageDao {
 	// 캐리 정보 수정
 	int updateCarryModify(CarryInfoDto carryInfoDto) throws Exception;
 
+	// 캐리 자격 및 경력 [입력 or 수정]
+    int upsetCarryCerti(CarryInfoDto carryInfoDto) throws Exception;
+
 	// 캐리 가격 수정
     int updateCarryPrice(int proprice1,int proprice2,int proprice3,int proprice4,int cridx);
     

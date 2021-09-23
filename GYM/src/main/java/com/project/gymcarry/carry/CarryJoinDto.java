@@ -20,8 +20,6 @@ public class CarryJoinDto {
 	}
 
 	// 캐리정보 전체출력
-
-
 	public CarryJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender, String crphone, String crphoto, String joinkey, String joinkey_status, String crintro, String crbfphoto, String crplace) {
 		this.cridx = cridx;
 		this.cremail = cremail;
@@ -146,6 +144,14 @@ public class CarryJoinDto {
 
 	public void setCrbfphoto(String crbfphoto) {
 		this.crbfphoto = crbfphoto;
+	}
+
+	public String getCrplace() {
+		return crplace;
+	}
+
+	public void setCrplace(String crplace) {
+		this.crplace = crplace;
 	}
 
 	@Override

@@ -44,7 +44,7 @@
                             <th><span>소속플레이스</span></th>
                             <td>
                                 <div class="place">
-                                    <input type="text" placeholder="" name="crplace" ${carry.crplace} required>
+                                    <input type="text" placeholder="" name="crplace" value="${carry.crplace}" required>
                                 </div>
                             </td>
                         </tr>

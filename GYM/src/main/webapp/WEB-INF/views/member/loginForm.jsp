@@ -84,16 +84,8 @@
 				</li>
 			</ul>
 
-
-
 			<!-- 구글  로그인 -->
-			<!-- <ul class = "apiLogin"> -->
-				<div class="g-signin2 google_btn" onclick="googleLogin()" data-width="300" data-height="45"></div>
-				<%-- <li id="GgCustomLogin"><a href="javascript:void(0)"> <span>
-				<img src="<c:url value="/images/icon/google_login_medium_btn.png"/>" class="google_btn"></span>
-				</a></li> --%>
-			<!-- </ul> -->
-			
+			<div class="g-signin2 google_btn" onclick="googleLogin()" data-width="300" data-height="45"></div>
 			
 		</div>
 	</div>
@@ -105,104 +97,6 @@
 
 
 
-<!-- 구글 로그인 API -->
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-<script>
-
-function googleLogin() {
-	var auth2 = gapi.auth2.getAuthInstance();
-
-	if(auth2.isSignedIn.get()) {
-		var profile = auth2.currentUser.get().getBasicProfile();
-		var nick = profile.Pe;
-		var email = profile.Ht;
-		var id = profile.US;
-		
-      // The ID token you need to pass to your backend:
-   /*    var id_token = googleUser.getAuthResponse().id_token;
-      console.log("ID Token: " + id_token); */
-      
-	  $.ajax({
-			type : 'POST',
-			url : '<c:url value="/member/kakaologin"/>',
-			data : { 
-					snsjoinid : id,
-					mememail : email,
-					memnick : name
-				},
-			dataType : 'json',
-			success : function(data){
-				console.log(data);
-				if(data == 0){
-					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
-				} else if(data == 1){
-					window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
-				} else if(data == 2){
-					window.location.href = "<c:url value='/index'/>";
-				} 
-			}
-		});
-	
-	}
-}
-	
-</script>
-
-
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-
-<!-- 카카오 로그인 API -->
-<script>
-	Kakao.init('0ecec0f1529ce019d44a9de3e0b3bb22'); //발급받은 키 중 javascript키를 사용해준다.
-	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-	//카카오 로그인
-	function kakaoLogin() {
-		Kakao.Auth.login({
-			/* scope: 'profile, account_email,  gender',  */
-			success : function(response) {
-				Kakao.API.request({
-					url : '/v2/user/me',
-					success : function(response) {
-						console.log(response);
-						var nick = response.properties.nickname;
-						var email = response.kakao_account.email;
-						var id = response.id;
-						
-						$.ajax({
-							type : 'POST',
-							url : '<c:url value="/member/kakaologin"/>',
-							data : { 
-									snsjoinid : id,
-									mememail : email,
-									memnick : nick
-								},
-							dataType : 'json',
-							success : function(data){
-								console.log(data);
-								if(data == 0){
-									window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
-								} else if(data == 1){
-									window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
-								} else if(data == 2){
-									window.location.href = "<c:url value='/index'/>";
-								}
-							}
-						});
-								
-						
-					},
-					fail : function(error) {
-						console.log(error)
-					},
-				})
-			},
-			fail : function(error) {
-				console.log(error)
-			},
-		})
-	}
-	
-</script>
 
 <script>
 $(document).ready(function(){
@@ -261,6 +155,103 @@ function getCookie(cookieName) {
 </script>
 
 
+<!-- 구글 로그인 API -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+
+function googleLogin() {
+   var auth2 = gapi.auth2.getAuthInstance();
+
+   if(auth2.isSignedIn.get()) {
+      var profile = auth2.currentUser.get().getBasicProfile();
+      var nick = profile.Re;
+      var email = profile.Tt;
+      var id = profile.sT;
+      
+      // The ID token you need to pass to your backend:
+   /*    var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token); */
+      
+     $.ajax({
+         type : 'POST',
+         url : '<c:url value="/member/kakaologin"/>',
+         data : { 
+               snsjoinid : id,
+               mememail : email,
+               memnick : name
+            },
+         dataType : 'json',
+         success : function(data){
+            console.log(data);
+            if(data == 0){
+               window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
+            } else if(data == 1){
+               window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
+            } else if(data == 2){
+               window.location.href = "<c:url value='/index'/>";
+            } 
+         }
+      });
+   
+   }
+}
+   
+</script>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<!-- 카카오 로그인 API -->
+<script>
+	Kakao.init('0ecec0f1529ce019d44a9de3e0b3bb22'); //발급받은 키 중 javascript키를 사용해준다.
+	console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	//카카오 로그인
+	function kakaoLogin() {
+		Kakao.Auth.login({
+			/* scope: 'profile, account_email,  gender',  */
+			success : function(response) {
+				Kakao.API.request({
+					url : '/v2/user/me',
+					success : function(response) {
+						console.log(response);
+						var nick = response.properties.nickname;
+						var email = response.kakao_account.email;
+						var id = response.id;
+						
+						$.ajax({
+							type : 'POST',
+							url : '<c:url value="/member/kakaologin"/>',
+							data : { 
+									snsjoinid : id,
+									mememail : email,
+									memnick : nick
+								},
+							dataType : 'json',
+							success : function(data){
+								console.log(data);
+								if(data == 0){
+									window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
+								} else if(data == 1){
+									window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
+								} else if(data == 2){
+									window.location.href = "<c:url value='/index'/>";
+								}
+							}
+						});
+								
+						
+					},
+					fail : function(error) {
+						console.log(error)
+					},
+				})
+			},
+			fail : function(error) {
+				console.log(error)
+			},
+		})
+	}
+	
+</script>
 
 
 

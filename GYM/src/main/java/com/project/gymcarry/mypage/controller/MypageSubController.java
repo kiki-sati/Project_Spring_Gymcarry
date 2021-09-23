@@ -1,5 +1,7 @@
 package com.project.gymcarry.mypage.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,14 +58,43 @@ public class MypageSubController {
 		return "/mypage/myinfo";
 	}
 
-	@RequestMapping(value = "/mypage/myinfoUpdate", method = RequestMethod.POST)
-	public String memberListchange(HttpSession session, MypageMemberDto MDTO) {
+	@RequestMapping(value = "/mypage/mypage2")
+	public String paymentMp(HttpSession session, Model model, MypageDto2 mypdto) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
-		System.out.println("세션 변수" + sdt.getMemidx());
-		System.out.println(MDTO);
+		session.setAttribute("memidx", sdt.getMemidx());
+		session.setAttribute("name", sdt.getMemname());
+		List<MypageMemberDto> memberList = mypService.selectmember(sdt.getMemidx());
+		model.addAttribute("memberList", memberList);
 
-		mypService.memberUpdate(MDTO);
+		/*
+		 * // 현재 날짜 구하기 LocalDate now = LocalDate.now(); // 포맷 정의 DateTimeFormatter
+		 * formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일"); // 포맷 적용 String
+		 * formatedNow = now.format(formatter);
+		 * 
+		 * List<MypageDto2> list2 = mypService.loadMemo2(sdt.getMemidx(), formatedNow);
+		 * System.out.println(memberList);
+		 */
+
+		int a = 1;
+		model.addAttribute("a", a);
+		System.out.println(a);
+		System.out.println("세션 -> " + sdt + "-> 마이페이지 진입");
+
+		return "/mypage/mypage";
+	}
+
+	@RequestMapping(value = "/mypage/myinfoUpdate", method = RequestMethod.POST)
+	public String memberListchange(HttpSession session, MypageMemberDto MDTO,
+			@RequestParam("MEMPHOTO") String MEMPHOTO) {
+		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
+		MDTO.getMEMPHONE();
+
+		if (MEMPHOTO.isEmpty()) {
+			mypService.memberUpdate2(MDTO);
+		} else {
+			mypService.memberUpdate(MDTO);
+		}
 
 		System.out.println("인포수정");
 

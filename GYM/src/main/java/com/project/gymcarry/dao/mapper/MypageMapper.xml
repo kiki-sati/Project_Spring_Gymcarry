@@ -89,10 +89,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="memberupdate">
 		update member set
 		MEMNICK = #{MEMNICK},
-		MEMPHONE = #{MEMPHONE},
+		MEMPHONE =
+		#{MEMPHONE},
 		MEMPHOTO = #{MEMPHOTO}
 		where memidx = #{MEMIDX};
 	</update>
+
+
+	<update id="memberupdate2">
+		update member set
+		MEMNICK = #{MEMNICK},
+		MEMPHONE =
+		#{MEMPHONE}
+		where memidx = #{MEMIDX};
+	</update>
+
 
 
 	<select id="loadMemo"

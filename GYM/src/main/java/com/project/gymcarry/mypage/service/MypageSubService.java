@@ -52,5 +52,10 @@ public class MypageSubService {
 		dao = template.getMapper(MypageDao.class);
 		return dao.memberupdate(mMdto);
 	}
+	
+	public int memberUpdate2(MypageMemberDto mMdto) {
+		dao = template.getMapper(MypageDao.class);
+		return dao.memberupdate2(mMdto);
+	}
 
 }

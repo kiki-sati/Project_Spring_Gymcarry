@@ -45,5 +45,10 @@
       crpw = #{crpw}, crnick = #{crnick}, crphone = #{crphone}, crgender = #{crgender}, crphoto = #{crphoto}
       where cridx = #{cridx}
    </update>
+   
+   <!-- 캐리마이페이지 정보 출력 -->
+   <select id="carryinfoview" resultType="com.project.gymcarry.carry.CarryJoinDto">
+   		select crname, crnick, crphoto from carry where cridx = #{cridx}
+   </select>
     
 </mapper>

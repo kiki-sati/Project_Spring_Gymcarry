@@ -34,13 +34,23 @@
 	margin-top: 20px;
 } */
 
+.profile {
+	border-radius: 50%;
+	margin-top : 30px;
+	width : 150px !important;
+	height: 150px !important;
+}
+
 .container>.main>.nameline {
 	display: flex;
 	list-style-type: none;
 	text-align: center;
 	margin: 0;
-	padding: 0;
+	padding: 0 60px;
 	vertical-align: middle;
+	align-items: center;
+	justify-content: center;
+	position: relative;
 }
 
 .edit1 {
@@ -52,16 +62,31 @@
 	visibility: hidden;
 }
 
-.profile {
-	margin-top : 30px;
-	width : 150px !important;
-	height: 150px !important;
+.title {
+	font-size: 20px;
+	margin: 20px;
+	display: inline-block;
+	justify-content: space-between;
 }
 
 .edit2 {
 	width: 20px;
 	height: 20px;
 	margin-left: 5px;
+	display: inline-flex;
+}
+
+#allsave {
+	font-size : 15px;
+	width: 150px;
+	height: 40px;
+	background-color: #2C3E50;
+	color: white;
+	cursor: pointer;
+	border-radius: 15%;
+	margin: auto 16px;
+	position: absolute;
+    right: 60px;
 }
 
 #calendar {
@@ -88,12 +113,6 @@
 	width: 1200px;
 	flex-wrap: nowrap;
 	gap: 20px;
-}
-
-.title {
-	font-size: 20px;
-	margin: 20px auto;
-	display: inline-block;
 }
 
 .modi-list {

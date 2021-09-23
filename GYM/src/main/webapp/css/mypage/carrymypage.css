@@ -50,6 +50,7 @@
 	vertical-align: middle;
 	align-items: center;
 	justify-content: center;
+	position: relative;
 }
 
 .edit1 {
@@ -84,7 +85,8 @@
 	cursor: pointer;
 	border-radius: 15%;
 	margin: auto 16px;
-	float : right !important;
+	position: absolute;
+    right: 60px;
 }
 
 #calendar {

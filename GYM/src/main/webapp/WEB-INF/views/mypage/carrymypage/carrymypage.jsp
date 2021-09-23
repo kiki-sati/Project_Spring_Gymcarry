@@ -54,7 +54,7 @@
 					<!-- 정렬을 위해 왼쪽에 숨겨둘 것 -->
 					<button class="edit1" type="button"></button>
 					<!-- 여기까지 -->
-					<h3 class="title">${crname}</h3>
+					<h3 class="title">${crnick}(${crname} 캐리님)</h3>
 					<a href="/gym/carry/modify"> <img
 						src="<c:url value="/images/icon/edit.png"/>" class="edit2">
 					</a>

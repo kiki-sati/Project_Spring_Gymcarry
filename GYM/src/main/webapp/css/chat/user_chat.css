@@ -53,8 +53,10 @@
 
 .float_left img {
 	width: 85px;
+	height: 85PX;
 	padding: 12px;
 	border-radius: 50%;
+	object-fit: cover;
 }
 
 .chatlist button {

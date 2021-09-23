@@ -158,7 +158,7 @@
                         </tbody>
 
                         <input type="hidden" name="cridx" id="cridx" value="${cridx}">
-                        <input type="hidden" name="oldcrbfphoto" value="${crbfphoto}">
+                        <input type="hidden" name="oldcrbfphoto" value="${carry.crbfphoto}">
 
                     </table>
                 </div>

@@ -50,7 +50,7 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
             carryInfoDto.setCrbfphoto(newFileName);
             System.out.println("파일 정상적으로 들어옴");
         } else {
-            carryInfoDto.setCrbfphoto(request.getParameter("oldcrphoto"));
+            carryInfoDto.setCrbfphoto(request.getParameter("oldcrbfphoto"));
         }
         System.out.println("서비스에서 출력하는 tostring = " + carryInfoDto.toString());
 

@@ -34,9 +34,7 @@
                             <th><span>캐리 소개</span></th>
                             <td>
                                 <form>
-                                    <textarea class="crintro" id="introduce" type="text" name="crintro" required>
-                                        <c:out value="${carry.crintro}" />
-                                    </textarea>
+                                    <textarea class="crintro" id="introduce" type="text" name="crintro" required>${carry.crintro}</textarea>
                                 </form>
                             </td>
                         </tr>
@@ -53,15 +51,9 @@
                             <div class="selectbox">
                                 <td>
                                     <div class="selectbox">
-                                    	<label for="health">헬스 
-                                        	<input type="radio" value="헬스" id="health" name="crfield">
-                                        </label>
-										<label for="pilates">필라테스 
-                                       		<input type="radio" name="crfield" value="필라테스" id="pilates">
-                                        </label>
-                                        <label for="yoga">요가 
-                                      		<input type="radio" name="crfield" value="요가" id="yoga">
-                                        </label>
+                                            <input type="radio" value="헬스" id="health" name="crfield" ${carry.crfield == '헬스' ? 'checked' : ''}>헬스</input>
+                                            <input type="radio" value="필라테스" name="crfield"  id="pilates" ${carry.crfield == '필라테스' ? 'checked' : ''}>필라테스</input>
+                                            <input type="radio" value="요가" name="crfield"  id="yoga" ${carry.crfield == '요가' ? 'checked' : ''}>요가</input>
                                     </div>
                                 </td>
                             </div>
@@ -96,6 +88,7 @@
 									<label for="etc"> 기타 
                                     	<input type="radio" value="기타" id="etc" name="crdepart">
                                     </label>
+                                    <input type="radio" value="다이어트" id="diet" name="crdepart" ${carry.crfield == '요가' ? 'checked' : ''}>요가</input>
                                 </div>
                             </td>
                         </tr>
@@ -126,7 +119,7 @@
                                 <label for="crbfphoto">바디프로필 업로드</label>
                             </th>
                             <td>
-                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto" onclick=document.all.file.click(); >
+                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto" >
                             </td>
                         </tr>
                         </tbody>
@@ -138,20 +131,19 @@
                     <div class="bodyprofile_photo">
                         <img src="<c:url value="/uploadfile/${carry.crbfphoto}"/>">
                     </div>
-                    <div class="select_img"><img src="" /></div>
 
                         <script>
                             function readInputFile(input) {
                                 if (input.files && input.files[0]) {
                                     var reader = new FileReader;
                                     reader.onload = function (data) {
-                                        $(".profilebtn").html("<img src=" + data.target.result + ">");
+                                        $(".bodyprofile_photo").html("<img src=" + data.target.result + ">");
                                     }
                                     reader.readAsDataURL(this.files[0]);
                                 }
                             }
 
-                            $(".profilebtn").on('change', function(){
+                            $("#crbfphoto").on('change', function(){
                                 readInputFile(this);
                             });
                         </script>

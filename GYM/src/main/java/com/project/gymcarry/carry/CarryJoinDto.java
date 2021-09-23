@@ -15,12 +15,15 @@ public class CarryJoinDto {
 	private String crintro;
 	private String crbfphoto;
 	private String crplace;
+	private String crfield;
 
 	public CarryJoinDto() {
 	}
 
 	// 캐리정보 전체출력
-	public CarryJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender, String crphone, String crphoto, String joinkey, String joinkey_status, String crintro, String crbfphoto, String crplace) {
+
+
+	public CarryJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender, String crphone, String crphoto, String joinkey, String joinkey_status, String crintro, String crbfphoto, String crplace, String crfield) {
 		this.cridx = cridx;
 		this.cremail = cremail;
 		this.crpw = crpw;
@@ -34,6 +37,7 @@ public class CarryJoinDto {
 		this.crintro = crintro;
 		this.crbfphoto = crbfphoto;
 		this.crplace = crplace;
+		this.crfield = crfield;
 	}
 
 	// 파일업로드용
@@ -152,6 +156,14 @@ public class CarryJoinDto {
 
 	public void setCrplace(String crplace) {
 		this.crplace = crplace;
+	}
+
+	public String getCrfield() {
+		return crfield;
+	}
+
+	public void setCrfield(String crfield) {
+		this.crfield = crfield;
 	}
 
 	@Override

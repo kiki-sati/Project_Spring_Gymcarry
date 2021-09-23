@@ -6,12 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,9 +26,10 @@ import com.project.gymcarry.board.Pagination;
 import com.project.gymcarry.carry.CarryListDto;
 
 import com.project.gymcarry.member.SessionDto;
-
+import com.project.gymcarry.member.service.memSha256;
 import com.project.gymcarry.mypage.MypageDto2;
 import com.project.gymcarry.mypage.MypageMemberDto;
+import com.project.gymcarry.mypage.MypageMemberUpdateDto;
 import com.project.gymcarry.mypage.MypagePaymentDto;
 import com.project.gymcarry.mypage.service.MypageService;
 import com.project.gymcarry.mypage.service.MypageSubService;
@@ -84,19 +88,25 @@ public class MypageSubController {
 		return "/mypage/mypage";
 	}
 
-	@RequestMapping(value = "/mypage/myinfoUpdate", method = RequestMethod.POST)
-	public String memberListchange(HttpSession session, MypageMemberDto MDTO,
-			@RequestParam("MEMPHOTO") String MEMPHOTO) {
-		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
+	@PostMapping("/mypage/myinfoUpdate")
+	public String memberListchange(HttpSession session, @ModelAttribute MypageMemberUpdateDto MDTO,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		if (MEMPHOTO.isEmpty()) {
-			mypService.memberUpdate2(MDTO);
+		// 암호 확인
+		System.out.println("첫번째 암호 : " + MDTO.getMempw());
+		// 비밀번호 암호화(SHA256)
+		String encryPassword = memSha256.encrypt(MDTO.getMempw());
+		MDTO.setMempw(encryPassword);
+		System.out.println("두번째:" + MDTO.getMempw());
+
+		int result = mypService.updateMemberBasicInfo(MDTO, response, request);
+		System.out.println(MDTO.toString());
+		System.out.println("result = " + result);
+		if (result == 1) {
+			System.out.println("멤버 정보수정 성공");
 		} else {
-			mypService.memberUpdate(MDTO);
-			System.out.println(MDTO);
+			System.out.println("실패");
 		}
-
-		System.out.println("인포수정");
 
 		return "redirect:/mypage/mypage";
 	}

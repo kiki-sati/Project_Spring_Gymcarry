@@ -64,6 +64,13 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
         return dao.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, cridx);
     }
 
+    // 캐리 자격 및 경력 [입력 or 수정]
+    @Override
+    public int upsetCarryCerti(CarryInfoDto carryInfoDto) throws Exception {
+        dao = template.getMapper(CarryMyPageDao.class);
+        return dao.upsetCarryCerti(carryInfoDto);
+    }
+
     // 캐리 기본 정보 수정 데이터 출력
     @Override
     public CarryJoinDto selectCarryBasicInfo(int cridx) throws Exception {

@@ -57,12 +57,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 
-
-
-
-
-
-
 	<select id="getBoardListCnt" resultType="int">
 		select count(*) as
 		listCnt
@@ -81,30 +75,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectmember"
 		resultType="com.project.gymcarry.mypage.MypageMemberDto">
-		select MEMIDX,MEMPHOTO,MEMNAME, MEMEMAIL, MEMPW, MEMNICK,
-		MEMPHONE,MEMBIRTH
+		select memidx,memphoto,memname,mememail,mempw,memphone,
+		memnick,MEMBIRTH
 		from
 		member
-		where memidx = ${MEMIDX};
+		where memidx = ${memidx};
 	</select>
 
-	<update id="memberupdate">
+	<update id="memberupdate"
+		parameterType="com.project.gymcarry.mypage.MypageMemberDto">
 		update member set
-		MEMNICK = #{MEMNICK},
-		MEMPHONE
-		=#{MEMPHONE},
-		MEMPHOTO = #{MEMPHOTO}
-		where memidx = #{MEMIDX};
+		memnick = #{memnick},
+		memphone=#{memphone},
+		memphoto = #{memphoto},
+		mempw = #{mempw}
+		where
+		memidx = #{memidx};
 	</update>
 
 
-	<update id="memberupdate2">
-		update member set
-		MEMNICK = #{MEMNICK},
-		MEMPHONE =
-		#{MEMPHONE}
-		where memidx = #{MEMIDX};
-	</update>
+
+
+
 
 	<select id="loadMemo"
 		resultType="com.project.gymcarry.mypage.MypageDto">

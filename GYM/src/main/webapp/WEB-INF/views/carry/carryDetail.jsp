@@ -15,9 +15,12 @@
 <script src="/gym/js/carryDetail.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
+
 
 
 	<!-- Contents -->
@@ -111,9 +114,9 @@
 					<div class="review_write_wrap" id="review">
 						<div class="carry_review_title">
 							<h2>캐리 후기</h2>
-							<div class="write_reivew_btn off">
-								<input type="button" value="후기작성" id="write_review_btn2">
-							</div>
+							<c:if test="${loginSession.memidx ne 0}">
+								<input type="button" value="후기작성" id="write_review_btn2" class="off" onclick="loginChk()">
+							</c:if>
 						</div>
 
 						<!-- 리뷰 작성 입력폼 -->
@@ -254,52 +257,8 @@
 	</div>
 	<!-- Contents END -->
 
-
-
-	<script>
-
-    // 리뷰작성 버튼 노출 여부
-    $(function(){
-        console.log(${loginSession.memidx})
-        if(${loginSession.memidx != 0}) { // 로그인 여부
-                $(".write_review_btn").removeClass('off');
-        }
-    });
-    
-	</script>
 	
 
-
-
-	<!-- kakao map api -->
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2791d61cfcb1bc044154adc4c6bc431"></script>
-	<script>
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(${carryPlaceInfo.latitude}, ${carryPlaceInfo.longitude}), // 지도의 중심좌표
-        level: 2 // 지도의 확대 레벨
-    };
-
-	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-	
-	// 마커가 표시될 위치입니다 
-	var markerPosition  = new kakao.maps.LatLng(${carryPlaceInfo.latitude}, ${carryPlaceInfo.longitude}); 
-	
-	// 마커를 생성합니다
-	var marker = new kakao.maps.Marker({
-	    position: markerPosition
-	});
-	
-	// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
-	</script>
-
-
-
-
-	<!-- footer -->
-	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 
 	<script>
 
@@ -310,6 +269,19 @@
 		
 	});
 
+	// 리뷰쓰기 로그인 검사
+	 $('#write_review_btn2').click(function(){
+            if(${loginSession == null}) {
+                alert("로그인 후 이용해 주세요.");
+                $(location).attr('href', '<c:url value="/member/login"/>');
+            } else {
+	           	if(${loginSession.memidx != 0}) {
+	           	    $('#write_review_btn2').click(function() {
+	           			$('#review_write').removeClass('display_none');
+	           		});
+	            }   	
+	         }
+	 });
 	
 	
 	// 리뷰 리스트 출력 ajax
@@ -388,3 +360,37 @@
 
 		 
 </script>
+
+
+	<!-- kakao map api -->
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2791d61cfcb1bc044154adc4c6bc431"></script>
+	<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(${carryPlaceInfo.latitude}, ${carryPlaceInfo.longitude}), // 지도의 중심좌표
+        level: 2 // 지도의 확대 레벨
+    };
+
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+	// 마커가 표시될 위치입니다 
+	var markerPosition  = new kakao.maps.LatLng(${carryPlaceInfo.latitude}, ${carryPlaceInfo.longitude}); 
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
+	
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+	</script>
+
+
+
+
+
+
+<!-- footer -->
+<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	

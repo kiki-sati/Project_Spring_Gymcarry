@@ -13,10 +13,10 @@
 			<li><a href="<c:url value="/place/all"/>">PLACE</a></li>
 			<li><a href="<c:url value="/community/boardList"/>">COMMUNITY</a></li>
 			<c:choose>
-				<c:when test="${loginSession.crnick ne null}">
+				<c:when test="${loginSession.cridx ne null}">
 					<li><a href="<c:url value="/mypage/carrymypage"/>">MY PAGE</a></li>
 				</c:when>
-				<c:when test="${loginSession.memnick ne null}">
+				<c:when test="${loginSession.memidx ne null}">
 					<li><a href="<c:url value="/mypage/mypage"/>">MY BODY</a></li>
 				</c:when>
 				<c:when test="${loginSession eq null}">

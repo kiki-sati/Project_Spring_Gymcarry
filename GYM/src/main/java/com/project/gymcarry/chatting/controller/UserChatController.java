@@ -122,15 +122,4 @@ public class UserChatController {
 		return result;
 	}
 	
-	@PostMapping("chatting/chatread")
-	@ResponseBody
-	public int chatRead(@RequestParam("chatidx")int chatidx) {
-		// 메세지 보낸사람 read
-		int result = matchingChatRoomService.getChatRead(chatidx);
-		return result;
-	}
-	
-	
-	
-	
 }

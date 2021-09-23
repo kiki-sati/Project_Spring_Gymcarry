@@ -82,12 +82,12 @@
 <script>
 	var session_memnick = '${loginSession.memnick}'
 	var session_crnick = '${loginSession.crnick}'
-	
 	<c:if test="${loginSession ne null}">
  	var socket = new SockJS("<c:url value='/echo'/>");
 	socket.onmessage = function(message) {
 		var data = message.data;
 		var jsonData = JSON.parse(data);
+		console.log(jsonData);
 		if(jsonData.to == session_memnick){
 			toastr.options.escapeHtml = true;
 			toastr.options.closeButton = true;

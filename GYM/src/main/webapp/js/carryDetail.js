@@ -1,6 +1,6 @@
 $(document).ready(function(e) {
 	
-    $('#write_review_btn').click(function() {
+    $('#write_review_btn2').click(function() {
 		$('#review_write').removeClass('display_none');
 	});
 	

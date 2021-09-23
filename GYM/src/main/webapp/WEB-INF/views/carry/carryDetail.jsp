@@ -51,8 +51,14 @@
 				<!-- carry info section START -->
 
 				<div class="carryinfo_section">
-
-					<div id="c1"></div>
+					<div>
+						<c:if test="${empty carryDetail.crbfphoto}">
+							<img id="c1">
+						</c:if>
+						<c:if test="${!empty carryDetail.crbfphoto}">
+							<img class="crbfphoto" src="<c:url value="/uploadfile/${carryDetail.crbfphoto}"/>" />
+						</c:if>
+					</div>
 
 
 					<table class="carry_info_message" id="introduce">
@@ -175,8 +181,8 @@
 						</c:if>
 
 						<p>
-							<span> <a
-								href="<c:url value='/place/detail?placeidx=${carryPlaceInfo.placeidx}'/>">${carryPlaceInfo.placename}</a></span>
+							<span>
+							<a href="<c:url value='/place/detail?placeidx=${carryPlaceInfo.placeidx}'/>">${carryPlaceInfo.placename}</a></span>
 					</div>
 				</div>
 				<!-- 소속 플레이스 section all wrap END -->
@@ -197,7 +203,15 @@
 			<!-- 우측 배너 START -->
 			<div class="right_banner">
 
-				<div id="c2" class="circle"></div>
+					<div>
+						<c:if test="${empty carryDetail.crphoto}">
+							<img id="c2">
+						</c:if>
+						<c:if test="${!empty carryDetail.crphoto}">
+							<img class="crphoto" src="<c:url value="/uploadfile/${carryDetail.crphoto}"/>" />
+						</c:if>
+					</div>
+					
 				<h2>${carryDetail.crnick}</h2>
 
 				<div class="program_all">

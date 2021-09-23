@@ -58,6 +58,8 @@ public class MypageController {
 		return "/mypage/mypage";
 	}
 
+	
+
 	// 메모 등록
 	@PostMapping
 	public String addMembermemo(MypageDto mypdto, Model model, HttpSession session) {

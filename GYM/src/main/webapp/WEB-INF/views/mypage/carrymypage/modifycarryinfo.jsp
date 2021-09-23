@@ -34,7 +34,7 @@
                             <th><span>캐리 소개</span></th>
                             <td>
                                 <form>
-                                    <textarea id="introduce" type="text" name="crintro"></textarea>
+                                    <textarea id="introduce" type="text" name="crintro" required></textarea>
                                 </form>
                             </td>
                         </tr>
@@ -42,7 +42,7 @@
                             <th><span>소속플레이스</span></th>
                             <td>
                                 <div class="place">
-                                    <input type="text" placeholder="" name="crplace">
+                                    <input type="text" placeholder="" name="crplace" required>
                                 </div>
                             </td>
                         </tr>
@@ -101,10 +101,10 @@
                         <tr>
                             <th><span>PT 이용금액 </span></th>
                             <td>
-                                <input type="text" placeholder="5회 금액 (숫자만 입력해주세요)" name="proprice2">
-                                <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1">
-                                <input type="text" placeholder="10회 금액 (숫자만 입력해주세요)" name="proprice3">
-                                <input type="text" placeholder="20회 금액 (숫자만 입력해주세요)" name="proprice4">
+                                <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1" required>
+                                <input type="text" placeholder="5회 금액 (숫자만 입력해주세요)" name="proprice2" required>
+                                <input type="text" placeholder="10회 금액 (숫자만 입력해주세요)" name="proprice3" required>
+                                <input type="text" placeholder="20회 금액 (숫자만 입력해주세요)" name="proprice4" required>
                             </td>
                         </tr>
 

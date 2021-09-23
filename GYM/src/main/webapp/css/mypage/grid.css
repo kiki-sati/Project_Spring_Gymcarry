@@ -222,6 +222,7 @@ body {
 }
 
 .display_none {
+	height: 210px;
 	width: 70%;
 	display: block;
 	margin: auto;

@@ -1,6 +1,7 @@
 package com.project.gymcarry.mypage.service;
 
 import java.io.File;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,8 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
 
     private CarryMyPageDao dao;
     private CarryDao carryDao;
+    private CarryMyPageDao carryMyPageDao;
+    
 
     @Autowired
     private SqlSessionTemplate template;
@@ -139,4 +142,11 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
         }
         return extension;
     }
+
+    // 내 회원 리스트 출력
+	@Override
+	public List<CarryMyMemberDto> selectMyMemberList(int cridx) throws Exception {
+		carryMyPageDao = template.getMapper(CarryMyPageDao.class);
+         return carryMyPageDao.myMemberList(cridx);
+	}
 }

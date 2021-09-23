@@ -1,5 +1,7 @@
 package com.project.gymcarry.mypage.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,5 +28,7 @@ public interface CarryMyPageService {
 
     // 캐리 자격 및 경력 정보
     public CarryCertiDto getCarryCerti(int cridx) throws Exception;
+    
+    public List<CarryMyMemberDto> selectMyMemberList(int cridx) throws Exception;
 
 }

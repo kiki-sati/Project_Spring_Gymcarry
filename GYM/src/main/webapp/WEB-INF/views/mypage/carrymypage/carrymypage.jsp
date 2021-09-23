@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -77,21 +80,47 @@
 			<div class="modi-list">
 				<h3>My Page</h3>
 				<ul>
-					<li><a href="/gym/carry/modify">기본 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
+					<li>
+						<a href="/gym/carry/modify">기본 정보 수정</a>
 					</li>
-					<br>
-					<li><a href="/gym/mypage/carrymodify">캐리 정보 수정</a> <!-- <a href="<c:url value="/"/>"> --></li>
-					<br>
-					<li><a href="/gym/mypage/carrymypage/carry_mymemberlist">내
-							회원 리스트</a> <!-- <a href="<c:url value="/"/>"> --></li>
-					<br>
+					<li>
+						<a href="/gym/mypage/carrymodify">캐리 정보 수정</a> 
+					</li>
 				</ul>
 			</div>
 
 			<div class="mymemberlist">
-				<li>
-					<h3>내 회원 리스트</h3>
-				</li>
+				<h3>Member List</h3>
+				<div class="list_wrap">
+					<div class="list_head">
+						<span class="list_name">이름</span>
+						<span class="list_nick">닉네임</span>
+						<span class="list_count">결제 횟수</span>
+						<span class="list_totalpay">총 결제 금액</span>
+						<span class="list_date">최종 결제일</span>
+					</div>
+					<ul class="list_body">
+						<c:if test="${!empty memberList}">
+						<c:forEach items="${memberList}" var="memberList">
+							<li>
+								<span class="list_name">${memberList.memname}</span>
+								<span class="list_nick">${memberList.memnick}</span>
+								<span class="list_count">${memberList.paycount}회</span>
+								<span class="list_totalpay"><fmt:formatNumber value="${memberList.totalpay}" type="number" />원</span>
+								<span class="list_date">
+    								<c:set var="date" value="${memberList.date}"/>
+                                    <c:set var="onlydate" value="${fn:substring(date, 0, 10)}" />
+                                        ${onlydate}
+								</span>
+							</li>
+						</c:forEach>
+						</c:if>
+						<c:if test="${empty memberList}">
+							<div style="text-align:center; margin-top:20px; font-size:15px">회원목록이 없습니다.</div>
+						</c:if>
+						
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -171,11 +171,17 @@ body {
 	padding-top: 20px;
 }
 
-.profile_image {
-	border-radius: 50%;
-	width: 120px;
-	margin-left: 13px;
+.crphoto {
+	margin-bottom: 50px;	
 }
+
+.profile_image {
+	height: 160px;
+	width: 160px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
 
 .nickname {
 	justify-content: center;

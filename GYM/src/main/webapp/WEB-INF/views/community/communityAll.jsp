@@ -155,7 +155,13 @@
             alert('로그인이 필요합니다.');
             $(location).attr('href', '<c:url value="/member/login"/>');
         } else {
-            $(location).attr('href', '<c:url value="/community/write"/>');
+        	
+        	if(${loginSession.memidx != 0}) {
+	            $(location).attr('href', '<c:url value="/community/write"/>');
+        	} else {
+        		alert('일반회원만 이용가능한 서비스입니다.');
+        	}
+        	
         }
     };
 

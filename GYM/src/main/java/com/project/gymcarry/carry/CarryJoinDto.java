@@ -17,12 +17,13 @@ public class CarryJoinDto {
 	private String crplace;
 	private String crfield;
 	private String crdepart;
+	private int placeidx;
 
 	public CarryJoinDto() {
 	}
 
 	// 캐리정보 전체출력
-	public CarryJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender, String crphone, String crphoto, String joinkey, String joinkey_status, String crintro, String crbfphoto, String crplace, String crfield, String crdepart) {
+	public CarryJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender, String crphone, String crphoto, String joinkey, String joinkey_status, String crintro, String crbfphoto, String crplace, String crfield, String crdepart, int placeidx) {
 		this.cridx = cridx;
 		this.cremail = cremail;
 		this.crpw = crpw;
@@ -38,6 +39,7 @@ public class CarryJoinDto {
 		this.crplace = crplace;
 		this.crfield = crfield;
 		this.crdepart = crdepart;
+		this.placeidx = placeidx;
 	}
 
 	// 파일업로드용
@@ -174,6 +176,14 @@ public class CarryJoinDto {
 		this.crdepart = crdepart;
 	}
 
+	public int getPlaceidx() {
+		return placeidx;
+	}
+
+	public void setPlaceidx(int placeidx) {
+		this.placeidx = placeidx;
+	}
+
 	@Override
 	public String toString() {
 		return "CarryJoinDto{" +
@@ -192,6 +202,7 @@ public class CarryJoinDto {
 				", crplace='" + crplace + '\'' +
 				", crfield='" + crfield + '\'' +
 				", crdepart='" + crdepart + '\'' +
+				", placeidx=" + placeidx +
 				'}';
 	}
 }

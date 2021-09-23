@@ -260,7 +260,7 @@
 
     // 리뷰작성 버튼 노출 여부
     $(function(){
-        console.log(${loginSession.memidx});
+        console.log(${loginSession.memidx})
         if(${loginSession.memidx != 0}) { // 로그인 여부
                 $(".write_review_btn").removeClass('off');
         }

@@ -34,7 +34,7 @@
                             <th><span>캐리 소개</span></th>
                             <td>
                                 <form>
-                                    <textarea id="introduce" type="text" name="crintro" ></textarea>
+                                    <textarea id="introduce" type="text" name="crintro" required></textarea>
                                 </form>
                             </td>
                         </tr>
@@ -42,7 +42,7 @@
                             <th><span>소속플레이스</span></th>
                             <td>
                                 <div class="place">
-                                    <input type="text" placeholder="" name="crplace" >
+                                    <input type="text" placeholder="" name="crplace" required>
                                 </div>
                             </td>
                         </tr>

@@ -124,7 +124,7 @@
             var postidx = "${boardDetail.postidx}"; // 글번호
             var memidx = "${loginSession.memidx}"; // 회원번호
 
-            if(${loginSession.memidx == 0}) {
+            if(${loginSession.memidx == 0 || loginSession == null}) {
                 alert("일반회원 로그인 후 이용해 주세요.");
             } else {
                 if($(this).hasClass('on')){ // 이미 좋아요를 누른 상태(클릭하면 좋아요가 취소된다)

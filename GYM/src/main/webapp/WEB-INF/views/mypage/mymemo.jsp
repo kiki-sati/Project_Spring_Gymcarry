@@ -55,13 +55,8 @@
 			class="edit_text" src="<c:url value="/images/icon/upload.png"/>"></a>
 		<div class="memo-input-div-photo">
 
-			
-				<img class="imgc" id="memo-input-photo"
-					src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>"><br>
-			
-			
-			<input class="memo-input"  type="text"
-				readonly="readonly">
+
+			<img class="imgc" id="memo-input-photo"><br>
 		</div>
 
 	</div>
@@ -154,8 +149,7 @@
 								style="display: none;" />
 							<div class="photo-margin display_none profileimg "
 								id="image_container">
-								<img class="imgc"
-									src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>"><br>
+								<br>
 							</div>
 
 

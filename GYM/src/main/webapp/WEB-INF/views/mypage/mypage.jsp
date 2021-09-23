@@ -42,22 +42,24 @@
 		infodate[1].value = name;
 		infodate[2].value = name;
 		infodate[3].value = name;
+		infodate[4].value = name;
 
 	}
-	
+
 	window.onload = function() {
 		loginLog()
-		
-	if (  ${a} ==  1 ) {
-		handleInputOnkeyup();
-	}
+
+		var akey = "${a.a}";
+
+		if (akey == 1) {
+			handleInputOnkeyup();
+		}
 	}
 
-	function 	handleInputOnkeyup() {
+	function handleInputOnkeyup() {
 		document.getElementById('mycash').click();
-		}
-	
-	
+	}
+
 	function StartPrintName() {
 		const name = document.getElementById('alternate').value;
 		var infodate = document.getElementsByName("infodate")
@@ -80,47 +82,59 @@
 
 				list = map;
 
-				if (map.list == undefined) {
-					var moop = map.list
-					moop = " "
-					var list = moop;
+				var list = map.list;
+				$('#memo-input-food').val(list);
+
+				var list2 = map.list2;
+				$('#memo-input-memo').val(list2);
+
+				var list3 = map.list3;
+				$('#memo-input-kg').val(list3);
+
+				var list4 = map.list4;
+
+				if (list4 == "") {
+					$('#memo-input-photo').attr("src", "/gym/uploadfile/bodydefault.PNG");
+				} else if(list4 == null) {
+					$('#memo-input-photo').attr("src", "/gym/uploadfile/bodydefault.PNG");
+				} else {
+					$('#memo-input-photo').attr("src", "/gym/uploadfile/" + list4);
+				}
+
+
+				// 언디파인드 탐색문
+				/* 	if (map.list == undefined) {
+					var list = map.list
+					list = ""
 					$('#memo-input-food').val(list);
 				} else {
-
-					var list = map.list;
-					$('#memo-input-food').val(list);
+					
 				}
 
 				if (map.list2 == undefined) {
-					var moop = map.list2
-					moop = " "
-					var list2 = map.list2;
+					var list2 = map.list2
+					list2 = ""
 					$('#memo-input-memo').val(list2);
-				} else {
-					var list2 = map.list2;
-					$('#memo-input-memo').val(list2);
+					else {
+				
+					}
 				}
 
 				if (map.list3 == undefined) {
-					var moop = map.list3
-					moop = " "
-					var list3 = map.list3;
+					var list3 = map.list3
+					list3 = ""
 					$('#memo-input-kg').val(list3);
 				} else {
-					var list3 = map.list3;
-					$('#memo-input-kg').val(list3);
+					
 				}
 
 				if (map.list4 == undefined) {
-					var moop = map.list4
-					moop = " "
-					var list4 = map.list4;
+					var list4 = map.list4
+					list4 = ""
 					$('#memo-input-photo').attr("src", list4);
 				} else {
-					var list4 = map.list4;
-					$('#memo-input-photo').attr("src",
-							"/gym/uploadfile/" + list4);
-				}
+				
+				} */
 
 			},
 			error : function(request, status, error) {

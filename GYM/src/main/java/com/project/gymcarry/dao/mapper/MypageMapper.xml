@@ -47,18 +47,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.project.gymcarry.carry.CarryListDto">
 
 		select cridx, crnick, placeidx, placename, proprice,
-		crcerti1, crcerti2,
-		crcerti3, crcerti4, crcerti5, procount
+		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5, crbfphoto
 		from carry
-		natural
-		join
-		crcertification natural join crprice natural join
+		natural join crcertification natural join crprice natural join
 		place
-		where
-		procount=1 and cridx in (SELECT cridx FROM gymcarry.likelist
+		where procount=1 and cridx in (SELECT cridx FROM gymcarry.likelist
 		where
 		memidx = ${memidx} and LIKECHECK = '1');
+
 	</select>
+
+
+
+
+
 
 
 	<select id="getBoardListCnt" resultType="int">
@@ -89,8 +91,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="memberupdate">
 		update member set
 		MEMNICK = #{MEMNICK},
-		MEMPHONE =
-		#{MEMPHONE},
+		MEMPHONE
+		=#{MEMPHONE},
 		MEMPHOTO = #{MEMPHOTO}
 		where memidx = #{MEMIDX};
 	</update>
@@ -104,21 +106,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where memidx = #{MEMIDX};
 	</update>
 
-
-
 	<select id="loadMemo"
 		resultType="com.project.gymcarry.mypage.MypageDto">
 		select infocontent from mypage where memidx = #{arg0} and
-		infodate = #{arg1} ORDER BY FIELD(infotype, 'photo','food',
-		'kg','memo') DESC, infotype ASC;
+		infodate = #{arg1} ORDER BY FIELD(infotype,
+		'photo','food','kg','memo') DESC, infotype ASC;
 	</select>
 
 	<select id="loadMemo2"
 		resultType="com.project.gymcarry.mypage.MypageDto2">
+
 		select infocontent,infotype from mypage where memidx =
 		#{arg0} and
-		infodate = #{arg1} ORDER BY FIELD(infotype, 'photo','food',
-		'kg','memo') DESC, infotype ASC;
+		infodate =
+		#{arg1} ORDER BY FIELD(infotype,
+		'photo','food','kg','memo') DESC,
+		infotype ASC;
 	</select>
 
 

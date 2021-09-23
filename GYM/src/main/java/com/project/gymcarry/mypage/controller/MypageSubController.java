@@ -88,12 +88,12 @@ public class MypageSubController {
 	public String memberListchange(HttpSession session, MypageMemberDto MDTO,
 			@RequestParam("MEMPHOTO") String MEMPHOTO) {
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
-		MDTO.getMEMPHONE();
 
 		if (MEMPHOTO.isEmpty()) {
 			mypService.memberUpdate2(MDTO);
 		} else {
 			mypService.memberUpdate(MDTO);
+			System.out.println(MDTO);
 		}
 
 		System.out.println("인포수정");
@@ -118,9 +118,7 @@ public class MypageSubController {
 			@RequestParam("arg0") int arg0, @RequestParam("arg1") String arg1) {
 
 		List<MypageDto2> list2 = mypService2.loadMemo2(arg0, arg1);
-		model.addAttribute("list5", list2);
 		System.out.println(list2 + "동작은하나?");
-		System.out.println("마이 패스");
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
@@ -129,22 +127,18 @@ public class MypageSubController {
 			for (int i = 0; i < list2.size(); i++) {
 
 				if (list2.get(i).getInfotype().equals("food")) {
-
 					map.put("list", list2.get(i).getInfocontent());
 				}
 
 				if (list2.get(i).getInfotype().equals("memo")) {
-
 					map.put("list2", list2.get(i).getInfocontent());
 				}
 
 				if (list2.get(i).getInfotype().equals("kg")) {
-
 					map.put("list3", list2.get(i).getInfocontent());
 				}
 
 				if (list2.get(i).getInfotype().equals("photo")) {
-
 					map.put("list4", list2.get(i).getInfocontent());
 				}
 			}
@@ -181,6 +175,7 @@ public class MypageSubController {
 		session.setAttribute("memidx", sdt.getMemidx());
 		List<CarryListDto> alist = mypService.getMyCarryList(sdt.getMemidx());
 		model.addAttribute("allList", alist);
+		System.out.println(alist + "alist");
 
 		System.out.println("좋아요 캐리 리스트 출력");
 

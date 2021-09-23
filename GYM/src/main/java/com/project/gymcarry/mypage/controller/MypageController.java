@@ -58,8 +58,6 @@ public class MypageController {
 		return "/mypage/mypage";
 	}
 
-	
-
 	// 메모 등록
 	@PostMapping
 	public String addMembermemo(MypageDto mypdto, Model model, HttpSession session) {
@@ -74,15 +72,14 @@ public class MypageController {
 
 		if (list1.isEmpty()) {
 			mypService.memberMemo(mypdto);
-			System.out.println("인설트로 가쟈");
-//			List<MypageDto> list2 = mypService.loadMemo(arg0, arg1);
-//			model.addAttribute("list2", list2);
+			System.out.println("인설트로 가쟈 " + mypdto );
+
 			model.addAttribute("memberList", memberList);
 			return "mypage/mypage";
 
 		} else {
 			mypService.updateMemo(mypdto);
-			System.out.println("업데이트 가쟈");
+			System.out.println("업데이트 가쟈" + mypdto  );
 			model.addAttribute("memberList", memberList);
 //			List<MypageDto> list2 = mypService.loadMemo(arg0, arg1);
 //			System.out.println(list2);

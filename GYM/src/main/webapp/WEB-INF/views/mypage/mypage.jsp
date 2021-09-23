@@ -29,10 +29,7 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<script>
 	
-</script>
-
 
 <script>
 	function printName() {
@@ -94,13 +91,15 @@
 				var list4 = map.list4;
 
 				if (list4 == "") {
-					$('#memo-input-photo').attr("src", "/gym/uploadfile/bodydefault.PNG");
-				} else if(list4 == null) {
-					$('#memo-input-photo').attr("src", "/gym/uploadfile/bodydefault.PNG");
+					$('#memo-input-photo').attr("src",
+							"/gym/uploadfile/bodydefault.PNG");
+				} else if (list4 == null) {
+					$('#memo-input-photo').attr("src",
+							"/gym/uploadfile/bodydefault.PNG");
 				} else {
-					$('#memo-input-photo').attr("src", "/gym/uploadfile/" + list4);
+					$('#memo-input-photo').attr("src",
+							"/gym/uploadfile/" + list4);
 				}
-
 
 				// 언디파인드 탐색문
 				/* 	if (map.list == undefined) {
@@ -181,13 +180,13 @@
 								<div class="col-profile">
 
 									<img id="loadingimg" class="display_none"
-										src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>">
+										src="<c:url value="/uploadfile/${memberList.memphoto}"/>">
 
 								</div>
 
 								<div class="col-name">
 									<div style="text-align: right; width: 55%; float: left;">
-										<h3>${memberList.MEMNICK}</h3>
+										<h3>${memberList.memnick}</h3>
 										<!-- 세션 네임 -->
 
 

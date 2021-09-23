@@ -5,10 +5,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.member.MemberJoinDto;
 
-public class MypageMemberDto {
+public class MypageMemberUpdateDto {
 
 	private int memidx;
-	private String memphoto;
+	private MultipartFile memphoto;
 	private String memname;
 	private String mememail;
 	private String mempw;
@@ -24,11 +24,11 @@ public class MypageMemberDto {
 		this.memidx = memidx;
 	}
 
-	public String getMemphoto() {
+	public MultipartFile getMemphoto() {
 		return memphoto;
 	}
 
-	public void setMemphoto(String memphoto) {
+	public void setMemphoto(MultipartFile memphoto) {
 		this.memphoto = memphoto;
 	}
 
@@ -82,25 +82,17 @@ public class MypageMemberDto {
 
 	@Override
 	public String toString() {
-		return "MypageMemberDto [memidx=" + memidx + ", memphoto=" + memphoto + ", memname=" + memname + ", mememail="
-				+ mememail + ", mempw=" + mempw + ", memnick=" + memnick + ", memphone=" + memphone + ", membirth="
-				+ membirth + "]";
+		return "MypageMemberUpdateDto [memidx=" + memidx + ", memphoto=" + memphoto + ", memname=" + memname
+				+ ", mememail=" + mememail + ", mempw=" + mempw + ", memnick=" + memnick + ", memphone=" + memphone
+				+ ", membirth=" + membirth + "]";
 	}
 
-	public MypageMemberDto(int memidx, String memphoto, String memname, String mememail, String mempw, String memnick,
-			String memphone, String membirth) {
-		super();
-		this.memidx = memidx;
-		this.memphoto = memphoto;
-		this.memname = memname;
-		this.mememail = mememail;
-		this.mempw = mempw;
-		this.memnick = memnick;
-		this.memphone = memphone;
-		this.membirth = membirth;
+	public MypageMemberDto getMemberJoinDto() {
+		return new MypageMemberDto(memidx, memphoto.getOriginalFilename(), memname, mememail, mempw, memnick, memphone,
+				membirth);
 	}
-	
-	public MypageMemberDto() {
+
+	public MypageMemberUpdateDto() {
 
 	}
 

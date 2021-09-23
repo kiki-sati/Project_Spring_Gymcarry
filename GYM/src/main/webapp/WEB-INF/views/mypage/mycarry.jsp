@@ -19,12 +19,13 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	<!-- Contents -->
+
+	<!-- ------------------------------------ -->
 
 	<div class="content_main">
 		<div class="content_wrap">
 			<div class="content">
-				<h1 class="all_title">함께할 캐리를 찾고 싶으신가요?</h1>
+				<h1 class="all_title">새로운 캐리를 찾고 싶으신가요?</h1>
 				<nav class="top">
 					<ul>
 						<li><input type="button" class="match_btn"

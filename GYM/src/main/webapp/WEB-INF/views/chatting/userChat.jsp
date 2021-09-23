@@ -33,7 +33,7 @@
 								class="on_btn">
 								<div class="float_left">
 									<%-- <img src="<c:url value="/images/icon/profile2.png"/>"> --%>
-									<img src="<c:url value="/uploadfile/${list.memphoto}"/>">
+									<img src="<c:url value="/uploadfile/${list.crphoto}"/>">
 								</div>
 								<div class="float_left chat_name">
 									<h3>${list.crnick}</h3>
@@ -228,18 +228,17 @@
 
 	<script>
 	
+	var url;
+	$(".on_btn").on("click", function(){
+		url = $(this).find('.float_left img').attr("src");
+	});
+	
 	var socket = new SockJS("<c:url value='/echo'/>");
 	// open - 커넥션이 제대로 만들어졌을 때 호출
 	socket.onopen = function() {
 		// 방오픈 됫는지 확인 메세지
 		console.log('connection opend.');
 	};
-	
-	var url;
-	$(".on_btn").on("click", function(){
-		url = $(this).find('.float_left img').attr("src");
-		console.log(url);
-	});
 	
 	// onmessage - 커넥션이 메세지 호출
 	socket.onmessage = function(message) {

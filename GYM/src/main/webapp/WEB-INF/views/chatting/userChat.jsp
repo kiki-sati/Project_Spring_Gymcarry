@@ -32,7 +32,8 @@
 							location.href='javascript:chatList(${list.chatidx})'"
 								class="on_btn">
 								<div class="float_left">
-									<img src="<c:url value="/images/icon/profile2.png"/>">
+									<%-- <img src="<c:url value="/images/icon/profile2.png"/>"> --%>
+									<img src="<c:url value="/uploadfile/${list.memphoto}"/>">
 								</div>
 								<div class="float_left chat_name">
 									<h3>${list.crnick}</h3>
@@ -234,10 +235,17 @@
 		console.log('connection opend.');
 	};
 	
+	var url;
+	$(".on_btn").on("click", function(){
+		url = $(this).find('.float_left img').attr("src");
+		console.log(url);
+	});
+	
 	// onmessage - 커넥션이 메세지 호출
 	socket.onmessage = function(message) {
 		var data = message.data;
 		var jsonData = JSON.parse(data);
+		
 		console.log(jsonData);
 		var currentuser_session = $('#messageId').val();
 		if(chatIdx == jsonData.chatidx){
@@ -260,7 +268,7 @@
 			} else {
 				var htmlSt = '<div class="carry_message_warp">'
 					htmlSt += '<div class="carry_chat">'
-					htmlSt += '<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+					htmlSt += '<div class="carry_line"><img src="'+url+'"></div>'
 					htmlSt += '<div class="message">'
 					htmlSt += '<div class="message_color">'
 					htmlSt += '<span>'+jsonData.chatcontent+'</span>'
@@ -422,9 +430,10 @@
 						$.each(data.memList, function(index, item) {
 							if(item.contenttype == 1 && item.chatcontent != null){
 								htmlStr += '<div class="carry_chat">'
-								htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+								htmlStr += '	<div class="carry_line"><img src="'+url+'"></div>'
 								htmlStr += '	<div class="message">'
 								htmlStr += '		<div class="message_color">'
+								
 								htmlStr += '			<span>'+item.chatcontent+'</span>'
 								htmlStr += '		</div>'
 								htmlStr += '	</div>'
@@ -471,7 +480,7 @@
 								htmlStr += '	</div>'
 							} else if (item.contenttype == 0 && item.chatcontent != null){
 								htmlStr += '<div class="carry_chat">'
-								htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+								htmlStr += '	<div class="carry_line"><img src="'+url+'"></div>'
 								htmlStr += '	<div class="message">'
 								htmlStr += '		<div class="message_color">'
 								htmlStr += '			<span>'+item.chatcontent+'</span>'

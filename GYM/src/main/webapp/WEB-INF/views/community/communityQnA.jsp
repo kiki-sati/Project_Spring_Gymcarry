@@ -150,18 +150,22 @@
 
 <script>
 
-    // 글쓰기 로그인 검사
-    function test() {
-
-        if (${loginSession == null}) {
-            alert('로그인이 필요합니다.');
-            $(location).attr('href', '<c:url value="/member/login"/>');
-        } else {
-            $(location).attr('href', '<c:url value="/community/write"/>');
-        }
-    };
-
-
+	//글쓰기 로그인 검사
+	function test() {
+	
+	    if (${loginSession == null}) {
+	        alert('로그인이 필요합니다.');
+	        $(location).attr('href', '<c:url value="/member/login"/>');
+	    } else {
+	    	
+	    	if(${loginSession.memidx != 0}) {
+	            $(location).attr('href', '<c:url value="/community/write"/>');
+	    	} else {
+	    		alert('일반회원만 이용가능한 서비스입니다.');
+	    	}
+	    	
+	    }
+	};
     // 게시판 Nav 출력
     $("#comuni").click(function () {
         $.ajax({

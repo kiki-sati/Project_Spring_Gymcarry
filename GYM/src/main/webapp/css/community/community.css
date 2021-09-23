@@ -107,6 +107,9 @@ body {
 .profile_image {
   border-radius: 50%;
   width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .nickname {

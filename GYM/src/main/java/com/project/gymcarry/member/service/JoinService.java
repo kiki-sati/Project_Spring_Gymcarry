@@ -143,7 +143,7 @@ public class JoinService {
 		extension = nameTokens[nameTokens.length - 1].toLowerCase();
 		// 이미지 파일 이외의 파일 업로드 금지
 		// 파일 확장자 체크
-		if (!(extension.equals("jpg") || extension.equals("png") || extension.equals("gif"))) {
+		if (!(extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("gif"))) {
 			throw new Exception("허용하지 않는 파일 확장자 타입 : " + contentType);
 		}
 		return extension;

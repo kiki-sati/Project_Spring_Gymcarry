@@ -111,8 +111,9 @@
 					<div class="review_write_wrap" id="review">
 						<div class="carry_review_title">
 							<h2>캐리 후기</h2>
-							<input type="button" value="후기작성" id="write_review_btn" class="off"
-								>
+							<div class="write_reivew_btn off">
+								<input type="button" value="후기작성" id="write_review_btn2">
+							</div>
 						</div>
 
 						<!-- 리뷰 작성 입력폼 -->
@@ -259,11 +260,12 @@
 
     // 리뷰작성 버튼 노출 여부
     $(function(){
-        if(${memnick != null}) { // 로그인 여부
-        		console.log(${loginSession.memidx});
-                $("#write_review_btn").removeClass('off');
+        console.log(${loginSession.memidx});
+        if(${loginSession.memidx != 0}) { // 로그인 여부
+                $(".write_review_btn").removeClass('off');
         }
     });
+    
 	</script>
 	
 

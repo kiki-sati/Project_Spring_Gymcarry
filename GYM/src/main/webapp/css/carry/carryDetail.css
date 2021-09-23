@@ -106,7 +106,7 @@
 	margin-bottom: 60px;
 }
 
-.write_review_btn.off {
+.off {
     display: none;
 }
 
@@ -219,7 +219,7 @@
 	display: inline;
 }
 
-#write_review_btn:hover {
+#write_review_btn2:hover {
 	float: right;
 	border: 1px solid #ccc;
 	background-color: white;
@@ -229,7 +229,7 @@
 	transition: .3s all ease;
 }
 
-#write_review_btn {
+#write_review_btn2 {
 	float: right;
 	border: 1px solid #000;
 	background-color: black;

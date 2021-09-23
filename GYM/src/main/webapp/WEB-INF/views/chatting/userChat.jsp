@@ -235,7 +235,8 @@
 	
 	var socket = new SockJS("<c:url value='/echo'/>");
 	// open - 커넥션이 제대로 만들어졌을 때 호출
-	socket.onopen = function() {
+	socket.onopen = function(asd) {
+		console.log(asd);
 		// 방오픈 됫는지 확인 메세지
 		console.log('connection opend.');
 	};

@@ -49,7 +49,7 @@
 	window.onload = function() {
 		loginLog()
 
-		var akey = "${a.a}";
+		var akey = "${a}";
 
 		if (akey == 1) {
 			handleInputOnkeyup();

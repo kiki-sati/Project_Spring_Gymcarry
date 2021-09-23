@@ -2,6 +2,8 @@ package com.project.gymcarry.carry.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.carry.service.CarryInfoService;
+import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.place.PlaceDto;
 
 @Controller
@@ -27,13 +30,17 @@ public class CarryDetailController {
 
 	// 캐리 상세 페이지
 	@GetMapping("/carry/detail")
-	public String carryDetail(@RequestParam("cridx") int cridx, Model model) {
+	public String carryDetail(@RequestParam("cridx") int cridx, Model model, HttpSession session) {
 
 		CarryDto carryDetail = carryInfoService.getCarryDetail(cridx);
 		List<CarryPriceDto> price = carryInfoService.getCarryPriceList(cridx);
 		CarryCertiDto carryCerti = carryInfoService.getCarryCerti(cridx);
 		PlaceDto carryPlaceInfo = carryInfoService.getCarryPlaceInfo(cridx);
 
+		HttpSession session = request.getSession();
+		SessionDto sessionDto = (SessionDto) session.getAttribute("loginSession");
+		session.setAttribute("idx", sessionDto.getMemidx());
+		
 		System.out.println("캐리IDX:" + cridx + " => 상세페이지로 진입");
 
 		model.addAttribute("carryDetail", carryDetail);

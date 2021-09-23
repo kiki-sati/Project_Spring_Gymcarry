@@ -168,12 +168,9 @@ body {
 .board_sidebar {
 	width: 25%;
 	margin: 0 auto;
-	padding-top: 20px;
+	padding-top: 3px;
 }
 
-.crphoto {
-	margin-bottom: 50px;	
-}
 
 .profile_image {
 	height: 160px;

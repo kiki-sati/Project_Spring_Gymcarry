@@ -111,8 +111,8 @@
 					<div class="review_write_wrap" id="review">
 						<div class="carry_review_title">
 							<h2>캐리 후기</h2>
-							<input type="button" value="후기작성" id="write_review_btn"
-								onclick="loginChk();">
+							<input type="button" value="후기작성" id="write_review_btn" class="off"
+								>
 						</div>
 
 						<!-- 리뷰 작성 입력폼 -->
@@ -257,16 +257,13 @@
 
 	<script>
 
-	// 리뷰 등록 로그인 검사
-    function loginChk() {
-
-        if (${loginSession == null}) {
-            alert('로그인이 필요한 서비스입니다.');
-            $(location).attr('href', '<c:url value="/member/login"/>');
-        } else {
+    // 리뷰작성 버튼 노출 여부
+    $(function(){
+        if(${loginSession.memidx != 0}) { // 로그인 여부
+        		console.log(${loginSession.memidx});
+                $("#write_review_btn").removeClass('off');
         }
-    };
-	
+    });
 	</script>
 	
 
@@ -370,29 +367,6 @@
 
 		});
 	}
-	
-
-	// 리뷰 등록하기(Ajax)
-	function fn_review(code) {
-
-		$.ajax({
-			type : 'POST',
-			url : "<c:url value='/carry/add'/>",
-			data : $("#reviewForm").serialize(),
-			success : function() {
-				$(".review_input").val("");
-				alert('리뷰가 정상적으로 등록되었습니다.');
-				reviewList();
-			},
-			error : function(request, status, error) {
-				alert("code:" + request.status + "\n" + "message:"
-						+ request.responseText + "\n" + "error:" + error);
-			}
-
-		});
-	}
-	
-
 	
 		
 		 // place 이미지 슬라이드

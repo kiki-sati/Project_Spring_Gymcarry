@@ -1,8 +1,10 @@
 package com.project.gymcarry.dao;
 
-import com.project.gymcarry.carry.CarryDto;
+import java.util.List;
+
 import com.project.gymcarry.carry.CarryInfoDto;
 import com.project.gymcarry.carry.CarryJoinDto;
+import com.project.gymcarry.carry.CarryMyMemberDto;
 
 public interface CarryMyPageDao {
 
@@ -20,6 +22,9 @@ public interface CarryMyPageDao {
     
     // 캐리 기본 정보 수정 완료
     int updateCarryBasicInfo(CarryJoinDto carryJoinDto) throws Exception;
+    
+    // 내 회원 리스트 출력
+    List<CarryMyMemberDto> myMemberList(int cridx) throws Exception;
 
 
     

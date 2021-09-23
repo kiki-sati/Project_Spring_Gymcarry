@@ -84,10 +84,11 @@
 	background-color: #2C3E50;
 	color: white;
 	cursor: pointer;
-	border-radius: 15%;
+	border-radius: 5px;
 	margin: auto 16px;
 	position: absolute;
     right: 60px;
+    border:none;
 }
 
 #calendar {
@@ -114,19 +115,28 @@
 	width: 1200px;
 	flex-wrap: nowrap;
 	gap: 20px;
+	justify-content:space-between;
 }
 
 .modi-list {
-	background-color: lavender;
-	width: 35%;
+	background-color: #000;
+	width: 20%;
 	height: auto;
-	padding: 10px;
+	padding: 15px 20px;
 }
 
 .modi-list>h3 {
-	margin-bottom: 10px;
+	margin-bottom: 40px;
+	color:#fff;
 }
 
+.modi-list ul li {
+	margin-bottom:15px;
+}
+.modi-list ul li a {
+	font-size:15px;
+	color:#fff;
+}
 .today-schedule {
 	background-color: honeydew;
 	width: 65%;
@@ -146,3 +156,45 @@
 	float: right;
 }
 
+
+.mymemberlist {
+	width:79%;
+	border:1px solid #ddd; 
+	padding:15px;
+	box-shadow: 0px 3px 11px 2px rgb(13 12 41 / 12%);
+}
+
+.mymemberlist .list_wrap {
+	margin-top:30px;
+}
+
+.mymemberlist .list_wrap .list_head {
+	display:flex;
+	padding-bottom:10px;
+	border-bottom:1px solid #333;
+	
+}
+
+.mymemberlist .list_wrap .list_head > *  {
+	width:25%;
+	text-align:center;
+	color:#000;
+	font-weight:600;
+}
+
+.mymemberlist .list_wrap .list_body {
+	margin-top:15px;
+}
+.mymemberlist .list_wrap .list_body li {
+	display:flex;
+	margin-bottom:10px;
+}
+.list_wrap .list_body span {
+	width:25%;
+	text-align:center;
+	display:block;
+	font-size:14px;
+}
+.mymemberlist .list_wrap .list_date {
+	width:30%;
+}

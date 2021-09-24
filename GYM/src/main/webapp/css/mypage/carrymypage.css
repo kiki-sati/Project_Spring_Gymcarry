@@ -25,14 +25,8 @@
 	width: 1200px;
 	min-width: 500px;
 	height: auto;
-	background-color: snow;
+	background-color: #eee;
 }
-
-/* .container>.main>img {
-	width: 200px;
-	height: 200px;
-	margin-top: 20px;
-} */
 
 .profile {
 	border-radius: 50%;

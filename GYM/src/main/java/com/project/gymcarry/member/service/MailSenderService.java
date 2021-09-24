@@ -70,7 +70,7 @@ public class MailSenderService {
 			html += "안녕하세요 " + memname + " 회원님 :) ! 짐캐리 회원가입을 환영합니다!</h3>";
 			html += "<div style='font-size: 130%'>";
 			html += "하단의 인증 버튼 클릭시 정상적으로 회원가입이 완료됩니다.</div><br/>";
-			html += "<form method='post' " + "action='http://localhost:8080/gym/member/join/alterjoinkey'>";
+			html += "<form method='post' " + "action='http://15.165.237.60:8080/gym/member/join/alterjoinkey'>";
 			html += "<input type='hidden' name='mememail' value='" + mememail + "'>";
 			html += "<input type='hidden' name='joinkey' value='" + joinkey + "'>";
 			html += "<input type='submit' value='인증' style= 'width:70px; height:25px; border:0px; background-color: #4380ce; color: #fff; font-weight: bold'></form><br/></div>";

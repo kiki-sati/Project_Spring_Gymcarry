@@ -391,7 +391,6 @@
 	
 	// 채팅방 대화내용 리스트
 	function chatList(num) {
-		
 		$.ajax({
 			type : 'POST',
 			url : '<c:url value="/chatting/dochat"/>',
@@ -481,8 +480,7 @@
 				}
 			}
 		})
-		
-	};
+	}
 	</script>
 	
 	

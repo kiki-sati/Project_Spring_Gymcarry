@@ -169,6 +169,8 @@
 
 .carry_introduce {
 	font-size: 17px;
+	white-space: pre-wrap;
+    word-break: break-all;
 }
 
 .carry_procategory {

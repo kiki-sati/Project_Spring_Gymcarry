@@ -52,7 +52,7 @@
 				
 				<div class="btn_wrap2">
 					<input type="submit" class= "submit_btn" value="회원가입">
-					<input type="button" id="btns" value="취소" onclick="kakaoLogout();">
+					<input type="button" id="btns" value="취소" onclick="location.href='<c:url value="/index" />'">
 				</div>
 		</div>
 		

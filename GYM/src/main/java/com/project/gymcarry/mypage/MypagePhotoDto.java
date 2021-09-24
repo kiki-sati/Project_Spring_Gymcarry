@@ -1,14 +1,22 @@
 package com.project.gymcarry.mypage;
 
-public class MypageDto2 {
+import org.springframework.web.multipart.MultipartFile;
+
+public class MypagePhotoDto {
 
 	private String infoidx;
 	private String memidx;
-	private String infocontent;
+	private MultipartFile infocontent;
 	private String infodate;
 	private String infotype;
 
-	public MypageDto2() {
+	public MypagePhotoDto() {
+	}
+
+	@Override
+	public String toString() {
+		return "MypagePhotoDto [infoidx=" + infoidx + ", memidx=" + memidx + ", infocontent=" + infocontent
+				+ ", infodate=" + infodate + ", infotype=" + infotype + "]";
 	}
 
 	public String getInfoidx() {
@@ -27,11 +35,11 @@ public class MypageDto2 {
 		this.memidx = memidx;
 	}
 
-	public String getInfocontent() {
+	public MultipartFile getInfocontent() {
 		return infocontent;
 	}
 
-	public void setInfocontent(String infocontent) {
+	public void setInfocontent(MultipartFile infocontent) {
 		this.infocontent = infocontent;
 	}
 
@@ -51,19 +59,8 @@ public class MypageDto2 {
 		this.infotype = infotype;
 	}
 
-	@Override
-	public String toString() {
-		return "MypageDto [infoidx=" + infoidx + ", memidx=" + memidx + ", infocontent=" + infocontent + ", infodate="
-				+ infodate + ", infotype=" + infotype + "]";
-	}
-
-	public MypageDto2(String infoidx, String memidx, String infocontent, String infodate, String infotype) {
-		super();
-		this.infoidx = infoidx;
-		this.memidx = memidx;
-		this.infocontent = infocontent;
-		this.infodate = infodate;
-		this.infotype = infotype;
+	public MypageDto2 getMypageDto2() {
+		return new MypageDto2(infoidx, memidx, infocontent.getOriginalFilename(), infodate, infotype);
 	}
 
 }

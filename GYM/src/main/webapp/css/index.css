@@ -18,6 +18,11 @@
 	margin: 0;
 }
 
+.crphoto {
+	object-fit: cover;
+}
+
+
 /* video section */
 .video_section {
 	width: 100%;

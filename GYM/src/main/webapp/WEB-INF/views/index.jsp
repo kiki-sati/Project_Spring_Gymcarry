@@ -46,7 +46,7 @@
 				<c:forEach var="list" items="${review}" begin="0" end="10">
 					<div class="review_content swiper-slide" onclick="location.href='<c:url value = "/carry/detail?cridx=${list.cridx}"/>'">
 						<div class="review_img">
-							<img src="<c:url value="/uploadfile/${list.crphoto }"/>" alt="img">
+							<img src="<c:url value="/uploadfile/${list.crphoto}"/>" alt="img" class="crphoto">
 						</div>
 						<div class="review">
 							<h2 class="title">${list.crname }</h2>

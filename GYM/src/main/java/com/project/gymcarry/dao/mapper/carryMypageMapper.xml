@@ -8,11 +8,11 @@
     <!-- 캐리 정보 수정  -->
     <update id="updateCarryModify"
             parameterType="com.project.gymcarry.carry.CarryInfoDto">
-        update carry a
+        update carry
         set
-            a.crintro = #{crintro}, a.crfield = #{crfield}, a.crplace = #{crplace}, a.crdepart = #{crdepart}, a.crbfphoto = #{crbfphoto}, a.placeidx = #{placeidx},
+            crintro = #{crintro}, crfield = #{crfield}, crplace = #{crplace}, crdepart = #{crdepart}, crbfphoto = #{crbfphoto}, placeidx = #{placeidx}
         where
-            a.cridx = #{cridx}
+            cridx = #{cridx}
     </update>
 
     <!-- 캐리 자격 및 경력 [입력 or 수정]-->

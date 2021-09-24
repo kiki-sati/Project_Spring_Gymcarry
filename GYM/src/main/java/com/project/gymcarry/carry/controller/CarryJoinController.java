@@ -68,7 +68,7 @@ public class CarryJoinController {
 		out.println("</script>");
 		out.close();
 		
-		return "redirect:/index";
+		return "carry/CarryPlusJoinForm";
 	}
 
 	@RequestMapping(value = "carry/join/cr_alterjoinkey", method = RequestMethod.POST)

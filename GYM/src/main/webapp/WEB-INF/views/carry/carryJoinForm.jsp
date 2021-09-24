@@ -16,8 +16,6 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	<!-- 은경 -->
-
 	<!-- Contents -->
 	<div class="wrap wd668">
 		<div class="container">
@@ -116,7 +114,7 @@
 				<div id="btnbox">
 					<div class="btn_wrap">
 						<!-- 회원가입 -> DB 저장 // 취소 -> 취소되었습니다! 알림 후 index 수정하기 -->
-						<input type="submit" id="joinsubmit" value="회원가입">
+						<input type="submit" id="joinsubmit" value="다음">
 					</div>
 					<div class="btn_wrap2">
 						<a href="javascript:history.back()">취소</a>

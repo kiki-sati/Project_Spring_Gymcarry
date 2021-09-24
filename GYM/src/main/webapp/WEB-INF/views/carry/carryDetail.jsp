@@ -71,7 +71,7 @@
 						</tr>
 
 						<tr>
-							<td><span class="carry_introduce">"${carryDetail.crintro}"</span></td>
+							<td><span class="carry_introduce">${carryDetail.crintro}</span></td>
 						</tr>
 
 						<tr>

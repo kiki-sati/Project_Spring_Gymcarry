@@ -60,7 +60,7 @@ public class LoginController {
 				String chatNick = sessionDto.getMemnick();
 
 				out.println("<script>");
-				out.println("alert('로그인 되었습니다!'); location.href='/gym/index';");
+				out.println("alert('로그인되었습니다!'); location.href='/gym/index';");
 				out.println("</script>");
 				out.close();
 

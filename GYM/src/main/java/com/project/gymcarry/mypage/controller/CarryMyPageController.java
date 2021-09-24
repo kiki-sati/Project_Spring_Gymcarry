@@ -71,7 +71,7 @@ public class CarryMyPageController {
 	// 캐리 정보 수정 업데이트
 	@PostMapping("/mypage/update")
 	public String updateCarryModify(CarryToInfoDto carryToInfoDto,
-						
+									CarryInfoDto carryInfoDto,
 									@RequestParam("proprice1") int proprice1, @RequestParam("proprice2") int proprice2,
 									@RequestParam("proprice3") int proprice3, @RequestParam("proprice4") int proprice4,
 									HttpSession session, HttpServletRequest request, HttpServletResponse respons) throws Exception {
@@ -79,7 +79,7 @@ public class CarryMyPageController {
 
 		service.updateCarryModify(carryToInfoDto,respons,request);
 		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryToInfoDto.getCridx());
-		
+		service.upsetCarryCerti(carryInfoDto);
 		
 		return "/mypage/carrymypage/carrymypage";
 	}

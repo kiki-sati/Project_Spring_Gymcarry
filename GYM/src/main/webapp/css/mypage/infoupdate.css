@@ -78,10 +78,10 @@
 	color: white;
 }
 
-.readonly {
+/* .readonly {
 	background: gray;
 	border-color: gray;
-}
+} */
 
 .off {
 	border-color: red;
@@ -214,6 +214,7 @@
 .col-9 input {
 	width: 100%;
 	height: 100%;
+	padding:0 10px;
 }
 
 .col-3 h3 {

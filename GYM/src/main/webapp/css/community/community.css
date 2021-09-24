@@ -195,7 +195,7 @@ body {
   height: 44px;
   
   overflow: hidden;
-  line-height: 25px; /* 글자 넘치는거 자르는 부분, 한줄 높이와 같게 설정*/
+  line-height: 25px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

@@ -118,6 +118,13 @@
 .review_section .review_content .review p {
 	margin-top: 15px;
 	font-size: 15px;
+	
+	/* 리뷰 소개 자르기 */
+	overflow: hidden;
+    line-height: 25px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .swiper-button-next, .swiper-button-prev {
@@ -131,6 +138,9 @@
 .swiper-button-prev {
 	left: 0 !important;
 }
+
+
+
 /* review section end*/
 
 .typing-txt{display: none;}

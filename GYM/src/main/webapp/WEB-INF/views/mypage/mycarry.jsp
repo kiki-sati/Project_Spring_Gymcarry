@@ -25,18 +25,8 @@
 	<div class="content_main">
 		<div class="content_wrap">
 			<div class="content">
-				<h1 class="all_title">새로운 캐리를 찾고 싶으신가요?</h1>
-				<nav class="top">
-					<ul>
-						<li><input type="button" class="match_btn"
-							value="지금 바로 1:1 매칭하러가기"
-							onclick="location.href='<c:url value="/survey/survey"/>'">
-						</li>
-					</ul>
-					<%--         <div class="sort">
-          <span><a href='<c:url value="/carry/allListP"/>'>가격순</a> / <a href="#">인기순</a></span>
-        </div> --%>
-				</nav>
+				<h1 class="all_title">회원님이 찜한 캐리 목록입니다.</h1>
+				<br><br>
 				<div class="card_main">
 					<c:forEach items="${allList}" var="alist">
 						<div class="card">

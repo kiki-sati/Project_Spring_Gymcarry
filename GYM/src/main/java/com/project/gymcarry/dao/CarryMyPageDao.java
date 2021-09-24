@@ -2,6 +2,7 @@ package com.project.gymcarry.dao;
 
 import java.util.List;
 
+import com.project.gymcarry.carry.CarryCertiDto;
 import com.project.gymcarry.carry.CarryInfoDto;
 import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.carry.CarryMyMemberDto;
@@ -12,7 +13,7 @@ public interface CarryMyPageDao {
 	int updateCarryModify(CarryInfoDto carryInfoDto) throws Exception;
 
 	// 캐리 자격 및 경력 [입력 or 수정]
-    int upsetCarryCerti(CarryInfoDto carryInfoDto) throws Exception;
+    int upsetCarryCerti(CarryCertiDto certiDto) throws Exception;
 
 	// 캐리 가격 수정
     int updateCarryPrice(int proprice1,int proprice2,int proprice3,int proprice4,int cridx);

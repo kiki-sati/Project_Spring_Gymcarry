@@ -18,7 +18,7 @@ public interface CarryMyPageService {
     int updateCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx);
 
     // 캐리 자격 및 경력 [입력 or 수정]
-    int upsetCarryCerti(CarryInfoDto carryInfoDto) throws Exception;
+    int upsetCarryCerti(CarryCertiDto certiDto) throws Exception;
 
     // 캐리 기본 정보 수정 출력
     public CarryJoinDto selectCarryBasicInfo(int cridx) throws Exception;

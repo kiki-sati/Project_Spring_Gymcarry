@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.project.gymcarry.carry.*;
-import com.project.gymcarry.carry.service.CarryInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,14 +72,17 @@ public class CarryMyPageController {
 	public String updateCarryModify(CarryToInfoDto carryToInfoDto,
 									@RequestParam("proprice1") int proprice1, @RequestParam("proprice2") int proprice2,
 									@RequestParam("proprice3") int proprice3, @RequestParam("proprice4") int proprice4,
+									CarryCertiDto certiDto,
 									HttpSession session, HttpServletRequest request, HttpServletResponse respons) throws Exception {
 
 
 		service.updateCarryModify(carryToInfoDto,respons,request);
 		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryToInfoDto.getCridx());
+		service.upsetCarryCerti(certiDto);
 		
 		return "/mypage/carrymypage/carrymypage";
 	}
+	
 
 
 	// 캐리 기본 정보 수정

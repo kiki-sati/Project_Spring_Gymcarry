@@ -147,5 +147,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
 		select * from chatlist where chatidx=#{param}
 	</select>
+	
 
+	
 </mapper>

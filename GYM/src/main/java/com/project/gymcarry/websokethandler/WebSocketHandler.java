@@ -17,10 +17,9 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
+import com.project.gymcarry.chatting.ChatAlarmDto;
 import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomServiceImpl;
-
-import loginSession.ChatAlarmDto;
 
 public class WebSocketHandler extends TextWebSocketHandler {
 
@@ -33,7 +32,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 	// 사용자와 세션 저장할 맵
 	private Map<String, WebSocketSession> mapList = new HashMap<String, WebSocketSession>();
-	// room session 저장 상대방이 방에 나갓는지 있는지 체크
+	// room session 알람 및 상대방 나감여부
 	private Map<WebSocketSession, String> roomList = new HashMap<WebSocketSession, String>();
 
 	// 커넥션이 연결되었을때
@@ -46,15 +45,11 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		mapList.put(chatNick, session);
 		roomList.put(session, chatNick);
 
-		// roomIdx.put(i, chatNick);
 		// 웹소켓 세션을 저장
 		// map, list 둘중 하나만 해도된다.
 		list.add(session);
-		
 		// 세션값을 불러온 0번째 중괄호에 session.getId()을 넣으라는 뜻 : 세션 닉네임 값
 		logger.info("세션추가 : " + session.getId() + " 접속자닉네임 : " + chatNick);
-		System.out.println("알람 접속자 : " + session.getId());
-		System.out.println("채팅 접속자 :" + mapList.get(chatNick));
 	}
 
 	// 사용자로 부터 받은 메세지 보내기
@@ -81,27 +76,28 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			messageDto.setContenttype(++contenttype);
 			messageDto.setChatread(++chatRead);
 		}
-		
+
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
-		
+
 		String to = messageDto.getTo();
 		WebSocketSession toSession = mapList.get(to);
-		if (toSession != null && roomList.size() > 3) {
+		if (toSession != null && roomList.size() >= 4) {
 			toSession.sendMessage(sendMsg);
 			session.sendMessage(sendMsg);
 			matchingChatRoomService.insertChatContent(messageDto);
+			matchingChatRoomService.getChatRead(messageDto.getChatidx());
 		} else {
 			session.sendMessage(sendMsg);
 			matchingChatRoomService.insertChatContent(messageDto);
 		}
-		
-		// 메세지 알람 전용 세션	
+
+		// 메세지 알람 전용 세션
 		ChatAlarmDto chatAlarmDto = gson.fromJson(message.getPayload(), ChatAlarmDto.class);
 		Iterator<WebSocketSession> itr = roomList.keySet().iterator();
 		while (itr.hasNext()) {
 			WebSocketSession memberSession = (WebSocketSession) itr.next();
-			if(roomList.size() == 3) {
+			if (roomList.size() == 3) {
 				chatAlarmDto.setAlarm("알람");
 				TextMessage sendMsgs = new TextMessage(gson.toJson(chatAlarmDto));
 				memberSession.sendMessage(sendMsgs);
@@ -113,11 +109,11 @@ public class WebSocketHandler extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		String chatNick = (String) session.getAttributes().get("chatSession");
+
 		list.remove(session);
 		mapList.remove(session.getId());
 		roomList.remove(session);
 		logger.info("{}연결 끊김", session.getId() + chatNick);
-		System.out.println("채팅 퇴장" + chatNick + session.getId() + session);
 	}
 
 }

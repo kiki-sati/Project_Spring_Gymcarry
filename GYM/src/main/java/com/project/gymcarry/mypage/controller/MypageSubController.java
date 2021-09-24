@@ -71,15 +71,6 @@ public class MypageSubController {
 		List<MypageMemberDto> memberList = mypService.selectmember(sdt.getMemidx());
 		model.addAttribute("memberList", memberList);
 
-		/*
-		 * // 현재 날짜 구하기 LocalDate now = LocalDate.now(); // 포맷 정의 DateTimeFormatter
-		 * formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일"); // 포맷 적용 String
-		 * formatedNow = now.format(formatter);
-		 * 
-		 * List<MypageDto2> list2 = mypService.loadMemo2(sdt.getMemidx(), formatedNow);
-		 * System.out.println(memberList);
-		 */
-
 		int a = 1;
 		model.addAttribute("a", a);
 		System.out.println(a);
@@ -115,7 +106,6 @@ public class MypageSubController {
 	public String info(HttpSession session, Model model, MypageDto2 mypdto) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
-
 		session.setAttribute("memidx", sdt.getMemidx());
 		session.setAttribute("name", sdt.getMemname());
 
@@ -129,13 +119,11 @@ public class MypageSubController {
 
 		List<MypageDto2> list2 = mypService2.loadMemo2(arg0, arg1);
 		System.out.println(list2 + "동작은하나?");
-
 		Map<String, Object> map = new HashMap<String, Object>();
 
+		// 출력부
 		if (list2.size() != 0) {
-
 			for (int i = 0; i < list2.size(); i++) {
-
 				if (list2.get(i).getInfotype().equals("food")) {
 					map.put("list", list2.get(i).getInfocontent());
 				}
@@ -152,7 +140,6 @@ public class MypageSubController {
 					map.put("list4", list2.get(i).getInfocontent());
 				}
 			}
-
 		} else {
 			map.put("list", "");
 			map.put("list2", "");

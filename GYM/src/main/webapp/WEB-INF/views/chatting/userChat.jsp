@@ -189,7 +189,6 @@
 			$('#btnSend').click(function(event){
 				if ($('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
-					//chatread();
 					var send = '${chatSession}';
 					if(send == memnicks){
 						send = crnicks;
@@ -208,7 +207,6 @@
 			$('#msg').keypress(function(event){
 				if (event.keyCode == 13 && $('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
-					//chatread();
 					var send = '${chatSession}';
 					if(send == memnicks){
 						send = crnicks;
@@ -280,11 +278,9 @@
 				$('.chat_null').append(htmlSt);
 				$("#output").scrollTop($("#output")[0].scrollHeight);
 			}
+			$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
+			$('.chatlist .active .chat_date').html('<span>'+ jsonData.chatdate+'</span>');
 		}
-		
-		$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
-		$('.chatlist .active .chat_date').html('<span>'+ jsonData.chatdate+'</span>');
-		
 		
 		if(jsonData.chatcontent == '상대방이 채팅방을 삭제하셨습니다.'){
 			$('.message_warp .back_button').after('<li class="imgButton waste_li2"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>')
@@ -395,97 +391,98 @@
 	
 	// 채팅방 대화내용 리스트
 	function chatList(num) {
+		
 		$.ajax({
 			type : 'POST',
 			url : '<c:url value="/chatting/dochat"/>',
 			dataType : 'json',
 			data : {
 				chatidx : num
-				},
-				success : function(data) {
-					$('.chatlist .active .chat_title_img').removeClass();
-					if (data.memList == 0 || data.crList == 0) {
-						chattting(cridx);
-						$.each(data.memList, function(index, item) {
-							if(item.likecheck == 1){
-								$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
-							} else if(item.likecheck == 0){
-								$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
-							}
-						});
-					} else {
-						var htmlStr = '<div class="carry_message_warp">';
-						$.each(data.memList, function(index, item) {
-							if(item.contenttype == 1 && item.chatcontent != null){
-								htmlStr += '<div class="carry_chat">'
-								htmlStr += '	<div class="carry_line"><img src="'+url+'"></div>'
-								htmlStr += '	<div class="message">'
-								htmlStr += '		<div class="message_color">'
-								
-								htmlStr += '			<span>'+item.chatcontent+'</span>'
-								htmlStr += '		</div>'
-								htmlStr += '	</div>'
-								htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
-								htmlStr += '	</div>'
-								htmlStr += '</div>'
-								
-							} else if (item.contenttype == 0 && item.chatcontent != null){
-								htmlStr += '	<div class="user_message_warp">'
-								htmlStr += '		<div class="user_chat">'
-								htmlStr += '			<div class="user_message">'
-								htmlStr += '				<div>'
-								htmlStr += '					<span>'+item.chatcontent+'</span>'
-								htmlStr += '				</div>'
-								htmlStr += '			</div>'
-								htmlStr += '			<div class="time_line2">'
-								htmlStr += '				<span>'+item.chatdate+'</span>'
-								htmlStr += '			</div>'
-								htmlStr += '		</div>'
-								htmlStr += '	</div>'
-							}
-							chattting(item.cridx); 
-							$('.chat_null').html(htmlStr);
-							if(item.likecheck == 1){
-								$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
-							} else if(item.likecheck == 0){
-								$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
-							}
-						});
-						
-						$.each(data.crList, function(index, item) {
-							if(item.contenttype == 1 && item.chatcontent != null){
-								htmlStr += '	<div class="user_message_warp">'
-								htmlStr += '		<div class="user_chat">'
-								htmlStr += '			<div class="user_message">'
-								htmlStr += '				<div>'
-								htmlStr += '					<span>'+item.chatcontent+'</span>'
-								htmlStr += '				</div>'
-								htmlStr += '			</div>'
-								htmlStr += '			<div class="time_line2">'
-								htmlStr += '				<span>'+item.chatdate+'</span>'
-								htmlStr += '			</div>'
-								htmlStr += '		</div>'
-								htmlStr += '	</div>'
-							} else if (item.contenttype == 0 && item.chatcontent != null){
-								htmlStr += '<div class="carry_chat">'
-								htmlStr += '	<div class="carry_line"><img src="'+url+'"></div>'
-								htmlStr += '	<div class="message">'
-								htmlStr += '		<div class="message_color">'
-								htmlStr += '			<span>'+item.chatcontent+'</span>'
-								htmlStr += '		</div>'
-								htmlStr += '	</div>'
-								htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
-								htmlStr += '	</div>'
-								htmlStr += '</div>'
-							} 
-							chattting();
-							$('.chat_null').html(htmlStr);
-						});
-						$('#output').scrollTop($('#output')[0].scrollHeight);
-					}
+			},
+			success : function(data) {
+				$('.chatlist .active .chat_title_img').removeClass();
+				if (data.memList == 0 || data.crList == 0) {
+					chattting(cridx);
+					$.each(data.memList, function(index, item) {
+						if(item.likecheck == 1){
+							$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
+						} else if(item.likecheck == 0){
+							$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
+						}
+					});
+				} else {
+					var htmlStr = '<div class="carry_message_warp">';
+					$.each(data.memList, function(index, item) {
+						if(item.contenttype == 1 && item.chatcontent != null){
+							htmlStr += '<div class="carry_chat">';
+							htmlStr += '	<div class="carry_line"><img src="'+url+'"></div>';
+							htmlStr += '	<div class="message">';
+							htmlStr += '		<div class="message_color">';
+							htmlStr += '			<span>'+item.chatcontent+'</span>';
+							htmlStr += '		</div>';
+							htmlStr += '	</div>';
+							htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>';
+							htmlStr += '	</div>';
+							htmlStr += '</div>';
+							
+						} else if (item.contenttype == 0 && item.chatcontent != null){
+							htmlStr += '	<div class="user_message_warp">';
+							htmlStr += '		<div class="user_chat">';
+							htmlStr += '			<div class="user_message">';
+							htmlStr += '				<div>';
+							htmlStr += '					<span>'+item.chatcontent+'</span>';
+							htmlStr += '				</div>';
+							htmlStr += '			</div>';
+							htmlStr += '			<div class="time_line2">';
+							htmlStr += '				<span>'+item.chatdate+'</span>';
+							htmlStr += '			</div>';
+							htmlStr += '		</div>';
+							htmlStr += '	</div>';
+						}
+						chattting(item.cridx); 
+						$('.chat_null').html(htmlStr);
+						if(item.likecheck == 1){
+							$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
+						} else if(item.likecheck == 0){
+							$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
+						}
+					});
+					
+					$.each(data.crList, function(index, item) {
+						if(item.contenttype == 1 && item.chatcontent != null){
+							htmlStr += '	<div class="user_message_warp">';
+							htmlStr += '		<div class="user_chat">';
+							htmlStr += '			<div class="user_message">';
+							htmlStr += '				<div>';
+							htmlStr += '					<span>'+item.chatcontent+'</span>';
+							htmlStr += '				</div>';
+							htmlStr += '			</div>';
+							htmlStr += '			<div class="time_line2">';
+							htmlStr += '				<span>'+item.chatdate+'</span>';
+							htmlStr += '			</div>';
+							htmlStr += '		</div>';
+							htmlStr += '	</div>';
+						} else if (item.contenttype == 0 && item.chatcontent != null){
+							htmlStr += '<div class="carry_chat">';
+							htmlStr += '	<div class="carry_line"><img src="'+url+'"></div>';
+							htmlStr += '	<div class="message">';
+							htmlStr += '		<div class="message_color">';
+							htmlStr += '			<span>'+item.chatcontent+'</span>';
+							htmlStr += '		</div>';
+							htmlStr += '	</div>';
+							htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>';
+							htmlStr += '	</div>';
+							htmlStr += '</div>';
+						} 
+						chattting();
+						$('.chat_null').html(htmlStr);
+					});
+					$('#output').scrollTop($('#output')[0].scrollHeight);
+				}
 			}
 		})
-	}
+		
+	};
 	</script>
 	
 	

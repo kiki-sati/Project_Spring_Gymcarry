@@ -70,8 +70,6 @@
 			<input class="input-kg" id="memo-input-kg" type="text"
 				readonly="readonly"> <input class="input-kg-left"
 				type="text" readonly="readonly" value="kg">
-
-
 		</div>
 	</div>
 
@@ -84,9 +82,6 @@
 		<div class="memo-input-div">
 			<input class="memo-input" id="memo-input-food" type="text"
 				readonly="readonly">
-
-
-
 		</div>
 	</div>
 	<section>
@@ -153,7 +148,6 @@
 							</div>
 
 
-							<!-- 	</div> -->
 							<div class="btn modal-submit-btn">
 								<button onClick="fn_review()" type="submit" class="btn"
 									type="button">확인</button>
@@ -269,4 +263,3 @@
 	});
 </script>
 </html>
-

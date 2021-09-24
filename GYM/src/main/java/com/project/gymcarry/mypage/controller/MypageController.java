@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.gymcarry.carry.CarryListDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.member.SessionDto;
-import com.project.gymcarry.mypage.MypageDto;
+
 import com.project.gymcarry.mypage.MypageDto2;
 import com.project.gymcarry.mypage.MypageMemberDto;
 import com.project.gymcarry.mypage.service.MypageService;
@@ -60,7 +60,7 @@ public class MypageController {
 
 	// 메모 등록
 	@PostMapping
-	public String addMembermemo(MypageDto mypdto, Model model, HttpSession session) {
+	public String addMembermemo(MypageDto2 mypdto, Model model, HttpSession session) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 		String arg0 = mypdto.getMemidx();
@@ -68,21 +68,18 @@ public class MypageController {
 		String arg2 = mypdto.getInfotype();
 
 		List<MypageMemberDto> memberList = mypService2.selectmember(sdt.getMemidx());
-		List<MypageDto> list1 = mypService.selectMemo(arg0, arg1, arg2);
+		List<MypageDto2> list1 = mypService.selectMemo(arg0, arg1, arg2);
 
 		if (list1.isEmpty()) {
 			mypService.memberMemo(mypdto);
-			System.out.println("인설트로 가쟈 " + mypdto );
-
+			System.out.println("인설트로 가쟈 " + mypdto);
 			model.addAttribute("memberList", memberList);
 			return "mypage/mypage";
 
 		} else {
 			mypService.updateMemo(mypdto);
-			System.out.println("업데이트 가쟈" + mypdto  );
+			System.out.println("업데이트 가쟈" + mypdto);
 			model.addAttribute("memberList", memberList);
-//			List<MypageDto> list2 = mypService.loadMemo(arg0, arg1);
-//			System.out.println(list2);
 			return "mypage/mypage";
 
 		}

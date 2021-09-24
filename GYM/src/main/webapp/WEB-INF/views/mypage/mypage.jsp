@@ -29,18 +29,16 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-	
+
 
 <script>
 	function printName() {
 		const name = document.getElementById('alternate').value;
 		var infodate = document.getElementsByName("infodate")
-		infodate[0].value = name;
-		infodate[1].value = name;
-		infodate[2].value = name;
-		infodate[3].value = name;
-		infodate[4].value = name;
 
+		for (var i = 0; i < 5; i++) {
+			infodate[i].value = name;
+		}
 	}
 
 	window.onload = function() {

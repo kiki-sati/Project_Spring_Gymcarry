@@ -51,7 +51,7 @@
 						</tr>
 						<tr>
 							<th><span>비밀번호</span></th>
-							<td><input type="password" id="pw" name="crpw" value="${carry.crpw}" required></td>
+							<td><input type="password" id="pw" name="crpw" value="${carry.crpw}" maxlength="6" required></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -60,7 +60,7 @@
 
 						<tr>
 							<th><span>비밀번호 확인</span></th>
-							<td><input type="password" id="repw" value="${carry.crpw}" required></td>
+							<td><input type="password" id="repw" value="${carry.crpw}" maxlength="6" required></td>
 						</tr>
 						<tr>
 							<td></td>

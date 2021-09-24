@@ -94,7 +94,7 @@
 							</div>
 							<div class="col-9" style="float: right;">
 								<input type="password" name="mempw" id="mempw"
-									placeholder="비밀번호를 입력해주세요." value="${memberList.mempw}" maxlength="4">
+									placeholder="비밀번호를 입력해주세요." value="${memberList.mempw}">
 								<div class="check_font" id="pwcheck"></div>
 
 							</div>
@@ -105,7 +105,7 @@
 							</div>
 							<div class="col-9" style="float: right;">
 								<input type="password" name="mempw2" id="mempw2"
-									placeholder="비밀번호를 확인해주세요." value="${memberList.mempw}" maxlength="4">
+									placeholder="비밀번호를 확인해주세요." value="${memberList.mempw}">
 								<div class="check_font" id="mempw2check"></div>
 
 							</div>

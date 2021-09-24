@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,8 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import com.google.gson.Gson;
 import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomServiceImpl;
+
+import loginSession.ChatAlarmDto;
 
 public class WebSocketHandler extends TextWebSocketHandler {
 
@@ -47,9 +50,11 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		// 웹소켓 세션을 저장
 		// map, list 둘중 하나만 해도된다.
 		list.add(session);
-
+		
 		// 세션값을 불러온 0번째 중괄호에 session.getId()을 넣으라는 뜻 : 세션 닉네임 값
 		logger.info("세션추가 : " + session.getId() + " 접속자닉네임 : " + chatNick);
+		System.out.println("알람 접속자 : " + session.getId());
+		System.out.println("채팅 접속자 :" + mapList.get(chatNick));
 	}
 
 	// 사용자로 부터 받은 메세지 보내기
@@ -76,19 +81,31 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			messageDto.setContenttype(++contenttype);
 			messageDto.setChatread(++chatRead);
 		}
-		System.out.println("11111111111111" + messageDto);
+		
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
 		
 		String to = messageDto.getTo();
 		WebSocketSession toSession = mapList.get(to);
-		if (toSession != null && roomList.size() >= 3) {
+		if (toSession != null && roomList.size() > 3) {
 			toSession.sendMessage(sendMsg);
 			session.sendMessage(sendMsg);
 			matchingChatRoomService.insertChatContent(messageDto);
 		} else {
 			session.sendMessage(sendMsg);
 			matchingChatRoomService.insertChatContent(messageDto);
+		}
+		
+		// 메세지 알람 전용 세션	
+		ChatAlarmDto chatAlarmDto = gson.fromJson(message.getPayload(), ChatAlarmDto.class);
+		Iterator<WebSocketSession> itr = roomList.keySet().iterator();
+		while (itr.hasNext()) {
+			WebSocketSession memberSession = (WebSocketSession) itr.next();
+			if(roomList.size() == 3) {
+				chatAlarmDto.setAlarm("알람");
+				TextMessage sendMsgs = new TextMessage(gson.toJson(chatAlarmDto));
+				memberSession.sendMessage(sendMsgs);
+			}
 		}
 	}
 

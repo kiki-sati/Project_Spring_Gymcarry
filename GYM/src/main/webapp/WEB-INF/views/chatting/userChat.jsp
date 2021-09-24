@@ -25,7 +25,7 @@
 				<!-- 채팅방 리스트 시작 -->
 				<div class="chatList_scr">
 					<c:forEach items="${chatList}" var="list">
-					<c:if test="${list.outcount ne 1 }">
+					<c:if test="${list.outcount ne 1}">
 						<div class="chatlist">
 							<button type="button" value="${list.chatidx}"
 								onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}',${list.outcount});
@@ -189,7 +189,7 @@
 			$('#btnSend').click(function(event){
 				if ($('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
-					chatread();
+					//chatread();
 					var send = '${chatSession}';
 					if(send == memnicks){
 						send = crnicks;
@@ -208,7 +208,7 @@
 			$('#msg').keypress(function(event){
 				if (event.keyCode == 13 && $('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
-					chatread();
+					//chatread();
 					var send = '${chatSession}';
 					if(send == memnicks){
 						send = crnicks;
@@ -235,7 +235,8 @@
 	
 	var socket = new SockJS("<c:url value='/echo'/>");
 	// open - 커넥션이 제대로 만들어졌을 때 호출
-	socket.onopen = function() {
+	socket.onopen = function(asd) {
+		console.log(asd);
 		// 방오픈 됫는지 확인 메세지
 		console.log('connection opend.');
 	};
@@ -392,17 +393,6 @@
 		})
 	};	
 	
-	// 메세지 보낸사람만 read 처리
-	function chatread(){
-		$.ajax({
-			type : 'POST',
-			url : '<c:url value="/chatting/chatread"/>',
-			dataType : 'json',
-			data : {chatidx : chatIdx},
-			success : function(data){}
-		});
-	}
-	
 	// 채팅방 대화내용 리스트
 	function chatList(num) {
 		$.ajax({
@@ -423,7 +413,6 @@
 								$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
 							}
 						});
-						
 					} else {
 						var htmlStr = '<div class="carry_message_warp">';
 						$.each(data.memList, function(index, item) {

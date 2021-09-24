@@ -57,5 +57,18 @@
    <select id="carryinfoview" resultType="com.project.gymcarry.carry.CarryJoinDto">
    		select crname, crnick, crphoto from carry where cridx = #{cridx}
    </select>
+   
+   <select id="myMemberList" resultType="com.project.gymcarry.carry.CarryMyMemberDto">
+   		select 
+   			(select memname from member where payment.memidx = memidx) as memname, 
+   			(select memnick from member where payment.memidx = memidx) as memnick, 
+   			count(memidx) as paycount, 
+   			sum(PAYPRICE) as totalpay, 
+   			max(paydate) as date
+   		from payment 
+   		where cridx = #{cridx} 
+   		group by memidx 
+   		having count(*) > 0;
+   </select>
     
 </mapper>

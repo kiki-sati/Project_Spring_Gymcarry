@@ -10,19 +10,17 @@ import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.Pagination;
 import com.project.gymcarry.carry.CarryListDto;
 import com.project.gymcarry.carry.CarryMypageDto;
-import com.project.gymcarry.member.SessionDto;
-import com.project.gymcarry.mypage.MypageDto;
 import com.project.gymcarry.mypage.MypageDto2;
 import com.project.gymcarry.mypage.MypageMemberDto;
 import com.project.gymcarry.mypage.MypagePaymentDto;
 
 public interface MypageDao {
 
-	int insertMemo(MypageDto mypDto);
+	int insertMemo(MypageDto2 mypdto);
 
-	List<MypageDto> selectMemo(String arg0, String arg1, String arg2);
+	List<MypageDto2> selectMemo(String arg0, String arg1, String arg2);
 
-	int updateMemo(MypageDto mypDto);
+	int updateMemo(MypageDto2 mypdto);
 
 	List<MypagePaymentDto> selectpayment(int i);
 
@@ -38,14 +36,14 @@ public interface MypageDao {
 
 	int memberupdate2(MypageMemberDto mMdto);
 
-	List<MypageDto> loadMemo(String arg0, String arg1);
+	List<MypageDto2> loadMemo(String arg0, String arg1);
 
 	List<MypageDto2> loadMemo2(int i, String arg1);
-	
+
 	// 캐리마이페이지 달력때문에 은경이 추가
 	int carrycalendar(List<CarryMypageDto> request);
-	
+
 	List<CarryMypageDto> scheduleview(@Param("cridx") int cridx);
-	
+
 	void deleteschedule(@Param("cridx") int cridx);
 }

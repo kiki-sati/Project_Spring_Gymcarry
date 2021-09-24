@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<insert id="insertMemo"
-		parameterType="com.project.gymcarry.mypage.MypageDto"
+		parameterType="com.project.gymcarry.mypage.MypageDto2"
 		useGeneratedKeys="true" keyProperty="infoidx">
 
 		insert into
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<select id="selectMemo"
-		resultType="com.project.gymcarry.mypage.MypageDto">
+		resultType="com.project.gymcarry.mypage.MypageDto2">
 		select infocontent from mypage where memidx = #{arg0} and
 		infodate = #{arg1} and infotype = #{arg2}
 	</select>
@@ -76,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectmember"
 		resultType="com.project.gymcarry.mypage.MypageMemberDto">
 		select memidx,memphoto,memname,mememail,mempw,memphone,
-		memnick,MEMBIRTH
+		memnick,membirth
 		from
 		member
 		where memidx = ${memidx};
@@ -93,21 +93,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		memidx = #{memidx};
 	</update>
 
-
-
-
-
-
-	<select id="loadMemo"
-		resultType="com.project.gymcarry.mypage.MypageDto">
-		select infocontent from mypage where memidx = #{arg0} and
-		infodate = #{arg1} ORDER BY FIELD(infotype,
-		'photo','food','kg','memo') DESC, infotype ASC;
-	</select>
-
 	<select id="loadMemo2"
 		resultType="com.project.gymcarry.mypage.MypageDto2">
-
 		select infocontent,infotype from mypage where memidx =
 		#{arg0} and
 		infodate =

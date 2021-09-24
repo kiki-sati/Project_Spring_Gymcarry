@@ -93,7 +93,7 @@ public class CarryMyPageController {
 		if(result > 0) {
 			service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryToInfoDto.getCridx());
 		} else {
-			service.insertCarryPrice(proprice1, proprice2, proprice3, proprice4, cridx, cridx, cridx, cridx);
+			service.insertCarryPrice(proprice1, proprice2, proprice3, proprice4, cridx);
 		}
 		
 		service.upsetCarryCerti(certiDto);

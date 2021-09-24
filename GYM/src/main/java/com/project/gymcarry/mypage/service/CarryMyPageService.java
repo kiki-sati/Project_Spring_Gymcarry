@@ -21,7 +21,7 @@ public interface CarryMyPageService {
     // 캐리 가격 정보 유무 체크
     int checkCarryPrice(int cridx);
     // 캐리 가격 정보 최초 insert
-    int insertCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx1, int cridx2, int cridx3, int cridx4);
+    int insertCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx);
     // 캐리 가격 정보 수정
     int updateCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx);
 

@@ -38,9 +38,9 @@
 		 	(cridx, procount, proprice)
 		 values
 		 	(#{param5}, 1, #{param1}),
-		 	(#{param6}, 5, #{param2}),
-		 	(#{param7}, 10, #{param3}),
-		 	(#{param8}, 20, #{param4})
+		 	(#{param5}, 5, #{param2}),
+		 	(#{param5}, 10, #{param3}),
+		 	(#{param5}, 20, #{param4})
 		</insert>
 		
 		

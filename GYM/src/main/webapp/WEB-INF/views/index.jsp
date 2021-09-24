@@ -50,7 +50,7 @@
 						</div>
 						<div class="review">
 							<h2 class="title">${list.crname }</h2>
-							<p>${list.reviewcontent }</p>
+							<p>${list.reviewcontent}</p>
 						</div>
 					</div>
 				</c:forEach>

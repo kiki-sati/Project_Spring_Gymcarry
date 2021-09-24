@@ -25,8 +25,10 @@
 	<div class="content_main">
 		<div class="content_wrap">
 			<div class="content">
+				<input type="button" value="< 돌아가기" class="backBtn" onclick="location.href='javascript:window.history.back();'">
 				<h1 class="all_title">회원님이 찜한 캐리 목록입니다.</h1>
-				<br><br>
+				<br>
+				
 				<div class="card_main">
 					<c:forEach items="${allList}" var="alist">
 						<div class="card">

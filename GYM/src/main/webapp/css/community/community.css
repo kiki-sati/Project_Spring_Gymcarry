@@ -18,6 +18,33 @@ body {
   background: white;
 }
 
+
+.backBtn {
+	background-position-x: 50%;
+	width: 100px;
+	height: 40px;
+	border: 1px solid #CCC;
+	background-color: white;
+	padding: 7px 10px;
+	color: black;
+	transition: .3s all ease;
+	cursor: pointer;
+	border-radius: 6px;
+	font-size: 13px;
+}
+
+.backBtn:hover {
+	border: 1px solid #CCC;
+	color: white;
+	background-color: black;
+	padding: 7px 10px;
+	text-align: center;
+	font-size: 13px;
+	border-radius: 6px;
+	transition: 0.3s;
+}
+
+
 .title {
   font-weight: 900;
   line-height: 0.8;

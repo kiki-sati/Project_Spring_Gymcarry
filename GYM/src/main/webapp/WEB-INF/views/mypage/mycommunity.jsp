@@ -28,9 +28,9 @@
 	<!-- Contents -->
 	<div class="contents_main">
 		<div class="contents">
+		<input type="button" value="< 돌아가기" class="backBtn" onclick="location.href='javascript:window.history.back();'">
 			<h1 style="margin-bottom: 5%;" class="title">
-				<a style="" href="<c:url value="/community/boardList"/>">MY
-					COMMUNITY</a>
+				<a style="" href="<c:url value="/community/boardList"/>">MY COMMUNITY</a>
 			</h1>
 
 

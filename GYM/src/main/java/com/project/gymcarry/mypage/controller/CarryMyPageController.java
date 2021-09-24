@@ -79,11 +79,6 @@ public class CarryMyPageController {
 
 		service.updateCarryModify(carryToInfoDto,respons,request);
 		
-//		session = request.getSession();
-//	    int cridx = (int) session.getAttribute("cridx");
-	    
-//	    System.out.println("cridx : " + cridx);
-	    
 		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
 		System.out.println("cridx : " + dto.getCridx());
 		

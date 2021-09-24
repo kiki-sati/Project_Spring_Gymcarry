@@ -280,10 +280,11 @@
 				$('.chat_null').append(htmlSt);
 				$("#output").scrollTop($("#output")[0].scrollHeight);
 			}
+			$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
+			$('.chatlist .active .chat_date').html('<span>'+ jsonData.chatdate+'</span>');
 		}
 		
-		$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
-		$('.chatlist .active .chat_date').html('<span>'+ jsonData.chatdate+'</span>');
+		
 		
 		
 		if(jsonData.chatcontent == '상대방이 채팅방을 삭제하셨습니다.'){

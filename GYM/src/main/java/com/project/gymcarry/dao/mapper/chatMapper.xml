@@ -119,14 +119,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 멤버 방나가기 -->
 	<update id="updateOutChat"
 		parameterType="com.project.gymcarry.chatting.ChatListDto">
-		update chatlist set outcount=outcount -1 where
+		update chatlist set outcount=outcount -1, outdate=now() where
 		chatidx=#{param}
 	</update>
 	
 	<!-- 멤버 나간방 다시들어가기 -->
 	<update id="updateInChat"
 		parameterType="com.project.gymcarry.chatting.ChatListDto">
-		update chatlist set outcount=outcount +1 where
+		update chatlist set outcount=outcount +1, indate=now() where
 		chatidx=#{param}
 	</update>
 
@@ -147,5 +147,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
 		select * from chatlist where chatidx=#{param}
 	</select>
+	
 
+	
 </mapper>

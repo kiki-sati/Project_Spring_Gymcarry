@@ -72,12 +72,30 @@ public class CarryMyPageController {
 	public String updateCarryModify(CarryToInfoDto carryToInfoDto,
 									@RequestParam("proprice1") int proprice1, @RequestParam("proprice2") int proprice2,
 									@RequestParam("proprice3") int proprice3, @RequestParam("proprice4") int proprice4,
+									@RequestParam("cridx") int cridx,
 									CarryCertiDto certiDto,
 									HttpSession session, HttpServletRequest request, HttpServletResponse respons) throws Exception {
 
 
 		service.updateCarryModify(carryToInfoDto,respons,request);
-		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryToInfoDto.getCridx());
+		
+//		session = request.getSession();
+//	    int cridx = (int) session.getAttribute("cridx");
+	    
+//	    System.out.println("cridx : " + cridx);
+	    
+		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
+		System.out.println("cridx : " + dto.getCridx());
+		
+		int result = service.checkCarryPrice(cridx);
+		System.out.println("결과2 :" + result);
+		
+		if(result > 0) {
+			service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryToInfoDto.getCridx());
+		} else {
+			service.insertCarryPrice(proprice1, proprice2, proprice3, proprice4, cridx, cridx, cridx, cridx);
+		}
+		
 		service.upsetCarryCerti(certiDto);
 		
 		return "/mypage/carrymypage/carrymypage";

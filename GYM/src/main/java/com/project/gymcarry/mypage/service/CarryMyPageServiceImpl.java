@@ -60,6 +60,21 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
         return dao.updateCarryModify(carryInfoDto);
     }
 
+    // 캐리 가격 정보 유무 체크
+	@Override
+	public int checkCarryPrice(int cridx) {
+		dao = template.getMapper(CarryMyPageDao.class);
+		return dao.checkCarryPrice(cridx);
+	}
+
+	// 캐리 가격 정보 최초 insert
+	@Override
+	public int insertCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx1, int cridx2, int cridx3, int cridx4) {
+		dao = template.getMapper(CarryMyPageDao.class);
+		return dao.insertCarryPrice(proprice1, proprice2, proprice3, proprice4, cridx1, cridx2, cridx3, cridx4);
+	}
+    
+    
     // 캐리 정보 가격 수정
     @Override
     public int updateCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx) {
@@ -149,4 +164,5 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
 		carryMyPageDao = template.getMapper(CarryMyPageDao.class);
          return carryMyPageDao.myMemberList(cridx);
 	}
+
 }

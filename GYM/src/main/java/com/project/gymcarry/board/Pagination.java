@@ -19,7 +19,7 @@ public class Pagination {
 		return memidx;
 	}
 
-	public void setMemidx() {
+	public void setMemidx(int memidx) {
 		this.memidx = memidx;
 	}
 

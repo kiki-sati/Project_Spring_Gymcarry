@@ -85,7 +85,7 @@
 			</ul>
 
 			<!-- 구글  로그인 -->
-			<div class="g-signin2 google_btn" onclick="googleLogin()" data-width="300" data-height="45"></div>
+			<div class="g-signin2 google_btn" onclick="googleLogin()" data-width="297" data-height="45"></div>
 			
 		</div>
 	</div>

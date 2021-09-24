@@ -217,7 +217,7 @@
 					</div>
 					
 				<h2>${carryDetail.crnick}</h2>
-
+				
 				<div class="program_all">
 
 					<c:forEach items="${price}" var="price" varStatus="status">
@@ -235,10 +235,11 @@
 										원
 									</h4>
 								</div>
-
-								<div id="purchase_btn">
-									<input type="submit" value="구매하기" class="button" class="purchaseBtn">
-								</div>
+								<c:if test="${empty loginSession.crnick}">
+									<div id="purchase_btn">
+										<input type="submit" value="구매하기" class="button" class="purchaseBtn">
+									</div>
+								</c:if>
 							</div>
 
 

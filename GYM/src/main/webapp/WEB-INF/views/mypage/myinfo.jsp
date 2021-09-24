@@ -43,11 +43,12 @@
 		<div class="contents">
 
 			<div class="col">
-
+				
 				<form action="<c:url value='/mypage/myinfoUpdate'/>" method="post"
 					enctype="multipart/form-data">
 
 					<c:forEach items="${memberList}" var="memberList">
+						
 						<input type="hidden" name="memidx" id="memidx"
 							value="${memberList.memidx}">
 
@@ -58,6 +59,7 @@
 						</div> --%>
 
 						<div class="my-info profile_form">
+						<h1 class= "title">내 기본 정보 수정</h1>
 							<div class="display_none profileimg" id="image_container">
 								<img class="imgc"
 									src="<c:url value="/uploadfile/${memberList.memphoto}"/>"><br>

@@ -65,12 +65,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getBoardList"
 		resultType="com.project.gymcarry.board.BoardDto">
-		select *
-		from board
-		where memidx = ${memidx}
-		order by postidx
-		desc, postdate desc
-		LIMIT #{startList}, #{listSize}
+		<![CDATA[
+        select *,
+		(SELECT count(*) FROM boardcomment comment WHERE comment.postidx = board.postidx) AS commentCnt,
+		(Select memphoto from gymcarry.member m where m.memidx = board.memidx) as memphoto,
+		(SELECT count(*) FROM bbslike WHERE bbslike.postidx = board.postidx) AS likeCnt
+        from board
+        where memidx = #{memidx}
+        order by postidx desc, postdate desc
+        LIMIT #{startList}, #{listSize}
+		]]>
 	</select>
 
 	<select id="selectmember"

@@ -41,6 +41,7 @@
 		</section>
 		<section class="review_section container_fix swiper-container">
 			<h1 class="title">Carry Review</h1>
+			<h2 class="title2">짐캐리 회원들의 생생한 리뷰를 확인하세요 !</h2>
 			<div class="review_contaier swiper-wrapper">
 				<c:forEach var="list" items="${review}" begin="0" end="10">
 					<div class="review_content swiper-slide" onclick="location.href='<c:url value = "/carry/detail?cridx=${list.cridx}"/>'">

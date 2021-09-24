@@ -14,14 +14,14 @@ public class ChatListDto {
 	private int messageidx;
 	private int outcount;
 	private String outdate;
-	private String indate;
 	private String memphoto;
 	private String crphoto;
 	public ChatListDto() {
 	}
 	public ChatListDto(int chatidx, int cridx, int memidx, String crnick, String memnick, String placename,
 			String chatdate, String chatcontent, int chatread, int messageidx, int outcount, String outdate,
-			String indate, String memphoto, String crphoto) {
+			String memphoto, String crphoto) {
+		super();
 		this.chatidx = chatidx;
 		this.cridx = cridx;
 		this.memidx = memidx;
@@ -34,7 +34,6 @@ public class ChatListDto {
 		this.messageidx = messageidx;
 		this.outcount = outcount;
 		this.outdate = outdate;
-		this.indate = indate;
 		this.memphoto = memphoto;
 		this.crphoto = crphoto;
 	}
@@ -109,12 +108,6 @@ public class ChatListDto {
 	}
 	public void setOutdate(String outdate) {
 		this.outdate = outdate;
-	}
-	public String getIndate() {
-		return indate;
-	}
-	public void setIndate(String indate) {
-		this.indate = indate;
 	}
 	public String getMemphoto() {
 		return memphoto;

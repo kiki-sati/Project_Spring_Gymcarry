@@ -2,6 +2,9 @@ package com.project.gymcarry.chatting.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +14,7 @@ import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.dao.MatchingDao;
+import com.project.gymcarry.member.SessionDto;
 
 @Service
 public class MatchingChatRoomServiceImpl implements MatchingChatRoomService {
@@ -40,7 +44,7 @@ public class MatchingChatRoomServiceImpl implements MatchingChatRoomService {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.selectChattingList(chatidx);
 	}
-	
+
 	// 멤버 대화 리스트
 	@Override
 	public List<ChatRoomDto> getMemberMessage(int chatidx) {
@@ -109,7 +113,7 @@ public class MatchingChatRoomServiceImpl implements MatchingChatRoomService {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.updateOutChat(chatidx);
 	}
-	
+
 	// 멤버 나간방 다시 들어가기
 	@Override
 	public int getInChatRoom(int chatidx) {
@@ -123,7 +127,7 @@ public class MatchingChatRoomServiceImpl implements MatchingChatRoomService {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.updateCarryOutChat(chatidx);
 	}
-	
+
 	// 방인원수 0 되면 삭제
 	@Override
 	public int deleteChatRoom(int chatidx) {
@@ -135,12 +139,11 @@ public class MatchingChatRoomServiceImpl implements MatchingChatRoomService {
 		}
 		return result;
 	}
-	
-	// 방count 가져옴 
+
+	// 방count 가져옴
 	public ChatListDto selectRoomCount(int chatidx) {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.selectRoomCount(chatidx);
 	}
 
-	
 }

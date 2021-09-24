@@ -55,7 +55,7 @@
 				url : '/v1/user/unlink',
 				success : function(response) {
 					console.log(response)
-					window.location.href='<c:url value="/chatting/chatList"/>';
+					window.location.href='<c:url value="/index"/>';
 				},
 				fail : function(error) {
 					console.log(error)
@@ -80,6 +80,7 @@
 	
 	
 <script>
+	/* 메세지 알림기능 */
 	var session_memnick = '${loginSession.memnick}'
 	var session_crnick = '${loginSession.crnick}'
 	<c:if test="${loginSession ne null}">
@@ -97,9 +98,7 @@
 				location.href = '<c:url value="/chatting/chatList"/>'; 
 			}
 			toastr.info('메시지를 보냈습니다.', jsonData.chatNick+'님이', {timeOut: 5000});
-
 		} else if(jsonData.to == session_crnick){
-			
 			toastr.options.escapeHtml = true;
 			toastr.options.closeButton = true;
 			toastr.options.newestOnTop = false;

@@ -243,6 +243,7 @@
 
 
 
+							<input type="hidden" name="crnick" value="${carryDetail.crnick}">
 							<input type="hidden" name="crname" value="${carryDetail.crname}">
 						</form>
 					</c:forEach>

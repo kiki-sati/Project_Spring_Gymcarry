@@ -74,7 +74,7 @@ public class MailSenderService {
 			html += "안녕하세요 " + memname + " 회원님 :) ! 짐캐리 회원가입을 환영합니다!</h3>";
 			html += "<div style='font-size: 130%'>";
 			html += "하단의 인증 버튼 클릭시 정상적으로 회원가입이 완료됩니다.</div><br/>";
-			html += "<form method='post' " + "action='http://3.144.47.221"+ contextpath +"/member/join/alterjoinkey'>";
+			html += "<form method='post' " + "action='http://3.144.47.221:8080"+ contextpath +"/member/join/alterjoinkey'>";
 			html += "<input type='hidden' name='mememail' value='" + mememail + "'>";
 			html += "<input type='hidden' name='joinkey' value='" + joinkey + "'>";
 			html += "<input type='submit' value='인증' style= 'width:70px; height:25px; border:0px; background-color: #4380ce; color: #fff; font-weight: bold'></form><br/></div>";
@@ -122,7 +122,7 @@ public class MailSenderService {
 			html += "안녕하세요 " + crname + " 캐리님 :) ! 짐캐리 회원가입을 환영합니다!</h3>";
 			html += "<div style='font-size: 130%'>";
 			html += "하단의 인증 버튼 클릭시 정상적으로 회원가입이 완료됩니다.</div><br/>";
-			html += "<form method='post' " + "action='http://3.144.47.221" + contextpath + "/member/join/alterjoinkey'>";
+			html += "<form method='post' " + "action='http://3.144.47.221:8080" + contextpath + "/member/join/alterjoinkey'>";
 			html += "<input type='hidden' name='cremail' value='" + cremail + "'>";
 			html += "<input type='hidden' name='joinkey' value='" + joinkey + "'>";
 			html += "<input type='submit' value='인증' style= 'width:70px; height:25px; border:0px; background-color: #4380ce; color: #fff; font-weight: bold'></form><br/></div>";

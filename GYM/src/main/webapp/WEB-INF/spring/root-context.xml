@@ -14,9 +14,12 @@
 		  p:jdbcUrl="jdbc:log4jdbc:mysql://mysql205.cszw5wiaeg6n.us-east-2.rds.amazonaws.com:3306/gymcarry?serverTimezone=Asia/Seoul"
 		  p:username="gym"
 		  p:password="gym"
-	>
-	</bean>
-   
+		  p:connectionTimeout="200000"
+		  p:minimumIdle="5"
+		  p:maximumPoolSize="5"
+		  p:validationTimeout="1200000"/>
+
+
 <!--    <bean id="datasource"
             class="com.zaxxer.hikari.HikariDataSource"
             p:driverClassName="com.mysql.cj.jdbc.Driver"

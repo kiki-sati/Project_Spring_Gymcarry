@@ -82,7 +82,6 @@ public class CarryCalendarController {
 	
 	
 	@PostMapping("mypage/deleteschedule")
-	@ResponseBody
 	public List<CarryMypageDto> deleteschedule(HttpSession session){
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 		

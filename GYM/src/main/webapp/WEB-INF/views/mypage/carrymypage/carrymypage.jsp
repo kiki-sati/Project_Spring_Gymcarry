@@ -182,18 +182,29 @@
 							eventAdd : function(obj) { // 이벤트가 추가되면 발생하는 이벤트
 								console.log(obj);
 							},
-							eventChange : function(obj) { // 이벤트가 수정되면 발생하는 이벤트
-								console.log(obj);
-							},
-							// 이벤트 클릭시 로직
-							eventClick : function(deleteschedule) {
-								console.log("이벤트 클릭 : " + deleteschedule.event);
-								alert('선택하신 일정을 삭제합니다.'),
-								//Remove event from calendar
-								deleteschedule.event.remove()
+							eventChange : function(eventchange) { // 이벤트가 수정되면 발생하는 이벤트
+								console.log("이벤트 변경  : " + eventchange.event);
 								
 								// 여기서부터 추가
-									$.ajax({
+								$.ajax({
+								type : 'post',
+								url : '<c:url value="/mypage/deleteschedule"/>',
+								data : {},
+								dataType : 'text',
+								success : function(deleteschedule) {
+									console.log(deleteschedule);
+								}
+							})
+							},
+							// 이벤트 클릭시 로직
+							eventClick : function(event_click) {
+								console.log("이벤트 클릭 : " + event_click.event);
+								alert('선택하신 일정을 삭제합니다.'),
+								//Remove event from calendar
+								event_click.event.remove()
+								
+								// 여기서부터 추가
+								$.ajax({
 								type : 'post',
 								url : '<c:url value="/mypage/deleteschedule"/>',
 								data : {},

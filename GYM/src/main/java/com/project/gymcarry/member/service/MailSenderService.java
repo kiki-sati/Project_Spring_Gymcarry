@@ -8,6 +8,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -50,14 +51,17 @@ public class MailSenderService {
 	}
 
 // 회원한테 보내는 가입 인증 메일
-	public String send_mail(String mememail, String memname) {
+	public String send_mail(String mememail, String memname, HttpServletRequest request) {
 
 		String joinkey = getJoinkey(false, 8);
 		dao = template.getMapper(MemberDao.class);
 		dao.GetJoinkey(mememail, joinkey);
 
 		MimeMessage message = sender.createMimeMessage();
-
+		
+		ServletContext contextpath = request.getSession().getServletContext();
+		System.out.println("경로는 -> " + contextpath);
+		
 		try {
 
 			// 메일 제목
@@ -70,7 +74,7 @@ public class MailSenderService {
 			html += "안녕하세요 " + memname + " 회원님 :) ! 짐캐리 회원가입을 환영합니다!</h3>";
 			html += "<div style='font-size: 130%'>";
 			html += "하단의 인증 버튼 클릭시 정상적으로 회원가입이 완료됩니다.</div><br/>";
-			html += "<form method='post' " + "action='http://localhost:8080/gym/member/join/alterjoinkey'>";
+			html += "<form method='post' " + "action='http://3.144.47.221"+ contextpath +"/member/join/alterjoinkey'>";
 			html += "<input type='hidden' name='mememail' value='" + mememail + "'>";
 			html += "<input type='hidden' name='joinkey' value='" + joinkey + "'>";
 			html += "<input type='submit' value='인증' style= 'width:70px; height:25px; border:0px; background-color: #4380ce; color: #fff; font-weight: bold'></form><br/></div>";
@@ -95,13 +99,16 @@ public class MailSenderService {
 	}
 
 	// 캐리에게 보내는 가입 인증 메일
-	public String crsend_mail(String cremail, String crname) {
+	public String crsend_mail(String cremail, String crname, HttpServletRequest request) {
 
 		String joinkey = getJoinkey(false, 8);
 		dao = template.getMapper(MemberDao.class);
 		dao.cr_GetJoinkey(cremail, joinkey);
 
 		MimeMessage message = sender.createMimeMessage();
+		
+		ServletContext contextpath = request.getSession().getServletContext();
+		System.out.println("경로는 -> " + contextpath);
 
 		try {
 
@@ -115,7 +122,7 @@ public class MailSenderService {
 			html += "안녕하세요 " + crname + " 캐리님 :) ! 짐캐리 회원가입을 환영합니다!</h3>";
 			html += "<div style='font-size: 130%'>";
 			html += "하단의 인증 버튼 클릭시 정상적으로 회원가입이 완료됩니다.</div><br/>";
-			html += "<form method='post' " + "action='http://localhost:8080/gym/carry/join/cr_alterjoinkey'>";
+			html += "<form method='post' " + "action='http://3.144.47.221" + contextpath + "/member/join/alterjoinkey'>";
 			html += "<input type='hidden' name='cremail' value='" + cremail + "'>";
 			html += "<input type='hidden' name='joinkey' value='" + joinkey + "'>";
 			html += "<input type='submit' value='인증' style= 'width:70px; height:25px; border:0px; background-color: #4380ce; color: #fff; font-weight: bold'></form><br/></div>";

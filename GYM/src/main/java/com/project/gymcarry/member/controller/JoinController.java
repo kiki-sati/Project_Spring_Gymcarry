@@ -59,7 +59,7 @@ public class JoinController {
 		PrintWriter out = response.getWriter();
 
 		// 인증메일 보내기 메소드
-		String result2 = mailsenderservice.send_mail(memberDto.getMememail(), memberDto.getMemname());
+		String result2 = mailsenderservice.send_mail(memberDto.getMememail(), memberDto.getMemname(), request);
 		if (result2 != null) {
 			System.out.println("이메일 보내기 성공");
 			System.out.println("memberDto.getMememail = " + memberDto.getMememail());

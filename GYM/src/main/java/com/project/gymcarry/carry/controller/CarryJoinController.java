@@ -57,7 +57,7 @@ public class CarryJoinController {
 		PrintWriter out = response.getWriter();
 		
 		// 인증메일 보내기 메소드 
-		String result2 = mailsenderservice.crsend_mail(carryDto.getCremail(), carryDto.getCrname());
+		String result2 = mailsenderservice.crsend_mail(carryDto.getCremail(), carryDto.getCrname(), request);
 		if (result2 != null) {
 			System.out.println("이메일 보내기 성공");
 			System.out.println("carryDto.getCremail = " + carryDto.getCremail());

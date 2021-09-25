@@ -43,16 +43,18 @@
 		<div class="contents">
 
 			<div class="col">
-
+				
 				<form action="<c:url value='/mypage/myinfoUpdate'/>" method="post"
 					enctype="multipart/form-data">
 
 					<c:forEach items="${memberList}" var="memberList">
+						
 						<input type="hidden" name="memidx" id="memidx"
 							value="${memberList.memidx}">
 
 
 						<div class="my-info profile_form">
+						<h1 class= "title">내 기본 정보 수정</h1>
 							<div class="display_none profileimg" id="image_container">
 								<img class="imgc"
 									src="<c:url value="/uploadfile/${memberList.memphoto}"/>">
@@ -90,7 +92,7 @@
 							</div>
 							<div class="col-9" style="float: right;">
 								<input type="password" name="mempw" id="mempw"
-									placeholder="비밀번호를 입력해주세요." value="${memberList.mempw}">
+									placeholder="비밀번호를 입력해주세요.">
 								<div class="check_font" id="pwcheck"></div>
 
 							</div>
@@ -101,7 +103,7 @@
 							</div>
 							<div class="col-9" style="float: right;">
 								<input type="password" name="mempw2" id="mempw2"
-									placeholder="비밀번호를 확인해주세요." value="${memberList.mempw}">
+									placeholder="비밀번호를 확인해주세요." >
 								<div class="check_font" id="mempw2check"></div>
 
 							</div>

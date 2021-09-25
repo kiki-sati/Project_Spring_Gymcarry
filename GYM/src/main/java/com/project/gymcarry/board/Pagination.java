@@ -3,7 +3,7 @@ package com.project.gymcarry.board;
 public class Pagination {
 
 	private int listSize = 5; // 초기값으로 목록개수를 5으로 셋팅
-	private int rangeSize = 3; // 초기값으로 페이지범위를 5으로 셋팅
+	private int rangeSize = 5; // 초기값으로 페이지범위를 5으로 셋팅
 	private int page;
 	private int range;
 	private int listCnt;
@@ -102,7 +102,7 @@ public class Pagination {
 		this.listCnt = listCnt;
 
 		// 전체 페이지수
-		this.pageCnt = (int) Math.ceil(listCnt / listSize);
+		this.pageCnt = (int)Math.ceil(listCnt/(double)listSize);
 
 		// 시작 페이지
 		this.startPage = (range - 1) * rangeSize + 1;

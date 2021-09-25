@@ -241,10 +241,10 @@ body {
 
 .display_none {
 	height: 210px;
-	width: 70%;
-	display: block;
-	margin: auto;
-	BORDER-RADIUS: 100px;
+	width: 210px;
+	object-fit: cover;
+	border-radius: 50%;
+	margin: 0 0 0 25px;
 }
 
 .photo-margin {

@@ -49,7 +49,7 @@
 							<img src="<c:url value="/uploadfile/${list.crbfphoto}"/>" alt="img" class="crphoto">
 						</div>
 						<div class="review">
-							<h2 class="title">${list.crname}</h2>
+							<h2 class="title">${list.crname}<span>캐리</span></h2> 
 							<p>${list.reviewcontent}</p>
 						</div>
 					</div>

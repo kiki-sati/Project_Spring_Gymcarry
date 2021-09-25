@@ -112,12 +112,20 @@
 }
 
 .review_section .review_content .review h2 {
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .review_section .review_content .review p {
 	margin-top: 15px;
-	font-size: 15px;
+	font-size: 14px;
+	color: #5e5e5e;
+	
+	/* 리뷰 소개 자르기 */
+	overflow: hidden;
+    line-height: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .swiper-button-next, .swiper-button-prev {
@@ -131,6 +139,9 @@
 .swiper-button-prev {
 	left: 0 !important;
 }
+
+
+
 /* review section end*/
 
 .typing-txt{display: none;}
@@ -155,4 +166,10 @@ ul{list-style:none;}
 	font-weight:600;
 	text-shadow:4px 10px 23px rgb(0 0 0 / 76%);
 	
+}
+
+.title span {
+	margin-left: 8px;
+	font-weight: 300;
+	font-size: 15px;
 }

@@ -186,11 +186,24 @@
 								console.log(obj);
 							},
 							// 이벤트 클릭시 로직
-							eventClick : function(event_click) {
-								console.log("이벤트 클릭 : " + event_click.event);
+							eventClick : function(deleteschedule) {
+								console.log("이벤트 클릭 : " + deleteschedule.event);
 								alert('선택하신 일정을 삭제합니다.'),
 								//Remove event from calendar
-								event_click.event.remove()
+								deleteschedule.event.remove()
+								
+								// 여기서부터 추가
+									$.ajax({
+								type : 'post',
+								url : '<c:url value="/mypage/deleteschedule"/>',
+								data : {},
+								dataType : 'text',
+								success : function(deleteschedule) {
+									console.log(deleteschedule);
+								}
+							})
+								
+								
 							},
 
 							select : function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
@@ -262,7 +275,7 @@
 		}
 
 		function savedata(jsondata) {
-
+			alert('일정 입력이 완료되었습니다.'),
 			$.ajax({
 				type : 'post',
 				url : '<c:url value="/mypage/schedule"/>',

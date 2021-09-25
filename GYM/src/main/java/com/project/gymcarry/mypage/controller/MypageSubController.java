@@ -89,9 +89,8 @@ public class MypageSubController {
 		MDTO.setMempw(encryPassword);
 		System.out.println("두번째:" + MDTO.getMempw());
 
-		System.out.println(MDTO + "MDTO");
-		
-		
+		System.out.println(MDTO.getMemphoto() + "MDTO");
+
 		int result = mypService.updateMemberBasicInfo(MDTO, response, request);
 		System.out.println(MDTO.toString());
 		System.out.println("result = " + result);

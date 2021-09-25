@@ -128,7 +128,7 @@
 				<div class="modal-content modal-photo">
 					<div class="modal-header">
 
-						<h3>눈바디</h3>
+						<h3>눈 바디</h3>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="close">
 							<span aria-hidden="true"> X </span>
@@ -141,13 +141,13 @@
 						<div class="modal-body modal-mypage modal-photo">
 
 							<!-- 	<div class="my-info profile_form"> -->
-							<input type="button" value="사진업로드" class="profilebtn"
+							<input type="button" value="사진업로드" class="profilebtn infophoto"
 								name="infocontent" onclick=document.all.file.click();> <input
 								type="file" name="infocontent" id="file" class="profilebtn"
 								style="display: none;" />
 							<div class="photo-margin display_none profileimg "
 								id="image_container">
-								<br>
+								<img class="imgc" id="memo-input-photo2"><br>
 							</div>
 
 
@@ -157,7 +157,8 @@
 							</div>
 							<input type="hidden" name="infodate" /> <input type="hidden"
 								id="memidx" name="memidx" value="${memidx}" /> <input
-								type="hidden" name="infotype" id="infotype" value="photo" />
+								type="hidden" name="infotype" id="infotype" value="photo" /> <input
+								type="hidden" name="oldmemophoto" value="${memberList.memphoto}">
 
 
 						</div>

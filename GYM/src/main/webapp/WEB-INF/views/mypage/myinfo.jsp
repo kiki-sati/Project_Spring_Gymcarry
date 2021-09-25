@@ -51,22 +51,17 @@
 						<input type="hidden" name="memidx" id="memidx"
 							value="${memberList.memidx}">
 
-						<%-- 		<div class="my-info">
-							<img id="loadingimg" class="display_none"
-								src="<c:url value="/uploadfile/${memberList.MEMPHOTO}"/>">
-							<h3>사진 수정</h3>
-						</div> --%>
 
 						<div class="my-info profile_form">
 							<div class="display_none profileimg" id="image_container">
 								<img class="imgc"
-									src="<c:url value="/uploadfile/${memberList.memphoto}"/>"><br>
+									src="<c:url value="/uploadfile/${memberList.memphoto}"/>">
 							</div>
 
 							<input type="button" value="사진업로드" class="profilebtn"
-								name="MEMPHOTO" onclick=document.all.file.click();> <input
+								name="memphoto" onclick=document.all.file.click();> <input
 								type="file" name="memphoto" id="file" class="profilebtn"
-								value="${memberList.memphoto}" style="display: none;" />
+								style="display: none;" />
 						</div>
 
 
@@ -84,8 +79,9 @@
 								<h3>이메일 주소</h3>
 							</div>
 							<div class="col-9" style="float: right;">
-								<input value="${memberList.mememail}" type="text"
-									class="readonly" readonly>
+								<input name="mememail" id="mememail"
+									value="${memberList.mememail}" type="text" class="readonly"
+									readonly>
 							</div>
 						</div>
 						<div class="col-2">
@@ -160,6 +156,8 @@
 								</div>
 							</div>
 						</div>
+							<input type="hidden" name="oldmemphoto"
+						value="${memberList.memphoto}">
 					</c:forEach>
 				</form>
 			</div>

@@ -87,7 +87,7 @@ public class MypageSubService {
 			MDto.setInfocontent(newFileName);
 			System.out.println("파일 정상적으로 들어옴");
 		} else {
-			MDto.setInfocontent(request.getParameter("oldcrphoto"));
+			MDto.setInfocontent(request.getParameter("memmemoophoto"));
 		}
 		System.out.println("서비스에서 출력하는 tostring = " + MDto.toString());
 
@@ -118,7 +118,7 @@ public class MypageSubService {
 			MDto.setInfocontent(newFileName);
 			System.out.println("파일 정상적으로 들어옴");
 		} else {
-			MDto.setInfocontent(request.getParameter("oldcrphoto"));
+			MDto.setInfocontent(request.getParameter("memmemoophoto"));
 		}
 		System.out.println("서비스에서 출력하는 tostring = " + MDto.toString());
 
@@ -150,7 +150,7 @@ public class MypageSubService {
 			MypageMemberDto.setMemphoto(newFileName);
 			System.out.println("파일 정상적으로 들어옴");
 		} else {
-			MypageMemberDto.setMemphoto(request.getParameter("oldcrphoto"));
+			MypageMemberDto.setMemphoto(request.getParameter("oldmemphoto"));
 		}
 		System.out.println("서비스에서 출력하는 tostring = " + MypageMemberDto.toString());
 

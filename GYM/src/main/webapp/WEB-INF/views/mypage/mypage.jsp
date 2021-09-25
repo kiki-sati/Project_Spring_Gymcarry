@@ -91,11 +91,17 @@
 				if (list4 == "") {
 					$('#memo-input-photo').attr("src",
 							"/gym/uploadfile/bodydefault.PNG");
+					$('#memo-input-photo2').attr("src",
+					"/gym/uploadfile/bodydefault.PNG");
 				} else if (list4 == null) {
 					$('#memo-input-photo').attr("src",
 							"/gym/uploadfile/bodydefault.PNG");
+					$('#memo-input-photo2').attr("src",
+					"/gym/uploadfile/bodydefault.PNG");
 				} else {
 					$('#memo-input-photo').attr("src",
+							"/gym/uploadfile/" + list4);
+					$('#memo-input-photo2').attr("src",
 							"/gym/uploadfile/" + list4);
 				}
 
@@ -225,7 +231,7 @@
 					</div>
 
 					<div class="col-right" id="col-right" name="col-right"></div>
-
+					
 				</div>
 
 			</div>

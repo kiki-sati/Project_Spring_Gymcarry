@@ -16,6 +16,25 @@ public class MypageMemberUpdateDto {
 	private String memphone;
 	private String membirth;
 
+	
+	
+	public MypageMemberUpdateDto(int memidx, MultipartFile memphoto, String memname, String mememail, String mempw,
+			String memnick, String memphone, String membirth) {
+		super();
+		this.memidx = memidx;
+		this.memphoto = memphoto;
+		this.memname = memname;
+		this.mememail = mememail;
+		this.mempw = mempw;
+		this.memnick = memnick;
+		this.memphone = memphone;
+		this.membirth = membirth;
+	}
+
+	public MypageMemberUpdateDto() {
+
+	}
+	
 	public int getMemidx() {
 		return memidx;
 	}
@@ -92,8 +111,6 @@ public class MypageMemberUpdateDto {
 				membirth);
 	}
 
-	public MypageMemberUpdateDto() {
 
-	}
 
 }

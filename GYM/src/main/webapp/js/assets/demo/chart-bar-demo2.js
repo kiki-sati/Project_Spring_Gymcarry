@@ -52,7 +52,7 @@ function getBaryear(total, year){
 	      yAxes: [{
 	        ticks: {
 	          min: 0,
-	          max: 40000000,
+	          max: 80000000,
 	          maxTicksLimit: 5
 	        },
 	        gridLines: {

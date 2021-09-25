@@ -112,6 +112,12 @@
 		IMP.init("imp65837574"); // 예: imp00000000
 
 		function requestPay() {
+			
+			if(!document.paymentForm.payname.value || !document.paymentForm.payphone.value) {
+				alert('주문자명과 연락처를 입력해주세요.');
+				document.paymentForm.payname.focus();
+				return false;
+			} else {
 			// IMP.request_pay(param, callback) 결제창 호출
 			IMP.request_pay({ // param
 				pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
@@ -138,6 +144,6 @@
 				}	
 			});
 			/* 이니시스API 호출 END*/
-
+			}
 		}
 	</script>

@@ -57,14 +57,14 @@ public class CarryJoinController {
 		PrintWriter out = response.getWriter();
 		
 		// 인증메일 보내기 메소드 
-		String result2 = mailsenderservice.crsend_mail(carryDto.getCremail(), carryDto.getCrname(), request);
+		String result2 = mailsenderservice.crsend_mail(carryDto.getCremail(), carryDto.getCrname());
 		if (result2 != null) {
 			System.out.println("이메일 보내기 성공");
 			System.out.println("carryDto.getCremail = " + carryDto.getCremail());
 		}
 
 		out.println("<script>");
-		out.println("alert('회원가입이 완료되었습니다. 인증메일을 확인해주세요!'); location.href='/gym/index';");
+		out.println("alert('회원가입이 완료되었습니다. 인증메일을 확인해주세요!'); location.href='http://3.144.47.221:8080/gym/index';");
 		out.println("</script>");
 		out.close();
 		

@@ -245,6 +245,7 @@
 		var jsonData = JSON.parse(data);
 		
 		console.log(jsonData);
+		console.log(jsonData.chatdate)
 		var currentuser_session = $('#messageId').val();
 		if(chatIdx == jsonData.chatidx){
 			if (jsonData.chatNick == currentuser_session) {

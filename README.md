@@ -1,6 +1,6 @@
 # 🏋🏻GymCarry Project🏋🏻
 
-## [GYMCARRY 배포 주소](http://ec2-54-180-94-234.ap-northeast-2.compute.amazonaws.com:8080/gym/index)
+## [GYMCARRY 배포 사이트](http://ec2-54-180-94-234.ap-northeast-2.compute.amazonaws.com:8080/gym/index)
 
 ```
 프로젝트 기간 : 2021.08 ~ 2021.09 (1개월)

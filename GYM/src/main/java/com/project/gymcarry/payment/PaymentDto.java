@@ -1,9 +1,5 @@
 package com.project.gymcarry.payment;
 
-import java.sql.Timestamp;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class PaymentDto {
 
 	private int payidx;
@@ -15,10 +11,20 @@ public class PaymentDto {
 	private int cridx;
 	private int paynum;
 	private int payprice;
-	private int fonchoice;
 	
 	public PaymentDto() {}
 
+	public PaymentDto(int payidx, String paydate, int memidx, String payname, String payphone, int cridx, int paynum,
+			int payprice) {
+		this.payidx = payidx;
+		this.paydate = paydate;
+		this.memidx = memidx;
+		this.payname = payname;
+		this.payphone = payphone;
+		this.cridx = cridx;
+		this.paynum = paynum;
+		this.payprice = payprice;
+	}
 
 	public int getPayidx() {
 		return payidx;
@@ -84,36 +90,11 @@ public class PaymentDto {
 		this.payprice = payprice;
 	}
 
-	public int getFonchoice() {
-		return fonchoice;
-	}
-
-	public void setFonchoice(int fonchoice) {
-		this.fonchoice = fonchoice;
-	}
-
-	@Override
+	@Override 
 	public String toString() {
 		return "PaymentDto [payidx=" + payidx + ", paydate=" + paydate + ", memidx=" + memidx + ", payname=" + payname
-				+ ", payphone=" + payphone + ", cridx=" + cridx + ", paynum=" + paynum + ", payprice=" + payprice
-				+ ", fonchoice=" + fonchoice + "]";
+				+ ", payphone=" + payphone + ", cridx=" + cridx + ", paynum=" + paynum + ", payprice=" + payprice + "]";
 	}
 
-	public PaymentDto(int payidx, String paydate, int memidx, String payname, String payphone, int cridx, int paynum,
-			int payprice, int fonchoice) {
-		super();
-		this.payidx = payidx;
-		this.paydate = paydate;
-		this.memidx = memidx;
-		this.payname = payname;
-		this.payphone = payphone;
-		this.cridx = cridx;
-		this.paynum = paynum;
-		this.payprice = payprice;
-		this.fonchoice = fonchoice;
-	}
-	
-	
-	
 	
 }

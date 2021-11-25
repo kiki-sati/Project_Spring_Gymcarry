@@ -1,11 +1,6 @@
 $(document).ready(function(e) {
-	
-    $('#write_review_btn').click(function() {
-		$('#review_write').removeClass('display_none');
-	});
-	
-	
-    // 사이드 윙 스크립트
+   
+	// 사이드 윙 스크립트
     var default_h = $(".header").height() + $(".carry_image").height() - 50;
 
     $(window).scroll(function(){
@@ -13,8 +8,6 @@ $(document).ready(function(e) {
         
         var bottom_Top = $('.footer').offset().top - 900;
         
-        console.log('123 == ' + scroll_Top);
-        console.log('456 == ' + bottom_Top);
 
         //main
         if (scroll_Top > default_h){

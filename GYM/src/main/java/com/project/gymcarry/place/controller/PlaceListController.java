@@ -1,80 +1,66 @@
 package com.project.gymcarry.place.controller;
 
+
 import java.util.List;
-import java.util.Locale;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
 import com.project.gymcarry.place.PlaceDto;
-import com.project.gymcarry.place.PlaceSearchDto;
-import com.project.gymcarry.place.service.PlaceHealthService;
+import com.project.gymcarry.place.service.PlaceService;
 
 @Controller
-@RequestMapping("/place/list")
+@RequestMapping
 public class PlaceListController {
 	
 	@Autowired
-	private PlaceHealthService placeHealthService;
+	private PlaceService placeHealthService;
 	
-	// place 리스트
-//	@GetMapping
-//	public String placeList(
-//				@RequestParam("placenum") int placenum,
-//				Model model
-//			) {
-//		List<PlaceDto> placeList = placeHealthService.getHealthPlaceList(placenum);
-//		System.out.println("placenum : " + placenum);
-//		
-//		model.addAttribute("placeList", placeList);
-//		
-//		
-//		return "place/placeList";
-//	}
-//	
-	// 컨트롤러 부분
-//	@RequestMapping(value = "/json", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")
-//	@ResponseBody
-//	public String json(Locale locale, Model model) {    
-//	    	String[] array = {"엽기떡볶이", "신전떡볶이", "걸작떡볶이", "신당동떡볶이"}; // 배열 생성
-//	    
-//	        Gson gson = new Gson();
-//
-//	    return gson.toJson(array); // 배열 반환
-//	}
+	// 플레이스 전체보기
+	@GetMapping("/place/all")
+	public String placeList(
+				Model model
+			) {
+		List<PlaceDto> placeAll = placeHealthService.getAllPlaceList();
+		model.addAttribute("placeAll", placeAll);
+		return "place/placeList";
+	}
 	
 	
+	// place 헬스 리스트
+	@GetMapping("/place/health")
+	public String placeHealthList(
+				Model model
+			) {
+		List<PlaceDto> placeHealthList = placeHealthService.getHealthPlaceList();
+		model.addAttribute("placeHealthList", placeHealthList);
+		return "place/placeHealthList";
+	}
 	
 	
-//	@RequestMapping(value="/search", method=RequestMethod.GET)
-//    public void search(String placename, HttpServletResponse response) throws Exception {
-//        List<PlaceSearchDto> list = placeHealthService.getPlaceSearch();
-//        // 응답해야 하는 문자열 : [{label:~,value:~},{label:~,value:~}]
-//
-//        JSONArray array = new JSONArray();
-//        for(PlaceSearchDto dto : list) {
-//            JSONObject obj = new JSONObject();
-//            obj.put("label", dto.getPlacename());
-//            obj.put("value", dto.getPlacename());
-//
-//            array.add(obj);
-//        }
-//
-//	}
-
-
-
+	// place 필라테스 리스트 
+	@GetMapping("/place/pilates")
+	public String placePilatesList (
+			Model model
+			) {
+		// 필라테스 업체 리스트
+		List<PlaceDto> placePilatesList = placeHealthService.getPilatesPlaceList();
+		model.addAttribute("placePilatesList", placePilatesList);
+		return "place/placePilatesList";
+	}
 	
 	
+	// place 요가 리스트
+	@GetMapping("/place/yoga")
+	public String placeYogaList(
+				Model model
+			) {
+		List<PlaceDto> placeYogaList = placeHealthService.getYogaPlaceList();
+		model.addAttribute("placeYogaList", placeYogaList);
+		return "place/placeYogaList";
+	}
 }

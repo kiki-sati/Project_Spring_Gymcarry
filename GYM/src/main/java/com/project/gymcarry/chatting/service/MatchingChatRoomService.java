@@ -2,45 +2,40 @@ package com.project.gymcarry.chatting.service;
 
 import java.util.List;
 
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.project.gymcarry.carrylike.CarryLikeDto;
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
-import com.project.gymcarry.dao.MatchingDao;
 
-@Service
-public class MatchingChatRoomService {
-	
-	@Autowired
-	private SqlSessionTemplate template;
-	
-	
-	private MatchingDao dao;
-	
-	// 채팅방 생성
-	public int getAddChatRoom(int cridx, int memidx) {
-		dao = template.getMapper(MatchingDao.class);
-		return dao.insertAddChatRoom(cridx, memidx);
-	}
-	
-	// 채팅방 중복 확인
-	public List<ChatListDto> getByChatRoom(int crnick) {
-		dao = template.getMapper(MatchingDao.class);
-		return dao.selectByChatRoom(crnick);
-	}
-	
-	// 채팅방 찾기
-	public ChatListDto getChatRoom(int chatidx) {
-		dao = template.getMapper(MatchingDao.class);
-		return dao.selectChatRoom(chatidx);
-	}
-	
-	// 대화내용 저장
-	public int insertChatContent(ChatRoomDto chatRoom) {
-		dao = template.getMapper(MatchingDao.class);
-		return dao.insertChatContent(chatRoom);
-	}
-	
+public interface MatchingChatRoomService {
+
+	ChatListDto getByChatRoom(int cridx, int memidx);
+
+	int getByChatIdx(int chatidx);
+
+	int getInChatRoom(int chatidx);
+
+	int getAddChatRoom(int cridx, int memidx);
+
+	List<ChatListDto> getChatList(int memidx);
+
+	List<ChatListDto> getChatLists(int cridx);
+
+	List<ChatRoomDto> getChatIdx(int chatidx);
+
+	int getChatRead(int chatidx);
+
+	CarryLikeDto getCheckLike(int memidx, int cridx);
+
+	int getChatLike(int memidx, int cridx, int likecheck);
+
+	int updateChatLike(int likecheck, int memidx, int cridx);
+
+	int getOutChatRoom(int chatidx);
+
+	int getOutCarryChatRoom(int chatidx);
+
+	int deleteChatRoom(int chatidx);
+
+	List<ChatRoomDto> getMemberMessage(int chatidx);
+
 }

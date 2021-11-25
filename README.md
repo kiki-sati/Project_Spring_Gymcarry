@@ -1,4 +1,4 @@
-# 🏋🏻GYMCARRY Project🏋🏻
+# 🏋🏻GymCarry Project🏋🏻
 
 ### [GYMCARRY 배포 사이트](http://ec2-54-180-94-234.ap-northeast-2.compute.amazonaws.com:8080/gym/index)
 ```

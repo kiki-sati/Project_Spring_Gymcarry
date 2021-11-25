@@ -1,7 +1,7 @@
 # 🏋🏻GymCarry Project🏋🏻
 
 ```
-GYMCARRY 배포 주소 : <http://ec2-54-180-94-234.ap-northeast-2.compute.amazonaws.com:8080/gym/index>
+[GYMCARRY 배포 주소](http://ec2-54-180-94-234.ap-northeast-2.compute.amazonaws.com:8080/gym/index)
 ```
 
 ![image](https://user-images.githubusercontent.com/83346234/143384195-7f3b998e-b7ae-49d3-856e-35abe8f613d8.png)

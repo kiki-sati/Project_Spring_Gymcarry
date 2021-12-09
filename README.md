@@ -16,8 +16,9 @@
 
 ## 1. 제작 기간 & 참여 인원
 
-* 2021.08 ~ 2021.09 (1개월)
-* 팀원 : 황지원, 김승민, 김아름, 김명호, 김훈, 신은경
+* 2021.08 ~ 2021.09 (1개월) 
+
+* 팀원 : [황지원](https://github.com/jiwondotcom), [김승민](https://github.com/seungmin1592), [김아름](https://github.com/kimrumm), [김명호](https://github.com/ricky9397), [김훈](https://github.com/alghrksl), [신은경](https://github.com/heybrilliant)
 
 <br>
 
